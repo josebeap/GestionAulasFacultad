@@ -1,0 +1,98 @@
+﻿@model GestionAulasFacultad.ModeloBD.tb_persona
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tb_persona</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.id_rol)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_rol)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.primer_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.primer_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.otros_nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.otros_nombres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.primer_apellido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.primer_apellido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.segundo_apellido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.segundo_apellido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.documentoIdentidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.documentoIdentidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.celular)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.celular)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.foto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.foto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.huella)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.huella)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

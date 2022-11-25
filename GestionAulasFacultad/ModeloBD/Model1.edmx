@@ -1,0 +1,986 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SoftwareBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tb_asistencia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_monitor" Type="int" />
+          <Property Name="id_profesor" Type="int" />
+          <Property Name="id_aula" Type="int" />
+          <Property Name="fecha_hora_inicio" Type="datetime" />
+          <Property Name="fecha_hora_fin" Type="datetime" />
+          <Property Name="estado" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_aula">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="tipo_aula" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="capacidad" Type="int" Nullable="false" />
+          <Property Name="cantidad_computadores" Type="int" />
+          <Property Name="multimedia" Type="bit" Nullable="false" />
+          <Property Name="disponibilidad" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_auxiliar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_persona" Type="int" Nullable="false" />
+          <Property Name="funcion" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tb_clase">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_profesor" Type="int" />
+          <Property Name="id_aula" Type="int" />
+          <Property Name="id_materia" Type="int" Nullable="false" />
+          <Property Name="cantidad_horas" Type="int" Nullable="false" />
+          <Property Name="fecha_hora_inicio" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_inventario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo_identificacion" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="id_tipoelemento" Type="int" Nullable="false" />
+          <Property Name="estado" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_materia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_programa" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_monitor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_persona" Type="int" Nullable="false" />
+          <Property Name="id_programa" Type="int" Nullable="false" />
+          <Property Name="id_materia" Type="int" Nullable="false" />
+          <Property Name="codigo_estudiante" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tb_persona">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_rol" Type="int" Nullable="false" />
+          <Property Name="primer_nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="otros_nombres" Type="nvarchar" MaxLength="100" />
+          <Property Name="primer_apellido" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="segundo_apellido" Type="nvarchar" MaxLength="100" />
+          <Property Name="documentoIdentidad" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="celular" Type="nvarchar" MaxLength="20" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="foto" Type="nvarchar" MaxLength="200" />
+          <Property Name="huella" Type="varbinary" MaxLength="2500" />
+        </EntityType>
+        <EntityType Name="tb_profesor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_persona" Type="int" Nullable="false" />
+          <Property Name="id_programa" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_programa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_reserva">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_monitor" Type="int" />
+          <Property Name="id_profesor" Type="int" />
+          <Property Name="id_aula" Type="int" />
+          <Property Name="cantidad_horas" Type="int" Nullable="false" />
+          <Property Name="fecha_hora_inicio" Type="datetime" />
+          <Property Name="estado" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_tipoelemento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="29" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__tb_asiste__id_au__300424B4">
+          <End Role="tb_aula" Type="Self.tb_aula" Multiplicity="0..1" />
+          <End Role="tb_asistencia" Type="Self.tb_asistencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_aula">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_asistencia">
+              <PropertyRef Name="id_aula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_asiste__id_mo__2F10007B">
+          <End Role="tb_monitor" Type="Self.tb_monitor" Multiplicity="0..1" />
+          <End Role="tb_asistencia" Type="Self.tb_asistencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_monitor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_asistencia">
+              <PropertyRef Name="id_monitor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_asiste__id_pr__2E1BDC42">
+          <End Role="tb_profesor" Type="Self.tb_profesor" Multiplicity="0..1" />
+          <End Role="tb_asistencia" Type="Self.tb_asistencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_profesor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_asistencia">
+              <PropertyRef Name="id_profesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_auxili__id_pe__20C1E124">
+          <End Role="tb_persona" Type="Self.tb_persona" Multiplicity="1" />
+          <End Role="tb_auxiliar" Type="Self.tb_auxiliar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_persona">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_auxiliar">
+              <PropertyRef Name="id_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_clase__id_aul__267ABA7A">
+          <End Role="tb_aula" Type="Self.tb_aula" Multiplicity="0..1" />
+          <End Role="tb_clase" Type="Self.tb_clase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_aula">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_clase">
+              <PropertyRef Name="id_aula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_clase__id_pro__25869641">
+          <End Role="tb_profesor" Type="Self.tb_profesor" Multiplicity="0..1" />
+          <End Role="tb_clase" Type="Self.tb_clase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_profesor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_clase">
+              <PropertyRef Name="id_profesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_invent__id_ti__34C8D9D1">
+          <End Role="tb_tipoelemento" Type="Self.tb_tipoelemento" Multiplicity="1" />
+          <End Role="tb_inventario" Type="Self.tb_inventario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_tipoelemento">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_inventario">
+              <PropertyRef Name="id_tipoelemento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_materi__id_pr__15502E78">
+          <End Role="tb_programa" Type="Self.tb_programa" Multiplicity="1" />
+          <End Role="tb_materia" Type="Self.tb_materia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_programa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_materia">
+              <PropertyRef Name="id_programa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_monito__id_ma__1DE57479">
+          <End Role="tb_materia" Type="Self.tb_materia" Multiplicity="1" />
+          <End Role="tb_monitor" Type="Self.tb_monitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_materia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_monitor">
+              <PropertyRef Name="id_materia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_monito__id_pe__1BFD2C07">
+          <End Role="tb_persona" Type="Self.tb_persona" Multiplicity="1" />
+          <End Role="tb_monitor" Type="Self.tb_monitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_persona">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_monitor">
+              <PropertyRef Name="id_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_monito__id_pr__1CF15040">
+          <End Role="tb_programa" Type="Self.tb_programa" Multiplicity="1" />
+          <End Role="tb_monitor" Type="Self.tb_monitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_programa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_monitor">
+              <PropertyRef Name="id_programa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_profes__id_pe__182C9B23">
+          <End Role="tb_persona" Type="Self.tb_persona" Multiplicity="1" />
+          <End Role="tb_profesor" Type="Self.tb_profesor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_persona">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_profesor">
+              <PropertyRef Name="id_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_profes__id_pr__1920BF5C">
+          <End Role="tb_programa" Type="Self.tb_programa" Multiplicity="1" />
+          <End Role="tb_profesor" Type="Self.tb_profesor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_programa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_profesor">
+              <PropertyRef Name="id_programa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_reserv__id_au__2B3F6F97">
+          <End Role="tb_aula" Type="Self.tb_aula" Multiplicity="0..1" />
+          <End Role="tb_reserva" Type="Self.tb_reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_aula">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_reserva">
+              <PropertyRef Name="id_aula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_reserv__id_mo__2A4B4B5E">
+          <End Role="tb_monitor" Type="Self.tb_monitor" Multiplicity="0..1" />
+          <End Role="tb_reserva" Type="Self.tb_reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_monitor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_reserva">
+              <PropertyRef Name="id_monitor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_reserv__id_pr__29572725">
+          <End Role="tb_profesor" Type="Self.tb_profesor" Multiplicity="0..1" />
+          <End Role="tb_reserva" Type="Self.tb_reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_profesor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_reserva">
+              <PropertyRef Name="id_profesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SoftwareBDModelStoreContainer">
+          <EntitySet Name="tb_asistencia" EntityType="Self.tb_asistencia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_aula" EntityType="Self.tb_aula" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_auxiliar" EntityType="Self.tb_auxiliar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_clase" EntityType="Self.tb_clase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_inventario" EntityType="Self.tb_inventario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_materia" EntityType="Self.tb_materia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_monitor" EntityType="Self.tb_monitor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_persona" EntityType="Self.tb_persona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_profesor" EntityType="Self.tb_profesor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_programa" EntityType="Self.tb_programa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_reserva" EntityType="Self.tb_reserva" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_tipoelemento" EntityType="Self.tb_tipoelemento" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tb_asiste__id_au__300424B4" Association="Self.FK__tb_asiste__id_au__300424B4">
+            <End Role="tb_aula" EntitySet="tb_aula" />
+            <End Role="tb_asistencia" EntitySet="tb_asistencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_asiste__id_mo__2F10007B" Association="Self.FK__tb_asiste__id_mo__2F10007B">
+            <End Role="tb_monitor" EntitySet="tb_monitor" />
+            <End Role="tb_asistencia" EntitySet="tb_asistencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_asiste__id_pr__2E1BDC42" Association="Self.FK__tb_asiste__id_pr__2E1BDC42">
+            <End Role="tb_profesor" EntitySet="tb_profesor" />
+            <End Role="tb_asistencia" EntitySet="tb_asistencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_auxili__id_pe__20C1E124" Association="Self.FK__tb_auxili__id_pe__20C1E124">
+            <End Role="tb_persona" EntitySet="tb_persona" />
+            <End Role="tb_auxiliar" EntitySet="tb_auxiliar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_clase__id_aul__267ABA7A" Association="Self.FK__tb_clase__id_aul__267ABA7A">
+            <End Role="tb_aula" EntitySet="tb_aula" />
+            <End Role="tb_clase" EntitySet="tb_clase" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_clase__id_pro__25869641" Association="Self.FK__tb_clase__id_pro__25869641">
+            <End Role="tb_profesor" EntitySet="tb_profesor" />
+            <End Role="tb_clase" EntitySet="tb_clase" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_invent__id_ti__34C8D9D1" Association="Self.FK__tb_invent__id_ti__34C8D9D1">
+            <End Role="tb_tipoelemento" EntitySet="tb_tipoelemento" />
+            <End Role="tb_inventario" EntitySet="tb_inventario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_materi__id_pr__15502E78" Association="Self.FK__tb_materi__id_pr__15502E78">
+            <End Role="tb_programa" EntitySet="tb_programa" />
+            <End Role="tb_materia" EntitySet="tb_materia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_monito__id_ma__1DE57479" Association="Self.FK__tb_monito__id_ma__1DE57479">
+            <End Role="tb_materia" EntitySet="tb_materia" />
+            <End Role="tb_monitor" EntitySet="tb_monitor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_monito__id_pe__1BFD2C07" Association="Self.FK__tb_monito__id_pe__1BFD2C07">
+            <End Role="tb_persona" EntitySet="tb_persona" />
+            <End Role="tb_monitor" EntitySet="tb_monitor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_monito__id_pr__1CF15040" Association="Self.FK__tb_monito__id_pr__1CF15040">
+            <End Role="tb_programa" EntitySet="tb_programa" />
+            <End Role="tb_monitor" EntitySet="tb_monitor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_profes__id_pe__182C9B23" Association="Self.FK__tb_profes__id_pe__182C9B23">
+            <End Role="tb_persona" EntitySet="tb_persona" />
+            <End Role="tb_profesor" EntitySet="tb_profesor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_profes__id_pr__1920BF5C" Association="Self.FK__tb_profes__id_pr__1920BF5C">
+            <End Role="tb_programa" EntitySet="tb_programa" />
+            <End Role="tb_profesor" EntitySet="tb_profesor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_reserv__id_au__2B3F6F97" Association="Self.FK__tb_reserv__id_au__2B3F6F97">
+            <End Role="tb_aula" EntitySet="tb_aula" />
+            <End Role="tb_reserva" EntitySet="tb_reserva" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_reserv__id_mo__2A4B4B5E" Association="Self.FK__tb_reserv__id_mo__2A4B4B5E">
+            <End Role="tb_monitor" EntitySet="tb_monitor" />
+            <End Role="tb_reserva" EntitySet="tb_reserva" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_reserv__id_pr__29572725" Association="Self.FK__tb_reserv__id_pr__29572725">
+            <End Role="tb_profesor" EntitySet="tb_profesor" />
+            <End Role="tb_reserva" EntitySet="tb_reserva" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SoftwareBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tb_asistencia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_monitor" Type="Int32" />
+          <Property Name="id_profesor" Type="Int32" />
+          <Property Name="id_aula" Type="Int32" />
+          <Property Name="fecha_hora_inicio" Type="DateTime" Precision="3" />
+          <Property Name="fecha_hora_fin" Type="DateTime" Precision="3" />
+          <Property Name="estado" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tb_aula" Relationship="Self.FK__tb_asiste__id_au__300424B4" FromRole="tb_asistencia" ToRole="tb_aula" />
+          <NavigationProperty Name="tb_monitor" Relationship="Self.FK__tb_asiste__id_mo__2F10007B" FromRole="tb_asistencia" ToRole="tb_monitor" />
+          <NavigationProperty Name="tb_profesor" Relationship="Self.FK__tb_asiste__id_pr__2E1BDC42" FromRole="tb_asistencia" ToRole="tb_profesor" />
+        </EntityType>
+        <EntityType Name="tb_aula">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tipo_aula" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="capacidad" Type="Int32" Nullable="false" />
+          <Property Name="cantidad_computadores" Type="Int32" />
+          <Property Name="multimedia" Type="Boolean" Nullable="false" />
+          <Property Name="disponibilidad" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tb_asistencia" Relationship="Self.FK__tb_asiste__id_au__300424B4" FromRole="tb_aula" ToRole="tb_asistencia" />
+          <NavigationProperty Name="tb_clase" Relationship="Self.FK__tb_clase__id_aul__267ABA7A" FromRole="tb_aula" ToRole="tb_clase" />
+          <NavigationProperty Name="tb_reserva" Relationship="Self.FK__tb_reserv__id_au__2B3F6F97" FromRole="tb_aula" ToRole="tb_reserva" />
+        </EntityType>
+        <EntityType Name="tb_auxiliar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_persona" Type="Int32" Nullable="false" />
+          <Property Name="funcion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tb_persona" Relationship="Self.FK__tb_auxili__id_pe__20C1E124" FromRole="tb_auxiliar" ToRole="tb_persona" />
+        </EntityType>
+        <EntityType Name="tb_clase">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_profesor" Type="Int32" />
+          <Property Name="id_aula" Type="Int32" />
+          <Property Name="id_materia" Type="Int32" Nullable="false" />
+          <Property Name="cantidad_horas" Type="Int32" Nullable="false" />
+          <Property Name="fecha_hora_inicio" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tb_aula" Relationship="Self.FK__tb_clase__id_aul__267ABA7A" FromRole="tb_clase" ToRole="tb_aula" />
+          <NavigationProperty Name="tb_profesor" Relationship="Self.FK__tb_clase__id_pro__25869641" FromRole="tb_clase" ToRole="tb_profesor" />
+        </EntityType>
+        <EntityType Name="tb_inventario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo_identificacion" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_tipoelemento" Type="Int32" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tb_tipoelemento" Relationship="Self.FK__tb_invent__id_ti__34C8D9D1" FromRole="tb_inventario" ToRole="tb_tipoelemento" />
+        </EntityType>
+        <EntityType Name="tb_materia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_programa" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tb_programa" Relationship="Self.FK__tb_materi__id_pr__15502E78" FromRole="tb_materia" ToRole="tb_programa" />
+          <NavigationProperty Name="tb_monitor" Relationship="Self.FK__tb_monito__id_ma__1DE57479" FromRole="tb_materia" ToRole="tb_monitor" />
+        </EntityType>
+        <EntityType Name="tb_monitor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_persona" Type="Int32" Nullable="false" />
+          <Property Name="id_programa" Type="Int32" Nullable="false" />
+          <Property Name="id_materia" Type="Int32" Nullable="false" />
+          <Property Name="codigo_estudiante" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tb_asistencia" Relationship="Self.FK__tb_asiste__id_mo__2F10007B" FromRole="tb_monitor" ToRole="tb_asistencia" />
+          <NavigationProperty Name="tb_materia" Relationship="Self.FK__tb_monito__id_ma__1DE57479" FromRole="tb_monitor" ToRole="tb_materia" />
+          <NavigationProperty Name="tb_persona" Relationship="Self.FK__tb_monito__id_pe__1BFD2C07" FromRole="tb_monitor" ToRole="tb_persona" />
+          <NavigationProperty Name="tb_programa" Relationship="Self.FK__tb_monito__id_pr__1CF15040" FromRole="tb_monitor" ToRole="tb_programa" />
+          <NavigationProperty Name="tb_reserva" Relationship="Self.FK__tb_reserv__id_mo__2A4B4B5E" FromRole="tb_monitor" ToRole="tb_reserva" />
+        </EntityType>
+        <EntityType Name="tb_persona">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_rol" Type="Int32" Nullable="false" />
+          <Property Name="primer_nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="otros_nombres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="primer_apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="segundo_apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="documentoIdentidad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="celular" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="foto" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="huella" Type="Binary" MaxLength="2500" FixedLength="false" />
+          <NavigationProperty Name="tb_auxiliar" Relationship="Self.FK__tb_auxili__id_pe__20C1E124" FromRole="tb_persona" ToRole="tb_auxiliar" />
+          <NavigationProperty Name="tb_monitor" Relationship="Self.FK__tb_monito__id_pe__1BFD2C07" FromRole="tb_persona" ToRole="tb_monitor" />
+          <NavigationProperty Name="tb_profesor" Relationship="Self.FK__tb_profes__id_pe__182C9B23" FromRole="tb_persona" ToRole="tb_profesor" />
+        </EntityType>
+        <EntityType Name="tb_profesor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_persona" Type="Int32" Nullable="false" />
+          <Property Name="id_programa" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tb_asistencia" Relationship="Self.FK__tb_asiste__id_pr__2E1BDC42" FromRole="tb_profesor" ToRole="tb_asistencia" />
+          <NavigationProperty Name="tb_clase" Relationship="Self.FK__tb_clase__id_pro__25869641" FromRole="tb_profesor" ToRole="tb_clase" />
+          <NavigationProperty Name="tb_persona" Relationship="Self.FK__tb_profes__id_pe__182C9B23" FromRole="tb_profesor" ToRole="tb_persona" />
+          <NavigationProperty Name="tb_programa" Relationship="Self.FK__tb_profes__id_pr__1920BF5C" FromRole="tb_profesor" ToRole="tb_programa" />
+          <NavigationProperty Name="tb_reserva" Relationship="Self.FK__tb_reserv__id_pr__29572725" FromRole="tb_profesor" ToRole="tb_reserva" />
+        </EntityType>
+        <EntityType Name="tb_programa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tb_materia" Relationship="Self.FK__tb_materi__id_pr__15502E78" FromRole="tb_programa" ToRole="tb_materia" />
+          <NavigationProperty Name="tb_monitor" Relationship="Self.FK__tb_monito__id_pr__1CF15040" FromRole="tb_programa" ToRole="tb_monitor" />
+          <NavigationProperty Name="tb_profesor" Relationship="Self.FK__tb_profes__id_pr__1920BF5C" FromRole="tb_programa" ToRole="tb_profesor" />
+        </EntityType>
+        <EntityType Name="tb_reserva">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_monitor" Type="Int32" />
+          <Property Name="id_profesor" Type="Int32" />
+          <Property Name="id_aula" Type="Int32" />
+          <Property Name="cantidad_horas" Type="Int32" Nullable="false" />
+          <Property Name="fecha_hora_inicio" Type="DateTime" Precision="3" />
+          <Property Name="estado" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tb_aula" Relationship="Self.FK__tb_reserv__id_au__2B3F6F97" FromRole="tb_reserva" ToRole="tb_aula" />
+          <NavigationProperty Name="tb_monitor" Relationship="Self.FK__tb_reserv__id_mo__2A4B4B5E" FromRole="tb_reserva" ToRole="tb_monitor" />
+          <NavigationProperty Name="tb_profesor" Relationship="Self.FK__tb_reserv__id_pr__29572725" FromRole="tb_reserva" ToRole="tb_profesor" />
+        </EntityType>
+        <EntityType Name="tb_tipoelemento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="29" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tb_inventario" Relationship="Self.FK__tb_invent__id_ti__34C8D9D1" FromRole="tb_tipoelemento" ToRole="tb_inventario" />
+        </EntityType>
+        <Association Name="FK__tb_asiste__id_au__300424B4">
+          <End Role="tb_aula" Type="Self.tb_aula" Multiplicity="0..1" />
+          <End Role="tb_asistencia" Type="Self.tb_asistencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_aula">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_asistencia">
+              <PropertyRef Name="id_aula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_asiste__id_mo__2F10007B">
+          <End Role="tb_monitor" Type="Self.tb_monitor" Multiplicity="0..1" />
+          <End Role="tb_asistencia" Type="Self.tb_asistencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_monitor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_asistencia">
+              <PropertyRef Name="id_monitor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_asiste__id_pr__2E1BDC42">
+          <End Role="tb_profesor" Type="Self.tb_profesor" Multiplicity="0..1" />
+          <End Role="tb_asistencia" Type="Self.tb_asistencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_profesor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_asistencia">
+              <PropertyRef Name="id_profesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_clase__id_aul__267ABA7A">
+          <End Role="tb_aula" Type="Self.tb_aula" Multiplicity="0..1" />
+          <End Role="tb_clase" Type="Self.tb_clase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_aula">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_clase">
+              <PropertyRef Name="id_aula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_reserv__id_au__2B3F6F97">
+          <End Role="tb_aula" Type="Self.tb_aula" Multiplicity="0..1" />
+          <End Role="tb_reserva" Type="Self.tb_reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_aula">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_reserva">
+              <PropertyRef Name="id_aula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_auxili__id_pe__20C1E124">
+          <End Role="tb_persona" Type="Self.tb_persona" Multiplicity="1" />
+          <End Role="tb_auxiliar" Type="Self.tb_auxiliar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_persona">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_auxiliar">
+              <PropertyRef Name="id_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_clase__id_pro__25869641">
+          <End Role="tb_profesor" Type="Self.tb_profesor" Multiplicity="0..1" />
+          <End Role="tb_clase" Type="Self.tb_clase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_profesor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_clase">
+              <PropertyRef Name="id_profesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_invent__id_ti__34C8D9D1">
+          <End Role="tb_tipoelemento" Type="Self.tb_tipoelemento" Multiplicity="1" />
+          <End Role="tb_inventario" Type="Self.tb_inventario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_tipoelemento">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_inventario">
+              <PropertyRef Name="id_tipoelemento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_materi__id_pr__15502E78">
+          <End Role="tb_programa" Type="Self.tb_programa" Multiplicity="1" />
+          <End Role="tb_materia" Type="Self.tb_materia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_programa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_materia">
+              <PropertyRef Name="id_programa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_monito__id_ma__1DE57479">
+          <End Role="tb_materia" Type="Self.tb_materia" Multiplicity="1" />
+          <End Role="tb_monitor" Type="Self.tb_monitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_materia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_monitor">
+              <PropertyRef Name="id_materia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_monito__id_pe__1BFD2C07">
+          <End Role="tb_persona" Type="Self.tb_persona" Multiplicity="1" />
+          <End Role="tb_monitor" Type="Self.tb_monitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_persona">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_monitor">
+              <PropertyRef Name="id_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_monito__id_pr__1CF15040">
+          <End Role="tb_programa" Type="Self.tb_programa" Multiplicity="1" />
+          <End Role="tb_monitor" Type="Self.tb_monitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_programa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_monitor">
+              <PropertyRef Name="id_programa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_reserv__id_mo__2A4B4B5E">
+          <End Role="tb_monitor" Type="Self.tb_monitor" Multiplicity="0..1" />
+          <End Role="tb_reserva" Type="Self.tb_reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_monitor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_reserva">
+              <PropertyRef Name="id_monitor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_profes__id_pe__182C9B23">
+          <End Role="tb_persona" Type="Self.tb_persona" Multiplicity="1" />
+          <End Role="tb_profesor" Type="Self.tb_profesor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_persona">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_profesor">
+              <PropertyRef Name="id_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_profes__id_pr__1920BF5C">
+          <End Role="tb_programa" Type="Self.tb_programa" Multiplicity="1" />
+          <End Role="tb_profesor" Type="Self.tb_profesor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_programa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_profesor">
+              <PropertyRef Name="id_programa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_reserv__id_pr__29572725">
+          <End Role="tb_profesor" Type="Self.tb_profesor" Multiplicity="0..1" />
+          <End Role="tb_reserva" Type="Self.tb_reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_profesor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_reserva">
+              <PropertyRef Name="id_profesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SoftwareBDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tb_asistencia" EntityType="Self.tb_asistencia" />
+          <EntitySet Name="tb_aula" EntityType="Self.tb_aula" />
+          <EntitySet Name="tb_auxiliar" EntityType="Self.tb_auxiliar" />
+          <EntitySet Name="tb_clase" EntityType="Self.tb_clase" />
+          <EntitySet Name="tb_inventario" EntityType="Self.tb_inventario" />
+          <EntitySet Name="tb_materia" EntityType="Self.tb_materia" />
+          <EntitySet Name="tb_monitor" EntityType="Self.tb_monitor" />
+          <EntitySet Name="tb_persona" EntityType="Self.tb_persona" />
+          <EntitySet Name="tb_profesor" EntityType="Self.tb_profesor" />
+          <EntitySet Name="tb_programa" EntityType="Self.tb_programa" />
+          <EntitySet Name="tb_reserva" EntityType="Self.tb_reserva" />
+          <EntitySet Name="tb_tipoelemento" EntityType="Self.tb_tipoelemento" />
+          <AssociationSet Name="FK__tb_asiste__id_au__300424B4" Association="Self.FK__tb_asiste__id_au__300424B4">
+            <End Role="tb_aula" EntitySet="tb_aula" />
+            <End Role="tb_asistencia" EntitySet="tb_asistencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_asiste__id_mo__2F10007B" Association="Self.FK__tb_asiste__id_mo__2F10007B">
+            <End Role="tb_monitor" EntitySet="tb_monitor" />
+            <End Role="tb_asistencia" EntitySet="tb_asistencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_asiste__id_pr__2E1BDC42" Association="Self.FK__tb_asiste__id_pr__2E1BDC42">
+            <End Role="tb_profesor" EntitySet="tb_profesor" />
+            <End Role="tb_asistencia" EntitySet="tb_asistencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_clase__id_aul__267ABA7A" Association="Self.FK__tb_clase__id_aul__267ABA7A">
+            <End Role="tb_aula" EntitySet="tb_aula" />
+            <End Role="tb_clase" EntitySet="tb_clase" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_reserv__id_au__2B3F6F97" Association="Self.FK__tb_reserv__id_au__2B3F6F97">
+            <End Role="tb_aula" EntitySet="tb_aula" />
+            <End Role="tb_reserva" EntitySet="tb_reserva" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_auxili__id_pe__20C1E124" Association="Self.FK__tb_auxili__id_pe__20C1E124">
+            <End Role="tb_persona" EntitySet="tb_persona" />
+            <End Role="tb_auxiliar" EntitySet="tb_auxiliar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_clase__id_pro__25869641" Association="Self.FK__tb_clase__id_pro__25869641">
+            <End Role="tb_profesor" EntitySet="tb_profesor" />
+            <End Role="tb_clase" EntitySet="tb_clase" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_invent__id_ti__34C8D9D1" Association="Self.FK__tb_invent__id_ti__34C8D9D1">
+            <End Role="tb_tipoelemento" EntitySet="tb_tipoelemento" />
+            <End Role="tb_inventario" EntitySet="tb_inventario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_materi__id_pr__15502E78" Association="Self.FK__tb_materi__id_pr__15502E78">
+            <End Role="tb_programa" EntitySet="tb_programa" />
+            <End Role="tb_materia" EntitySet="tb_materia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_monito__id_ma__1DE57479" Association="Self.FK__tb_monito__id_ma__1DE57479">
+            <End Role="tb_materia" EntitySet="tb_materia" />
+            <End Role="tb_monitor" EntitySet="tb_monitor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_monito__id_pe__1BFD2C07" Association="Self.FK__tb_monito__id_pe__1BFD2C07">
+            <End Role="tb_persona" EntitySet="tb_persona" />
+            <End Role="tb_monitor" EntitySet="tb_monitor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_monito__id_pr__1CF15040" Association="Self.FK__tb_monito__id_pr__1CF15040">
+            <End Role="tb_programa" EntitySet="tb_programa" />
+            <End Role="tb_monitor" EntitySet="tb_monitor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_reserv__id_mo__2A4B4B5E" Association="Self.FK__tb_reserv__id_mo__2A4B4B5E">
+            <End Role="tb_monitor" EntitySet="tb_monitor" />
+            <End Role="tb_reserva" EntitySet="tb_reserva" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_profes__id_pe__182C9B23" Association="Self.FK__tb_profes__id_pe__182C9B23">
+            <End Role="tb_persona" EntitySet="tb_persona" />
+            <End Role="tb_profesor" EntitySet="tb_profesor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_profes__id_pr__1920BF5C" Association="Self.FK__tb_profes__id_pr__1920BF5C">
+            <End Role="tb_programa" EntitySet="tb_programa" />
+            <End Role="tb_profesor" EntitySet="tb_profesor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_reserv__id_pr__29572725" Association="Self.FK__tb_reserv__id_pr__29572725">
+            <End Role="tb_profesor" EntitySet="tb_profesor" />
+            <End Role="tb_reserva" EntitySet="tb_reserva" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SoftwareBDModelStoreContainer" CdmEntityContainer="SoftwareBDEntities">
+          <EntitySetMapping Name="tb_asistencia">
+            <EntityTypeMapping TypeName="SoftwareBDModel.tb_asistencia">
+              <MappingFragment StoreEntitySet="tb_asistencia">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_monitor" ColumnName="id_monitor" />
+                <ScalarProperty Name="id_profesor" ColumnName="id_profesor" />
+                <ScalarProperty Name="id_aula" ColumnName="id_aula" />
+                <ScalarProperty Name="fecha_hora_inicio" ColumnName="fecha_hora_inicio" />
+                <ScalarProperty Name="fecha_hora_fin" ColumnName="fecha_hora_fin" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_aula">
+            <EntityTypeMapping TypeName="SoftwareBDModel.tb_aula">
+              <MappingFragment StoreEntitySet="tb_aula">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="tipo_aula" ColumnName="tipo_aula" />
+                <ScalarProperty Name="capacidad" ColumnName="capacidad" />
+                <ScalarProperty Name="cantidad_computadores" ColumnName="cantidad_computadores" />
+                <ScalarProperty Name="multimedia" ColumnName="multimedia" />
+                <ScalarProperty Name="disponibilidad" ColumnName="disponibilidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_auxiliar">
+            <EntityTypeMapping TypeName="SoftwareBDModel.tb_auxiliar">
+              <MappingFragment StoreEntitySet="tb_auxiliar">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_persona" ColumnName="id_persona" />
+                <ScalarProperty Name="funcion" ColumnName="funcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_clase">
+            <EntityTypeMapping TypeName="SoftwareBDModel.tb_clase">
+              <MappingFragment StoreEntitySet="tb_clase">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_profesor" ColumnName="id_profesor" />
+                <ScalarProperty Name="id_aula" ColumnName="id_aula" />
+                <ScalarProperty Name="id_materia" ColumnName="id_materia" />
+                <ScalarProperty Name="cantidad_horas" ColumnName="cantidad_horas" />
+                <ScalarProperty Name="fecha_hora_inicio" ColumnName="fecha_hora_inicio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_inventario">
+            <EntityTypeMapping TypeName="SoftwareBDModel.tb_inventario">
+              <MappingFragment StoreEntitySet="tb_inventario">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codigo_identificacion" ColumnName="codigo_identificacion" />
+                <ScalarProperty Name="id_tipoelemento" ColumnName="id_tipoelemento" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_materia">
+            <EntityTypeMapping TypeName="SoftwareBDModel.tb_materia">
+              <MappingFragment StoreEntitySet="tb_materia">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_programa" ColumnName="id_programa" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_monitor">
+            <EntityTypeMapping TypeName="SoftwareBDModel.tb_monitor">
+              <MappingFragment StoreEntitySet="tb_monitor">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_persona" ColumnName="id_persona" />
+                <ScalarProperty Name="id_programa" ColumnName="id_programa" />
+                <ScalarProperty Name="id_materia" ColumnName="id_materia" />
+                <ScalarProperty Name="codigo_estudiante" ColumnName="codigo_estudiante" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_persona">
+            <EntityTypeMapping TypeName="SoftwareBDModel.tb_persona">
+              <MappingFragment StoreEntitySet="tb_persona">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+                <ScalarProperty Name="primer_nombre" ColumnName="primer_nombre" />
+                <ScalarProperty Name="otros_nombres" ColumnName="otros_nombres" />
+                <ScalarProperty Name="primer_apellido" ColumnName="primer_apellido" />
+                <ScalarProperty Name="segundo_apellido" ColumnName="segundo_apellido" />
+                <ScalarProperty Name="documentoIdentidad" ColumnName="documentoIdentidad" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="huella" ColumnName="huella" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_profesor">
+            <EntityTypeMapping TypeName="SoftwareBDModel.tb_profesor">
+              <MappingFragment StoreEntitySet="tb_profesor">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_persona" ColumnName="id_persona" />
+                <ScalarProperty Name="id_programa" ColumnName="id_programa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_programa">
+            <EntityTypeMapping TypeName="SoftwareBDModel.tb_programa">
+              <MappingFragment StoreEntitySet="tb_programa">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_reserva">
+            <EntityTypeMapping TypeName="SoftwareBDModel.tb_reserva">
+              <MappingFragment StoreEntitySet="tb_reserva">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_monitor" ColumnName="id_monitor" />
+                <ScalarProperty Name="id_profesor" ColumnName="id_profesor" />
+                <ScalarProperty Name="id_aula" ColumnName="id_aula" />
+                <ScalarProperty Name="cantidad_horas" ColumnName="cantidad_horas" />
+                <ScalarProperty Name="fecha_hora_inicio" ColumnName="fecha_hora_inicio" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_tipoelemento">
+            <EntityTypeMapping TypeName="SoftwareBDModel.tb_tipoelemento">
+              <MappingFragment StoreEntitySet="tb_tipoelemento">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,42 @@
+﻿@model GestionAulasFacultad.ModeloBD.tb_inventario
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tb_inventario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.codigo_identificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codigo_identificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tb_tipoelemento.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tb_tipoelemento.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
