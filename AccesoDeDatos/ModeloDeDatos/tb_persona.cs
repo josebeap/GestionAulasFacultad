@@ -23,7 +23,6 @@ namespace AccesoDeDatos.ModeloDeDatos
         }
     
         public int id { get; set; }
-        public int id_rol { get; set; }
         public string primer_nombre { get; set; }
         public string otros_nombres { get; set; }
         public string primer_apellido { get; set; }

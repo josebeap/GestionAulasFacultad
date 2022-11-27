@@ -164,3 +164,6 @@ E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\obj\Debug\GestionA
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\obj\Debug\GestionAulasFacultad.Tests.csproj.CopyComplete
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\obj\Debug\GestionAulasFacultad.Tests.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\obj\Debug\GestionAulasFacultad.Tests.pdb
+E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\AccesoDeDatos.dll
+E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\AccesoDeDatos.pdb
+E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\AccesoDeDatos.dll.config

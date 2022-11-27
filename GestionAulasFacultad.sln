@@ -17,13 +17,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.2 Datos", "1.2 Datos", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoDeDatos", "AccesoDeDatos\AccesoDeDatos.csproj", "{2088900D-1D1D-44D3-9160-AEC15F1AFEB6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Implementacion", "Implementacion", "{087E69C8-6CA7-4709-A47E-70F8F7141E7A}"
-	ProjectSection(SolutionItems) = preProject
-		ImplPersonaDatos.cs = ImplPersonaDatos.cs
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Parametros", "Parametros", "{7A35B235-9401-4AFC-A5A2-85FD0168FB33}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,8 +45,6 @@ Global
 		{D29BF166-A464-4440-854F-E4419F40168D} = {9935747F-8EF9-46A6-B45F-D2A92D886C58}
 		{38E5D9E9-2916-4E21-BD11-9E00D8CE369A} = {9935747F-8EF9-46A6-B45F-D2A92D886C58}
 		{2088900D-1D1D-44D3-9160-AEC15F1AFEB6} = {38E5D9E9-2916-4E21-BD11-9E00D8CE369A}
-		{087E69C8-6CA7-4709-A47E-70F8F7141E7A} = {38E5D9E9-2916-4E21-BD11-9E00D8CE369A}
-		{7A35B235-9401-4AFC-A5A2-85FD0168FB33} = {087E69C8-6CA7-4709-A47E-70F8F7141E7A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7296DF39-E124-4F53-A9B5-EEAEC328A3EA}

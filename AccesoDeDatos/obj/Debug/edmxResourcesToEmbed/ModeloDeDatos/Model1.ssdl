@@ -75,7 +75,6 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="id_rol" Type="int" Nullable="false" />
     <Property Name="primer_nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="otros_nombres" Type="nvarchar" MaxLength="100" />
     <Property Name="primer_apellido" Type="nvarchar" MaxLength="100" Nullable="false" />

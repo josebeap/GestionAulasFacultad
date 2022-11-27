@@ -8,27 +8,28 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AccesoDeDatos.ModeloDeDatos;
+using AccesoDeDatos.Implementacion;
 
 namespace GestionAulasFacultad.Controllers.Parameters
 {
     public class PersonaController : Controller
     {
-        private SoftwareBDEntities db = new SoftwareBDEntities();
+        private ImplPersonaDatos acceso = new ImplPersonaDatos();
 
         // GET: Persona
-        public async Task<ActionResult> Index()
+        public ActionResult Index(String filtro = "")
         {
-            return View(await db.tb_persona.ToListAsync());
+            return View(acceso.ListarRegistros(String.Empty));
         }
 
         // GET: Persona/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_persona tb_persona = await db.tb_persona.FindAsync(id);
+            tb_persona tb_persona = acceso.BuscarRegistro(id.Value);
             if (tb_persona == null)
             {
                 return HttpNotFound();
@@ -47,12 +48,11 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "id,id_rol,primer_nombre,otros_nombres,primer_apellido,segundo_apellido,documentoIdentidad,celular,email,foto,huella")] tb_persona tb_persona)
+        public ActionResult Create([Bind(Include = "id,id_rol,primer_nombre,otros_nombres,primer_apellido,segundo_apellido,documentoIdentidad,celular,email,foto,huella")] tb_persona tb_persona)
         {
             if (ModelState.IsValid)
             {
-                db.tb_persona.Add(tb_persona);
-                await db.SaveChangesAsync();
+                acceso.GuardarRegistro(tb_persona);
                 return RedirectToAction("Index");
             }
 
@@ -60,13 +60,13 @@ namespace GestionAulasFacultad.Controllers.Parameters
         }
 
         // GET: Persona/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_persona tb_persona = await db.tb_persona.FindAsync(id);
+            tb_persona tb_persona =  acceso.BuscarRegistro(id.Value);
             if (tb_persona == null)
             {
                 return HttpNotFound();
@@ -79,25 +79,24 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "id,id_rol,primer_nombre,otros_nombres,primer_apellido,segundo_apellido,documentoIdentidad,celular,email,foto,huella")] tb_persona tb_persona)
+        public ActionResult Edit([Bind(Include = "id,id_rol,primer_nombre,otros_nombres,primer_apellido,segundo_apellido,documentoIdentidad,celular,email,foto,huella")] tb_persona tb_persona)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tb_persona).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                acceso.EditarRegistro(tb_persona);
                 return RedirectToAction("Index");
             }
             return View(tb_persona);
         }
 
         // GET: Persona/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_persona tb_persona = await db.tb_persona.FindAsync(id);
+            tb_persona tb_persona = acceso.BuscarRegistro(id.Value);
             if (tb_persona == null)
             {
                 return HttpNotFound();
@@ -108,21 +107,13 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // POST: Persona/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            tb_persona tb_persona = await db.tb_persona.FindAsync(id);
-            db.tb_persona.Remove(tb_persona);
-            await db.SaveChangesAsync();
+          
+            acceso.EliminarRegistro(id);
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+
     }
 }

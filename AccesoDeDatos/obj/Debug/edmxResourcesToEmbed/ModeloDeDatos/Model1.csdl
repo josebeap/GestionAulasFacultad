@@ -92,7 +92,6 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="id_rol" Type="Int32" Nullable="false" />
     <Property Name="primer_nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="otros_nombres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="primer_apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />

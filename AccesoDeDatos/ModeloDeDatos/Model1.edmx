@@ -80,7 +80,6 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_rol" Type="int" Nullable="false" />
           <Property Name="primer_nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="otros_nombres" Type="nvarchar" MaxLength="100" />
           <Property Name="primer_apellido" Type="nvarchar" MaxLength="100" Nullable="false" />
@@ -492,7 +491,6 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_rol" Type="Int32" Nullable="false" />
           <Property Name="primer_nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="otros_nombres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="primer_apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
@@ -909,7 +907,6 @@
             <EntityTypeMapping TypeName="SoftwareBDModel.tb_persona">
               <MappingFragment StoreEntitySet="tb_persona">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="id_rol" ColumnName="id_rol" />
                 <ScalarProperty Name="primer_nombre" ColumnName="primer_nombre" />
                 <ScalarProperty Name="otros_nombres" ColumnName="otros_nombres" />
                 <ScalarProperty Name="primer_apellido" ColumnName="primer_apellido" />

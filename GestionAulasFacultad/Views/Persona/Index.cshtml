@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AccesoDeDatos.ModeloDeDatos.tb_asistencia>
+﻿@model IEnumerable<AccesoDeDatos.ModeloDeDatos.tb_persona>
 
 @{
     ViewBag.Title = "Index";
@@ -11,9 +11,6 @@
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.id_rol)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.primer_nombre)
         </th>
@@ -46,9 +43,7 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.id_rol)
-        </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.primer_nombre)
         </td>

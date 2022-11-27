@@ -82,7 +82,6 @@
       <EntityTypeMapping TypeName="SoftwareBDModel.tb_persona">
         <MappingFragment StoreEntitySet="tb_persona">
           <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="id_rol" ColumnName="id_rol" />
           <ScalarProperty Name="primer_nombre" ColumnName="primer_nombre" />
           <ScalarProperty Name="otros_nombres" ColumnName="otros_nombres" />
           <ScalarProperty Name="primer_apellido" ColumnName="primer_apellido" />
