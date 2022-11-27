@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -16,19 +15,19 @@ namespace GestionAulasFacultad.Controllers.Parameters
         private SoftwareBDEntities db = new SoftwareBDEntities();
 
         // GET: Programa
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            return View(await db.tb_programa.ToListAsync());
+            return View(db.tb_programa.ToList());
         }
 
         // GET: Programa/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_programa tb_programa = await db.tb_programa.FindAsync(id);
+            tb_programa tb_programa = db.tb_programa.Find(id);
             if (tb_programa == null)
             {
                 return HttpNotFound();
@@ -47,12 +46,12 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "id,nombre")] tb_programa tb_programa)
+        public ActionResult Create([Bind(Include = "id,nombre")] tb_programa tb_programa)
         {
             if (ModelState.IsValid)
             {
                 db.tb_programa.Add(tb_programa);
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -60,13 +59,13 @@ namespace GestionAulasFacultad.Controllers.Parameters
         }
 
         // GET: Programa/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_programa tb_programa = await db.tb_programa.FindAsync(id);
+            tb_programa tb_programa = db.tb_programa.Find(id);
             if (tb_programa == null)
             {
                 return HttpNotFound();
@@ -79,25 +78,25 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "id,nombre")] tb_programa tb_programa)
+        public ActionResult Edit([Bind(Include = "id,nombre")] tb_programa tb_programa)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(tb_programa).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(tb_programa);
         }
 
         // GET: Programa/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_programa tb_programa = await db.tb_programa.FindAsync(id);
+            tb_programa tb_programa = db.tb_programa.Find(id);
             if (tb_programa == null)
             {
                 return HttpNotFound();
@@ -108,11 +107,11 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // POST: Programa/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            tb_programa tb_programa = await db.tb_programa.FindAsync(id);
+            tb_programa tb_programa = db.tb_programa.Find(id);
             db.tb_programa.Remove(tb_programa);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

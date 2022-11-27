@@ -16,20 +16,20 @@ namespace GestionAulasFacultad.Controllers.Parameters
         private SoftwareBDEntities db = new SoftwareBDEntities();
 
         // GET: Asistencia
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             var tb_asistencia = db.tb_asistencia.Include(t => t.tb_aula).Include(t => t.tb_monitor).Include(t => t.tb_profesor);
-            return View(await tb_asistencia.ToListAsync());
+            return View(tb_asistencia.ToList());
         }
 
         // GET: Asistencia/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_asistencia tb_asistencia = await db.tb_asistencia.FindAsync(id);
+            tb_asistencia tb_asistencia =  db.tb_asistencia.Find(id);
             if (tb_asistencia == null)
             {
                 return HttpNotFound();
@@ -51,12 +51,12 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "id,id_monitor,id_profesor,id_aula,fecha_hora_inicio,fecha_hora_fin,estado")] tb_asistencia tb_asistencia)
+        public ActionResult Create([Bind(Include = "id,id_monitor,id_profesor,id_aula,fecha_hora_inicio,fecha_hora_fin,estado")] tb_asistencia tb_asistencia)
         {
             if (ModelState.IsValid)
             {
                 db.tb_asistencia.Add(tb_asistencia);
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -67,13 +67,13 @@ namespace GestionAulasFacultad.Controllers.Parameters
         }
 
         // GET: Asistencia/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_asistencia tb_asistencia = await db.tb_asistencia.FindAsync(id);
+            tb_asistencia tb_asistencia = db.tb_asistencia.Find(id);
             if (tb_asistencia == null)
             {
                 return HttpNotFound();
@@ -89,12 +89,12 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "id,id_monitor,id_profesor,id_aula,fecha_hora_inicio,fecha_hora_fin,estado")] tb_asistencia tb_asistencia)
+        public ActionResult Edit([Bind(Include = "id,id_monitor,id_profesor,id_aula,fecha_hora_inicio,fecha_hora_fin,estado")] tb_asistencia tb_asistencia)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(tb_asistencia).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             ViewBag.id_aula = new SelectList(db.tb_aula, "id", "nombre", tb_asistencia.id_aula);
@@ -104,13 +104,13 @@ namespace GestionAulasFacultad.Controllers.Parameters
         }
 
         // GET: Asistencia/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_asistencia tb_asistencia = await db.tb_asistencia.FindAsync(id);
+            tb_asistencia tb_asistencia = db.tb_asistencia.Find(id);
             if (tb_asistencia == null)
             {
                 return HttpNotFound();
@@ -121,11 +121,11 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // POST: Asistencia/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            tb_asistencia tb_asistencia = await db.tb_asistencia.FindAsync(id);
+            tb_asistencia tb_asistencia = db.tb_asistencia.Find(id);
             db.tb_asistencia.Remove(tb_asistencia);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

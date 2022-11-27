@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -15,20 +14,20 @@ namespace GestionAulasFacultad.Controllers.Parameters
     {
         private SoftwareBDEntities db = new SoftwareBDEntities();
 
-        // GET: TipoElemento
-        public async Task<ActionResult> Index()
+        // GET: Tipoelemento
+        public ActionResult Index()
         {
-            return View(await db.tb_tipoelemento.ToListAsync());
+            return View(db.tb_tipoelemento.ToList());
         }
 
-        // GET: TipoElemento/Details/5
-        public async Task<ActionResult> Details(int? id)
+        // GET: Tipoelemento/Details/5
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_tipoelemento tb_tipoelemento = await db.tb_tipoelemento.FindAsync(id);
+            tb_tipoelemento tb_tipoelemento = db.tb_tipoelemento.Find(id);
             if (tb_tipoelemento == null)
             {
                 return HttpNotFound();
@@ -36,37 +35,37 @@ namespace GestionAulasFacultad.Controllers.Parameters
             return View(tb_tipoelemento);
         }
 
-        // GET: TipoElemento/Create
+        // GET: Tipoelemento/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: TipoElemento/Create
+        // POST: Tipoelemento/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "id,nombre")] tb_tipoelemento tb_tipoelemento)
+        public ActionResult Create([Bind(Include = "id,nombre")] tb_tipoelemento tb_tipoelemento)
         {
             if (ModelState.IsValid)
             {
                 db.tb_tipoelemento.Add(tb_tipoelemento);
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             return View(tb_tipoelemento);
         }
 
-        // GET: TipoElemento/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        // GET: Tipoelemento/Edit/5
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_tipoelemento tb_tipoelemento = await db.tb_tipoelemento.FindAsync(id);
+            tb_tipoelemento tb_tipoelemento = db.tb_tipoelemento.Find(id);
             if (tb_tipoelemento == null)
             {
                 return HttpNotFound();
@@ -74,30 +73,30 @@ namespace GestionAulasFacultad.Controllers.Parameters
             return View(tb_tipoelemento);
         }
 
-        // POST: TipoElemento/Edit/5
+        // POST: Tipoelemento/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "id,nombre")] tb_tipoelemento tb_tipoelemento)
+        public ActionResult Edit([Bind(Include = "id,nombre")] tb_tipoelemento tb_tipoelemento)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(tb_tipoelemento).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(tb_tipoelemento);
         }
 
-        // GET: TipoElemento/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        // GET: Tipoelemento/Delete/5
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_tipoelemento tb_tipoelemento = await db.tb_tipoelemento.FindAsync(id);
+            tb_tipoelemento tb_tipoelemento = db.tb_tipoelemento.Find(id);
             if (tb_tipoelemento == null)
             {
                 return HttpNotFound();
@@ -105,14 +104,14 @@ namespace GestionAulasFacultad.Controllers.Parameters
             return View(tb_tipoelemento);
         }
 
-        // POST: TipoElemento/Delete/5
+        // POST: Tipoelemento/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            tb_tipoelemento tb_tipoelemento = await db.tb_tipoelemento.FindAsync(id);
+            tb_tipoelemento tb_tipoelemento = db.tb_tipoelemento.Find(id);
             db.tb_tipoelemento.Remove(tb_tipoelemento);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

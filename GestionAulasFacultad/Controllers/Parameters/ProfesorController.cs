@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -16,20 +15,20 @@ namespace GestionAulasFacultad.Controllers.Parameters
         private SoftwareBDEntities db = new SoftwareBDEntities();
 
         // GET: Profesor
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             var tb_profesor = db.tb_profesor.Include(t => t.tb_persona).Include(t => t.tb_programa);
-            return View(await tb_profesor.ToListAsync());
+            return View(tb_profesor.ToList());
         }
 
         // GET: Profesor/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_profesor tb_profesor = await db.tb_profesor.FindAsync(id);
+            tb_profesor tb_profesor = db.tb_profesor.Find(id);
             if (tb_profesor == null)
             {
                 return HttpNotFound();
@@ -50,12 +49,12 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "id,id_persona,id_programa")] tb_profesor tb_profesor)
+        public ActionResult Create([Bind(Include = "id,id_persona,id_programa")] tb_profesor tb_profesor)
         {
             if (ModelState.IsValid)
             {
                 db.tb_profesor.Add(tb_profesor);
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -65,13 +64,13 @@ namespace GestionAulasFacultad.Controllers.Parameters
         }
 
         // GET: Profesor/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_profesor tb_profesor = await db.tb_profesor.FindAsync(id);
+            tb_profesor tb_profesor = db.tb_profesor.Find(id);
             if (tb_profesor == null)
             {
                 return HttpNotFound();
@@ -86,12 +85,12 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "id,id_persona,id_programa")] tb_profesor tb_profesor)
+        public ActionResult Edit([Bind(Include = "id,id_persona,id_programa")] tb_profesor tb_profesor)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(tb_profesor).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             ViewBag.id_persona = new SelectList(db.tb_persona, "id", "primer_nombre", tb_profesor.id_persona);
@@ -100,13 +99,13 @@ namespace GestionAulasFacultad.Controllers.Parameters
         }
 
         // GET: Profesor/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_profesor tb_profesor = await db.tb_profesor.FindAsync(id);
+            tb_profesor tb_profesor = db.tb_profesor.Find(id);
             if (tb_profesor == null)
             {
                 return HttpNotFound();
@@ -117,11 +116,11 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // POST: Profesor/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            tb_profesor tb_profesor = await db.tb_profesor.FindAsync(id);
+            tb_profesor tb_profesor = db.tb_profesor.Find(id);
             db.tb_profesor.Remove(tb_profesor);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

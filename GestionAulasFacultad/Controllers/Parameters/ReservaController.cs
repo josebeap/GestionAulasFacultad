@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -16,20 +15,20 @@ namespace GestionAulasFacultad.Controllers.Parameters
         private SoftwareBDEntities db = new SoftwareBDEntities();
 
         // GET: Reserva
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             var tb_reserva = db.tb_reserva.Include(t => t.tb_aula).Include(t => t.tb_monitor).Include(t => t.tb_profesor);
-            return View(await tb_reserva.ToListAsync());
+            return View(tb_reserva.ToList());
         }
 
         // GET: Reserva/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_reserva tb_reserva = await db.tb_reserva.FindAsync(id);
+            tb_reserva tb_reserva = db.tb_reserva.Find(id);
             if (tb_reserva == null)
             {
                 return HttpNotFound();
@@ -51,12 +50,12 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "id,id_monitor,id_profesor,id_aula,cantidad_horas,fecha_hora_inicio,estado")] tb_reserva tb_reserva)
+        public ActionResult Create([Bind(Include = "id,id_monitor,id_profesor,id_aula,cantidad_horas,fecha_hora_inicio,estado")] tb_reserva tb_reserva)
         {
             if (ModelState.IsValid)
             {
                 db.tb_reserva.Add(tb_reserva);
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -67,13 +66,13 @@ namespace GestionAulasFacultad.Controllers.Parameters
         }
 
         // GET: Reserva/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_reserva tb_reserva = await db.tb_reserva.FindAsync(id);
+            tb_reserva tb_reserva = db.tb_reserva.Find(id);
             if (tb_reserva == null)
             {
                 return HttpNotFound();
@@ -89,12 +88,12 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "id,id_monitor,id_profesor,id_aula,cantidad_horas,fecha_hora_inicio,estado")] tb_reserva tb_reserva)
+        public ActionResult Edit([Bind(Include = "id,id_monitor,id_profesor,id_aula,cantidad_horas,fecha_hora_inicio,estado")] tb_reserva tb_reserva)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(tb_reserva).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             ViewBag.id_aula = new SelectList(db.tb_aula, "id", "nombre", tb_reserva.id_aula);
@@ -104,13 +103,13 @@ namespace GestionAulasFacultad.Controllers.Parameters
         }
 
         // GET: Reserva/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_reserva tb_reserva = await db.tb_reserva.FindAsync(id);
+            tb_reserva tb_reserva = db.tb_reserva.Find(id);
             if (tb_reserva == null)
             {
                 return HttpNotFound();
@@ -121,11 +120,11 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // POST: Reserva/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            tb_reserva tb_reserva = await db.tb_reserva.FindAsync(id);
+            tb_reserva tb_reserva = db.tb_reserva.Find(id);
             db.tb_reserva.Remove(tb_reserva);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

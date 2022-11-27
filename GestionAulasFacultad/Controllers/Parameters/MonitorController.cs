@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -16,20 +15,20 @@ namespace GestionAulasFacultad.Controllers.Parameters
         private SoftwareBDEntities db = new SoftwareBDEntities();
 
         // GET: Monitor
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             var tb_monitor = db.tb_monitor.Include(t => t.tb_materia).Include(t => t.tb_persona).Include(t => t.tb_programa);
-            return View(await tb_monitor.ToListAsync());
+            return View(tb_monitor.ToList());
         }
 
         // GET: Monitor/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_monitor tb_monitor = await db.tb_monitor.FindAsync(id);
+            tb_monitor tb_monitor = db.tb_monitor.Find(id);
             if (tb_monitor == null)
             {
                 return HttpNotFound();
@@ -51,12 +50,12 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "id,id_persona,id_programa,id_materia,codigo_estudiante")] tb_monitor tb_monitor)
+        public ActionResult Create([Bind(Include = "id,id_persona,id_programa,id_materia,codigo_estudiante")] tb_monitor tb_monitor)
         {
             if (ModelState.IsValid)
             {
                 db.tb_monitor.Add(tb_monitor);
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -67,13 +66,13 @@ namespace GestionAulasFacultad.Controllers.Parameters
         }
 
         // GET: Monitor/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_monitor tb_monitor = await db.tb_monitor.FindAsync(id);
+            tb_monitor tb_monitor = db.tb_monitor.Find(id);
             if (tb_monitor == null)
             {
                 return HttpNotFound();
@@ -89,12 +88,12 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "id,id_persona,id_programa,id_materia,codigo_estudiante")] tb_monitor tb_monitor)
+        public ActionResult Edit([Bind(Include = "id,id_persona,id_programa,id_materia,codigo_estudiante")] tb_monitor tb_monitor)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(tb_monitor).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             ViewBag.id_materia = new SelectList(db.tb_materia, "id", "nombre", tb_monitor.id_materia);
@@ -104,13 +103,13 @@ namespace GestionAulasFacultad.Controllers.Parameters
         }
 
         // GET: Monitor/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_monitor tb_monitor = await db.tb_monitor.FindAsync(id);
+            tb_monitor tb_monitor = db.tb_monitor.Find(id);
             if (tb_monitor == null)
             {
                 return HttpNotFound();
@@ -121,11 +120,11 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // POST: Monitor/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            tb_monitor tb_monitor = await db.tb_monitor.FindAsync(id);
+            tb_monitor tb_monitor = db.tb_monitor.Find(id);
             db.tb_monitor.Remove(tb_monitor);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

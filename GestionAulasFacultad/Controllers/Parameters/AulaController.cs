@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -16,19 +15,19 @@ namespace GestionAulasFacultad.Controllers.Parameters
         private SoftwareBDEntities db = new SoftwareBDEntities();
 
         // GET: Aula
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            return View(await db.tb_aula.ToListAsync());
+            return View(db.tb_aula.ToList());
         }
 
         // GET: Aula/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_aula tb_aula = await db.tb_aula.FindAsync(id);
+            tb_aula tb_aula = db.tb_aula.Find(id);
             if (tb_aula == null)
             {
                 return HttpNotFound();
@@ -47,12 +46,12 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "id,nombre,tipo_aula,capacidad,cantidad_computadores,multimedia,disponibilidad")] tb_aula tb_aula)
+        public ActionResult Create([Bind(Include = "id,nombre,tipo_aula,capacidad,cantidad_computadores,multimedia,disponibilidad")] tb_aula tb_aula)
         {
             if (ModelState.IsValid)
             {
                 db.tb_aula.Add(tb_aula);
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -60,13 +59,13 @@ namespace GestionAulasFacultad.Controllers.Parameters
         }
 
         // GET: Aula/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_aula tb_aula = await db.tb_aula.FindAsync(id);
+            tb_aula tb_aula = db.tb_aula.Find(id);
             if (tb_aula == null)
             {
                 return HttpNotFound();
@@ -79,25 +78,25 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "id,nombre,tipo_aula,capacidad,cantidad_computadores,multimedia,disponibilidad")] tb_aula tb_aula)
+        public ActionResult Edit([Bind(Include = "id,nombre,tipo_aula,capacidad,cantidad_computadores,multimedia,disponibilidad")] tb_aula tb_aula)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(tb_aula).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(tb_aula);
         }
 
         // GET: Aula/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_aula tb_aula = await db.tb_aula.FindAsync(id);
+            tb_aula tb_aula = db.tb_aula.Find(id);
             if (tb_aula == null)
             {
                 return HttpNotFound();
@@ -108,11 +107,11 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // POST: Aula/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            tb_aula tb_aula = await db.tb_aula.FindAsync(id);
+            tb_aula tb_aula = db.tb_aula.Find(id);
             db.tb_aula.Remove(tb_aula);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

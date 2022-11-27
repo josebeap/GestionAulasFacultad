@@ -192,6 +192,7 @@ E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\bin\roslyn\vbc.exe.confi
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\bin\roslyn\vbc.rsp
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\bin\roslyn\VBCSCompiler.exe
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\bin\roslyn\VBCSCompiler.exe.config
+E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\bin\AccesoDeDatos.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\bin\Antlr3.Runtime.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\bin\EntityFramework.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\bin\EntityFramework.SqlServer.dll
@@ -224,6 +225,8 @@ E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\bin\System.Web.WebPages.
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\bin\System.Web.WebPages.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\bin\System.Web.WebPages.Razor.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\bin\WebGrease.dll
+E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\bin\AccesoDeDatos.pdb
+E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\bin\AccesoDeDatos.dll.config
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\bin\EntityFramework.xml
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\bin\EntityFramework.SqlServer.xml
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\bin\Microsoft.AspNet.SignalR.Core.xml
@@ -253,8 +256,6 @@ E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\bin\Microsoft.Owin.Secur
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\bin\Microsoft.Owin.Security.OAuth.xml
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\bin\es\EntityFramework.resources.dll
-E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\bin\es\EntityFramework.SqlServer.resources.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\bin\es\Microsoft.AspNet.SignalR.Core.resources.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\bin\es\Microsoft.AspNet.SignalR.SystemWeb.resources.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\bin\es\System.Web.Helpers.resources.dll
@@ -282,6 +283,3 @@ E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\obj\Debug\GestionAulasFa
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\obj\Debug\GestionAulasFacultad.csproj.CopyComplete
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\obj\Debug\GestionAulasFacultad.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\obj\Debug\GestionAulasFacultad.pdb
-E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\bin\AccesoDeDatos.dll
-E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\bin\AccesoDeDatos.pdb
-E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\bin\AccesoDeDatos.dll.config

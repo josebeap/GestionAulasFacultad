@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -16,20 +15,20 @@ namespace GestionAulasFacultad.Controllers.Parameters
         private SoftwareBDEntities db = new SoftwareBDEntities();
 
         // GET: Auxiliar
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             var tb_auxiliar = db.tb_auxiliar.Include(t => t.tb_persona);
-            return View(await tb_auxiliar.ToListAsync());
+            return View(tb_auxiliar.ToList());
         }
 
         // GET: Auxiliar/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_auxiliar tb_auxiliar = await db.tb_auxiliar.FindAsync(id);
+            tb_auxiliar tb_auxiliar = db.tb_auxiliar.Find(id);
             if (tb_auxiliar == null)
             {
                 return HttpNotFound();
@@ -49,12 +48,12 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "id,id_persona,funcion")] tb_auxiliar tb_auxiliar)
+        public ActionResult Create([Bind(Include = "id,id_persona,funcion")] tb_auxiliar tb_auxiliar)
         {
             if (ModelState.IsValid)
             {
                 db.tb_auxiliar.Add(tb_auxiliar);
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -63,13 +62,13 @@ namespace GestionAulasFacultad.Controllers.Parameters
         }
 
         // GET: Auxiliar/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_auxiliar tb_auxiliar = await db.tb_auxiliar.FindAsync(id);
+            tb_auxiliar tb_auxiliar = db.tb_auxiliar.Find(id);
             if (tb_auxiliar == null)
             {
                 return HttpNotFound();
@@ -83,12 +82,12 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "id,id_persona,funcion")] tb_auxiliar tb_auxiliar)
+        public ActionResult Edit([Bind(Include = "id,id_persona,funcion")] tb_auxiliar tb_auxiliar)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(tb_auxiliar).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             ViewBag.id_persona = new SelectList(db.tb_persona, "id", "primer_nombre", tb_auxiliar.id_persona);
@@ -96,13 +95,13 @@ namespace GestionAulasFacultad.Controllers.Parameters
         }
 
         // GET: Auxiliar/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_auxiliar tb_auxiliar = await db.tb_auxiliar.FindAsync(id);
+            tb_auxiliar tb_auxiliar = db.tb_auxiliar.Find(id);
             if (tb_auxiliar == null)
             {
                 return HttpNotFound();
@@ -113,11 +112,11 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // POST: Auxiliar/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            tb_auxiliar tb_auxiliar = await db.tb_auxiliar.FindAsync(id);
+            tb_auxiliar tb_auxiliar = db.tb_auxiliar.Find(id);
             db.tb_auxiliar.Remove(tb_auxiliar);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

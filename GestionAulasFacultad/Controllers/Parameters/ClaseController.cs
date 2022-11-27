@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -16,20 +15,20 @@ namespace GestionAulasFacultad.Controllers.Parameters
         private SoftwareBDEntities db = new SoftwareBDEntities();
 
         // GET: Clase
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             var tb_clase = db.tb_clase.Include(t => t.tb_aula).Include(t => t.tb_profesor);
-            return View(await tb_clase.ToListAsync());
+            return View(tb_clase.ToList());
         }
 
         // GET: Clase/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_clase tb_clase = await db.tb_clase.FindAsync(id);
+            tb_clase tb_clase = db.tb_clase.Find(id);
             if (tb_clase == null)
             {
                 return HttpNotFound();
@@ -50,12 +49,12 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "id,id_profesor,id_aula,id_materia,cantidad_horas,fecha_hora_inicio")] tb_clase tb_clase)
+        public ActionResult Create([Bind(Include = "id,id_profesor,id_aula,id_materia,cantidad_horas,fecha_hora_inicio")] tb_clase tb_clase)
         {
             if (ModelState.IsValid)
             {
                 db.tb_clase.Add(tb_clase);
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -65,13 +64,13 @@ namespace GestionAulasFacultad.Controllers.Parameters
         }
 
         // GET: Clase/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_clase tb_clase = await db.tb_clase.FindAsync(id);
+            tb_clase tb_clase = db.tb_clase.Find(id);
             if (tb_clase == null)
             {
                 return HttpNotFound();
@@ -86,12 +85,12 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "id,id_profesor,id_aula,id_materia,cantidad_horas,fecha_hora_inicio")] tb_clase tb_clase)
+        public ActionResult Edit([Bind(Include = "id,id_profesor,id_aula,id_materia,cantidad_horas,fecha_hora_inicio")] tb_clase tb_clase)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(tb_clase).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             ViewBag.id_aula = new SelectList(db.tb_aula, "id", "nombre", tb_clase.id_aula);
@@ -100,13 +99,13 @@ namespace GestionAulasFacultad.Controllers.Parameters
         }
 
         // GET: Clase/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_clase tb_clase = await db.tb_clase.FindAsync(id);
+            tb_clase tb_clase = db.tb_clase.Find(id);
             if (tb_clase == null)
             {
                 return HttpNotFound();
@@ -117,11 +116,11 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // POST: Clase/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            tb_clase tb_clase = await db.tb_clase.FindAsync(id);
+            tb_clase tb_clase = db.tb_clase.Find(id);
             db.tb_clase.Remove(tb_clase);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

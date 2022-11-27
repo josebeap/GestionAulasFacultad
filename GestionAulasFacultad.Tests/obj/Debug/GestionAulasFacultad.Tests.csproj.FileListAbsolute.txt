@@ -90,6 +90,8 @@ E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\es\Micro
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\GestionAulasFacultad.Tests.dll.config
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\GestionAulasFacultad.Tests.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\GestionAulasFacultad.Tests.pdb
+E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\EntityFramework.dll
+E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\EntityFramework.SqlServer.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\GestionAulasFacultad.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
@@ -109,7 +111,7 @@ E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\Microsof
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\Owin.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\System.Web.Http.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
-E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\EntityFramework.dll
+E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\AccesoDeDatos.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\System.Web.Http.WebHost.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.dll
@@ -119,6 +121,8 @@ E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\System.N
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\Antlr3.Runtime.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\GestionAulasFacultad.pdb
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\GestionAulasFacultad.dll.config
+E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\EntityFramework.xml
+E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\EntityFramework.SqlServer.xml
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\Newtonsoft.Json.xml
@@ -135,7 +139,8 @@ E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\Microsof
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\Microsoft.Owin.Security.xml
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\System.Web.Http.xml
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
-E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\EntityFramework.xml
+E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\AccesoDeDatos.pdb
+E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\AccesoDeDatos.dll.config
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.xml
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\System.Web.Http.WebHost.xml
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml
@@ -155,7 +160,6 @@ E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\es\Micro
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\es\Microsoft.Owin.Security.resources.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\es\System.Web.Http.resources.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\es\Microsoft.AspNet.Identity.EntityFramework.resources.dll
-E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\es\EntityFramework.resources.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\es\System.Web.Http.WebHost.resources.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\es\Microsoft.Owin.Host.SystemWeb.resources.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\es\System.Net.Http.Formatting.resources.dll
@@ -164,6 +168,3 @@ E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\obj\Debug\GestionA
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\obj\Debug\GestionAulasFacultad.Tests.csproj.CopyComplete
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\obj\Debug\GestionAulasFacultad.Tests.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\obj\Debug\GestionAulasFacultad.Tests.pdb
-E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\AccesoDeDatos.dll
-E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\AccesoDeDatos.pdb
-E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\AccesoDeDatos.dll.config

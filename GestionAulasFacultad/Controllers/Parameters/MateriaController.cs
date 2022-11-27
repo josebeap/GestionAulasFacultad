@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -16,20 +15,20 @@ namespace GestionAulasFacultad.Controllers.Parameters
         private SoftwareBDEntities db = new SoftwareBDEntities();
 
         // GET: Materia
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             var tb_materia = db.tb_materia.Include(t => t.tb_programa);
-            return View(await tb_materia.ToListAsync());
+            return View(tb_materia.ToList());
         }
 
         // GET: Materia/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_materia tb_materia = await db.tb_materia.FindAsync(id);
+            tb_materia tb_materia = db.tb_materia.Find(id);
             if (tb_materia == null)
             {
                 return HttpNotFound();
@@ -49,12 +48,12 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "id,id_programa,nombre")] tb_materia tb_materia)
+        public ActionResult Create([Bind(Include = "id,id_programa,nombre")] tb_materia tb_materia)
         {
             if (ModelState.IsValid)
             {
                 db.tb_materia.Add(tb_materia);
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -63,13 +62,13 @@ namespace GestionAulasFacultad.Controllers.Parameters
         }
 
         // GET: Materia/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_materia tb_materia = await db.tb_materia.FindAsync(id);
+            tb_materia tb_materia = db.tb_materia.Find(id);
             if (tb_materia == null)
             {
                 return HttpNotFound();
@@ -83,12 +82,12 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "id,id_programa,nombre")] tb_materia tb_materia)
+        public ActionResult Edit([Bind(Include = "id,id_programa,nombre")] tb_materia tb_materia)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(tb_materia).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             ViewBag.id_programa = new SelectList(db.tb_programa, "id", "nombre", tb_materia.id_programa);
@@ -96,13 +95,13 @@ namespace GestionAulasFacultad.Controllers.Parameters
         }
 
         // GET: Materia/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_materia tb_materia = await db.tb_materia.FindAsync(id);
+            tb_materia tb_materia = db.tb_materia.Find(id);
             if (tb_materia == null)
             {
                 return HttpNotFound();
@@ -113,11 +112,11 @@ namespace GestionAulasFacultad.Controllers.Parameters
         // POST: Materia/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            tb_materia tb_materia = await db.tb_materia.FindAsync(id);
+            tb_materia tb_materia = db.tb_materia.Find(id);
             db.tb_materia.Remove(tb_materia);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 
