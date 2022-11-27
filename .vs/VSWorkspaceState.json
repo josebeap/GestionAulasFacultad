@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\AccesoDeDatos",
+    "\\GestionAulasFacultad"
   ],
   "SelectedNode": "\\GestionAulasFacultad.sln",
   "PreviewInSolutionExplorer": false

@@ -1,31 +1,35 @@
-﻿using System;
+﻿using AccesoDeDatos.DbModel;
+using AccesoDeDatos.Mapeadores;
+using AccesoDeDatos.ModeloDeDatos;
+using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using AccesoDeDatos.ModeloDeDatos;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace AccesoDeDatos.Implementacion
-{ 
-	public class ImplPersonaDatos
-	{
-		public IEnumerable<tb_persona> ListarRegistros(String filtro)
+{
+    public class ImplPersonaDatos
+    {
+        /// <summary>
+        /// Método para listar registros con un filtro
+        /// </summary>
+        /// <param name="filtro">Filtro a aplicar</param>
+        /// <returns>Lista de registros con el filtro aplicado</returns>
+        public IEnumerable<PersonaDbModel> ListarRegistros(String filtro)
         {
-			var lista = new List<tb_persona>();
-
+            var lista = new List<tb_persona>();
             using (SoftwareBDEntities bd = new SoftwareBDEntities())
             {
-                if (String.IsNullOrWhiteSpace(filtro))
-                {
-                    lista = bd.tb_persona.ToList();
-                }
-                else
-                {
-                    lista = bd.tb_persona.Where(x => x.primer_nombre.ToUpper().Contains(filtro.ToUpper())).ToList();
-                }
+                // lista = bd.tb_persona.Where(x => x.nombre.ToUpper().Contains(filtro.ToUpper())).ToList();
+                lista = (
+                    from c in bd.tb_persona
+                    where c.primer_nombre.Contains(filtro)
+                    select c
+                    ).ToList();
             }
-            
-			return lista;
+            return new MapeadorPersonaDatos().MapearTipo1Tipo2(lista);
         }
 
         /// <summary>
@@ -33,20 +37,19 @@ namespace AccesoDeDatos.Implementacion
         /// </summary>
         /// <param name="registro">el registro a almacenar</param>
         /// <returns>true cuando se almacena y false cuando ya existe un registro igual o una excepción</returns>
-        public bool GuardarRegistro(tb_persona registro)
+        public bool GuardarRegistro(PersonaDbModel registro)
         {
             try
             {
                 using (SoftwareBDEntities bd = new SoftwareBDEntities())
                 {
                     // verificación de la existencia de un registro con el mismo nombre
-                    if (bd.tb_persona.Where(x => x.primer_nombre.ToLower().Equals(registro.primer_nombre.ToLower())).Count() > 0)
+                    if (bd.tb_persona.Where(x => x.primer_nombre.ToLower().Equals(registro.PrimerNombre.ToLower())).Count() > 0)
                     {
                         return false;
                     }
-                   
-                    
-                    bd.tb_persona.Add(registro);
+                    var reg = new MapeadorPersonaDatos().MapearTipo2Tipo1(registro);
+                    bd.tb_persona.Add(reg);
                     bd.SaveChanges();
                     return true;
                 }
@@ -62,16 +65,12 @@ namespace AccesoDeDatos.Implementacion
         /// </summary>
         /// <param name="id">id del registro a buscar</param>
         /// <returns>el objeto con el id buscado o null cuando no exista</returns>
-        public tb_persona BuscarRegistro(int id)
+        public PersonaDbModel BuscarRegistro(int id)
         {
             using (SoftwareBDEntities bd = new SoftwareBDEntities())
             {
                 tb_persona registro = bd.tb_persona.Find(id);
-                if (registro != null)
-                {
-                    return registro;
-                }
-                return null;
+                return new MapeadorPersonaDatos().MapearTipo1Tipo2(registro);
             }
         }
 
@@ -80,19 +79,19 @@ namespace AccesoDeDatos.Implementacion
         /// </summary>
         /// <param name="registro">el registro a editar</param>
         /// <returns>true cuando se edita y false cuando no existe el registro o una excepción</returns>
-        public bool EditarRegistro(tb_persona registro)
+        public bool EditarRegistro(PersonaDbModel registro)
         {
             try
             {
                 using (SoftwareBDEntities bd = new SoftwareBDEntities())
                 {
                     // verificación de la existencia de un registro con el mismo id
-                    if (bd.tb_persona.Where(x => x.id == registro.id).Count() == 0)
+                    if (bd.tb_persona.Where(x => x.id == registro.Id).Count() == 0)
                     {
                         return false;
                     }
-                    
-                    bd.Entry(registro).State = EntityState.Modified;
+                    tb_persona reg = new MapeadorPersonaDatos().MapearTipo2Tipo1(registro);
+                    bd.Entry(reg).State = EntityState.Modified;
                     bd.SaveChanges();
                     return true;
                 }

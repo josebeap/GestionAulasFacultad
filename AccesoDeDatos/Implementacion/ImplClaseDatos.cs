@@ -1,36 +1,41 @@
-﻿using System;
+﻿using AccesoDeDatos.DbModel;
+using AccesoDeDatos.Mapeadores;
+using AccesoDeDatos.ModeloDeDatos;
+using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using AccesoDeDatos.ModeloDeDatos;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace AccesoDeDatos.Implementacion
-{ 
-	public class ImplClaseDatos
-	{
-		public IEnumerable<tb_clase> ListarRegistros(String filtro)
+{
+    public class ImplClaseDatos
+    {
+        /// <summary>
+        /// Método para listar registros con un filtro
+        /// </summary>
+        /// <param name="filtro">Filtro a aplicar</param>
+        /// <returns>Lista de registros con el filtro aplicado</returns>
+        public IEnumerable<ClaseDbModel> ListarRegistros(String filtro)
         {
-			var lista = new List<tb_clase>();
+            var lista = new List<tb_clase>();
             var listaMaterias = new List<tb_materia>();
             using (SoftwareBDEntities bd = new SoftwareBDEntities())
             {
-                if (String.IsNullOrWhiteSpace(filtro))
+                listaMaterias = (
+                    from c in bd.tb_materia
+                    where c.nombre.Contains(filtro)
+                    select c
+                    ).ToList();
+
+                foreach (var i in listaMaterias)
                 {
-                    lista = bd.tb_clase.ToList();
-                }
-                else
-                {   
-                    listaMaterias= bd.tb_materia.Where(x => x.nombre.ToUpper().Contains(filtro.ToUpper())).ToList();
-                    foreach (var i in listaMaterias)
-                    {
-                        lista.Add((tb_clase)bd.tb_clase.Where(x => x.id_materia.Equals(i.id)));
-                    }
-                    
+                    lista.Add((tb_clase)bd.tb_clase.Where(x => x.id_materia.Equals(i.id)));
                 }
             }
-            
-			return lista;
+
+            return new MapeadorClaseDatos().MapearTipo1Tipo2(lista);
         }
 
         /// <summary>
@@ -38,30 +43,29 @@ namespace AccesoDeDatos.Implementacion
         /// </summary>
         /// <param name="registro">el registro a almacenar</param>
         /// <returns>true cuando se almacena y false cuando ya existe un registro igual o una excepción</returns>
-        public bool GuardarRegistro(tb_clase registro)
+        public bool GuardarRegistro(ClaseDbModel registro)
         {
             try
             {
                 using (SoftwareBDEntities bd = new SoftwareBDEntities())
                 {
-                    // verificación de la existencia de un registro con la misma materia, mismo profesor y misma hora
-                    var filtradoPorMateria = bd.tb_clase.Where(x => x.id_materia.Equals(registro.id_materia));
-                    
-                    if(filtradoPorMateria.Count() != 0)
+                    var filtradoPorMateria = bd.tb_clase.Where(x => x.id_materia.Equals(registro.IdMateria));
+
+                    if (filtradoPorMateria.Count() != 0)
                     {
-                        var filtradoPorProfesor = filtradoPorMateria.Where(x => x.id_profesor.Equals(registro.id_profesor));
+                        var filtradoPorProfesor = filtradoPorMateria.Where(x => x.id_profesor.Equals(registro.IdProfesor));
 
                         if (filtradoPorProfesor.Count() != 0)
                         {
-                            var filtradoPorHora = filtradoPorProfesor.Where(x => x.fecha_hora_inicio.Equals(registro.fecha_hora_inicio));
-                            if (filtradoPorHora.Count() > 0) {
+                            var filtradoPorHora = filtradoPorProfesor.Where(x => x.fecha_hora_inicio.Equals(registro.FechaHoraInicio));
+                            if (filtradoPorHora.Count() > 0)
+                            {
                                 return false;
                             }
                         }
                     }
-
-                    
-                    bd.tb_clase.Add(registro);
+                    var reg = new MapeadorClaseDatos().MapearTipo2Tipo1(registro);
+                    bd.tb_clase.Add(reg);
                     bd.SaveChanges();
                     return true;
                 }
@@ -77,16 +81,12 @@ namespace AccesoDeDatos.Implementacion
         /// </summary>
         /// <param name="id">id del registro a buscar</param>
         /// <returns>el objeto con el id buscado o null cuando no exista</returns>
-        public tb_clase BuscarRegistro(int id)
+        public ClaseDbModel BuscarRegistro(int id)
         {
             using (SoftwareBDEntities bd = new SoftwareBDEntities())
             {
                 tb_clase registro = bd.tb_clase.Find(id);
-                if (registro != null)
-                {
-                    return registro;
-                }
-                return null;
+                return new MapeadorClaseDatos().MapearTipo1Tipo2(registro);
             }
         }
 
@@ -95,19 +95,19 @@ namespace AccesoDeDatos.Implementacion
         /// </summary>
         /// <param name="registro">el registro a editar</param>
         /// <returns>true cuando se edita y false cuando no existe el registro o una excepción</returns>
-        public bool EditarRegistro(tb_clase registro)
+        public bool EditarRegistro(ClaseDbModel registro)
         {
             try
             {
                 using (SoftwareBDEntities bd = new SoftwareBDEntities())
                 {
                     // verificación de la existencia de un registro con el mismo id
-                    if (bd.tb_clase.Where(x => x.id == registro.id).Count() == 0)
+                    if (bd.tb_clase.Where(x => x.id == registro.Id).Count() == 0)
                     {
                         return false;
                     }
-                    
-                    bd.Entry(registro).State = EntityState.Modified;
+                    tb_clase reg = new MapeadorClaseDatos().MapearTipo2Tipo1(registro);
+                    bd.Entry(reg).State = EntityState.Modified;
                     bd.SaveChanges();
                     return true;
                 }
@@ -148,3 +148,5 @@ namespace AccesoDeDatos.Implementacion
 
     }
 }
+
+

@@ -59,6 +59,12 @@
       <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.2\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -192,24 +198,39 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\Parameters\AsistenciaController.cs" />
-    <Compile Include="Controllers\Parameters\AulaController.cs" />
-    <Compile Include="Controllers\Parameters\AuxiliarController.cs" />
-    <Compile Include="Controllers\Parameters\ClaseController.cs" />
-    <Compile Include="Controllers\Parameters\InventarioController.cs" />
-    <Compile Include="Controllers\Parameters\MateriaController.cs" />
-    <Compile Include="Controllers\Parameters\MonitorController.cs" />
-    <Compile Include="Controllers\Parameters\PersonaController.cs" />
-    <Compile Include="Controllers\Parameters\ProfesorController.cs" />
-    <Compile Include="Controllers\Parameters\ProgramaController.cs" />
-    <Compile Include="Controllers\Parameters\ReservaController.cs" />
-    <Compile Include="Controllers\Parameters\TipoElementoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\DatosGenerales.cs" />
+    <Compile Include="Helpers\Mensajes.cs" />
+    <Compile Include="Mapeadores\MapeadorTipoElementoGUI.cs" />
+    <Compile Include="Mapeadores\MapeadorInventarioGUI.cs" />
+    <Compile Include="Mapeadores\MapeadorAsistenciaGUI.cs" />
+    <Compile Include="Mapeadores\MapeadorReservaGUI.cs" />
+    <Compile Include="Mapeadores\MapeadorMonitorGUI.cs" />
+    <Compile Include="Mapeadores\MapeadorProfesorGUI.cs" />
+    <Compile Include="Mapeadores\MapeadorAuxiliarGUI.cs" />
+    <Compile Include="Mapeadores\MapeadorProgramaGUI.cs" />
+    <Compile Include="Mapeadores\MapeadorMateriaGUI.cs" />
+    <Compile Include="Mapeadores\MapeadorClaseGUI.cs" />
+    <Compile Include="Mapeadores\MapeadorPersonaGUI.cs" />
+    <Compile Include="Mapeadores\MapeadorBaseGUI.cs" />
+    <Compile Include="Mapeadores\MapeadorAulaGUI.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ModeloAsistenciaGUI.cs" />
+    <Compile Include="Models\ModeloAuxiliarGUI.cs" />
+    <Compile Include="Models\ModeloClaseGUI.cs" />
+    <Compile Include="Models\ModeloInventarioGUI.cs" />
+    <Compile Include="Models\ModeloMateriaGUI.cs" />
+    <Compile Include="Models\ModeloAulaGUI.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ModeloMonitorGUI.cs" />
+    <Compile Include="Models\ModeloPersonaGUI.cs" />
+    <Compile Include="Models\ModeloProfesorGUI.cs" />
+    <Compile Include="Models\ModeloProgramaGUI.cs" />
+    <Compile Include="Models\ModeloReservaGUI.cs" />
+    <Compile Include="Models\ModeloTipoElementoGUI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -218,6 +239,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -334,6 +356,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="PdfReports\" />
+    <Folder Include="UploadFiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -352,9 +376,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AccesoDeDatos\AccesoDeDatos.csproj">
-      <Project>{2088900d-1d1d-44d3-9160-aec15f1afeb6}</Project>
-      <Name>AccesoDeDatos</Name>
+    <ProjectReference Include="..\Logica\Logica.csproj">
+      <Project>{3e2257ac-95d4-4a26-b852-4dfce76bcd52}</Project>
+      <Name>Logica</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

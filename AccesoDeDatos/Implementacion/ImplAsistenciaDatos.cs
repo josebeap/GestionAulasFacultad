@@ -1,27 +1,30 @@
-﻿using System;
+﻿using AccesoDeDatos.DbModel;
+using AccesoDeDatos.Mapeadores;
+using AccesoDeDatos.ModeloDeDatos;
+using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using AccesoDeDatos.ModeloDeDatos;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace AccesoDeDatos.Implementacion
-{ 
-	public class ImplAsistenciaDatos
-	{
-		public IEnumerable<tb_asistencia> ListarRegistros()
+{
+    public class ImplAsistenciaDatos
+    {
+        /// <summary>
+        /// Método para listar registros con un filtro
+        /// </summary>
+        /// <param name="filtro">Filtro a aplicar</param>
+        /// <returns>Lista de registros con el filtro aplicado</returns>
+        public IEnumerable<AsistenciaDbModel> ListarRegistros(String filtro)
         {
-			var lista = new List<tb_asistencia>();
-
+            var lista = new List<tb_asistencia>();
             using (SoftwareBDEntities bd = new SoftwareBDEntities())
             {
-                
-                    lista = bd.tb_asistencia.ToList();
-                
-                
+                lista = bd.tb_asistencia.ToList();
             }
-            
-			return lista;
+            return new MapeadorAsistenciaDatos().MapearTipo1Tipo2(lista);
         }
 
         /// <summary>
@@ -29,14 +32,15 @@ namespace AccesoDeDatos.Implementacion
         /// </summary>
         /// <param name="registro">el registro a almacenar</param>
         /// <returns>true cuando se almacena y false cuando ya existe un registro igual o una excepción</returns>
-        public bool GuardarRegistro(tb_asistencia registro)
+        public bool GuardarRegistro(AsistenciaDbModel registro)
         {
             try
             {
                 using (SoftwareBDEntities bd = new SoftwareBDEntities())
                 {
-                   
-                    bd.tb_asistencia.Add(registro);
+                    
+                    var reg = new MapeadorAsistenciaDatos().MapearTipo2Tipo1(registro);
+                    bd.tb_asistencia.Add(reg);
                     bd.SaveChanges();
                     return true;
                 }
@@ -52,16 +56,12 @@ namespace AccesoDeDatos.Implementacion
         /// </summary>
         /// <param name="id">id del registro a buscar</param>
         /// <returns>el objeto con el id buscado o null cuando no exista</returns>
-        public tb_asistencia BuscarRegistro(int id)
+        public AsistenciaDbModel BuscarRegistro(int id)
         {
             using (SoftwareBDEntities bd = new SoftwareBDEntities())
             {
                 tb_asistencia registro = bd.tb_asistencia.Find(id);
-                if (registro != null)
-                {
-                    return registro;
-                }
-                return null;
+                return new MapeadorAsistenciaDatos().MapearTipo1Tipo2(registro);
             }
         }
 
@@ -70,19 +70,19 @@ namespace AccesoDeDatos.Implementacion
         /// </summary>
         /// <param name="registro">el registro a editar</param>
         /// <returns>true cuando se edita y false cuando no existe el registro o una excepción</returns>
-        public bool EditarRegistro(tb_asistencia registro)
+        public bool EditarRegistro(AsistenciaDbModel registro)
         {
             try
             {
                 using (SoftwareBDEntities bd = new SoftwareBDEntities())
                 {
                     // verificación de la existencia de un registro con el mismo id
-                    if (bd.tb_asistencia.Where(x => x.id == registro.id).Count() == 0)
+                    if (bd.tb_asistencia.Where(x => x.id == registro.Id).Count() == 0)
                     {
                         return false;
                     }
-                    
-                    bd.Entry(registro).State = EntityState.Modified;
+                    tb_asistencia reg = new MapeadorAsistenciaDatos().MapearTipo2Tipo1(registro);
+                    bd.Entry(reg).State = EntityState.Modified;
                     bd.SaveChanges();
                     return true;
                 }
@@ -123,3 +123,4 @@ namespace AccesoDeDatos.Implementacion
 
     }
 }
+

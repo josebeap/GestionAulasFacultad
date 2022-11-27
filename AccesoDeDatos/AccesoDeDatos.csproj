@@ -53,18 +53,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbModel\AsistenciaDbModel.cs" />
+    <Compile Include="DbModel\AulaDbModel.cs" />
+    <Compile Include="DbModel\AuxiliarDbModel.cs" />
+    <Compile Include="DbModel\ClaseDbModel.cs" />
+    <Compile Include="DbModel\InventarioDbModel.cs" />
+    <Compile Include="DbModel\MateriaDbModel.cs" />
+    <Compile Include="DbModel\MonitorDbModel.cs" />
+    <Compile Include="DbModel\PersonaDbModel.cs" />
+    <Compile Include="DbModel\ProfesorDbModel.cs" />
+    <Compile Include="DbModel\ProgramaDbModel.cs" />
+    <Compile Include="DbModel\ReservaDbModel.cs" />
+    <Compile Include="DbModel\TipoElementoDbModel.cs" />
     <Compile Include="Implementacion\ImplAsistenciaDatos.cs" />
     <Compile Include="Implementacion\ImplReservaDatos.cs" />
     <Compile Include="Implementacion\ImplProgramaDatos.cs" />
     <Compile Include="Implementacion\ImplMateriaDatos.cs" />
     <Compile Include="Implementacion\ImplAulaDatos.cs" />
-    <Compile Include="Implementacion\ImplTipoElemento.cs" />
+    <Compile Include="Implementacion\ImplTipoElementoDatos.cs" />
     <Compile Include="Implementacion\ImplClaseDatos.cs" />
     <Compile Include="Implementacion\ImplInventarioDatos.cs" />
     <Compile Include="Implementacion\ImplProfesorDatos.cs" />
     <Compile Include="Implementacion\ImplMonitorDatos.cs" />
     <Compile Include="Implementacion\ImplAuxiliarDatos.cs" />
     <Compile Include="Implementacion\ImplPersonaDatos.cs" />
+    <Compile Include="Mapeadores\MapeadorProgramaDatos.cs" />
+    <Compile Include="Mapeadores\MapeadorTipoElementoDatos.cs" />
+    <Compile Include="Mapeadores\MapeadorInventarioDatos.cs" />
+    <Compile Include="Mapeadores\MapeadorAsistenciaDatos.cs" />
+    <Compile Include="Mapeadores\MapeadorReservaDatos.cs" />
+    <Compile Include="Mapeadores\MapeadorClaseDatos.cs" />
+    <Compile Include="Mapeadores\MapeadorAuxiliarDatos.cs" />
+    <Compile Include="Mapeadores\MapeadorMonitorDatos.cs" />
+    <Compile Include="Mapeadores\MapeadorProfesorDatos.cs" />
+    <Compile Include="Mapeadores\MapeadorMateriaDatos.cs" />
+    <Compile Include="Mapeadores\MapeadorBaseDatos.cs" />
+    <Compile Include="Mapeadores\MapeadorAulaDatos.cs" />
+    <Compile Include="Mapeadores\MapeadorPersonaDatos.cs" />
     <Compile Include="ModeloDeDatos\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -144,6 +169,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
