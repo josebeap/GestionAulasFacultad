@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using GestionAulasFacultad.ModeloBD;
+using AccesoDeDatos.ModeloDeDatos;
 
 namespace GestionAulasFacultad.Controllers.Parameters
 {

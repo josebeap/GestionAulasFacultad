@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32802.440
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionAulasFacultad", "GestionAulasFacultad\GestionAulasFacultad.csproj", "{F28CE73C-9EB2-4943-90CE-C8295F520502}"
 EndProject
@@ -10,6 +10,19 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Plataforma", "1. Plataforma", "{9935747F-8EF9-46A6-B45F-D2A92D886C58}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Pruebas", "2. Pruebas", "{65ED164C-978F-4FA9-A7E7-C03F3FAD426E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.1 Vista - Logica", "1.1 Vista - Logica", "{D29BF166-A464-4440-854F-E4419F40168D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.2 Datos", "1.2 Datos", "{38E5D9E9-2916-4E21-BD11-9E00D8CE369A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoDeDatos", "AccesoDeDatos\AccesoDeDatos.csproj", "{2088900D-1D1D-44D3-9160-AEC15F1AFEB6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Implementacion", "Implementacion", "{087E69C8-6CA7-4709-A47E-70F8F7141E7A}"
+	ProjectSection(SolutionItems) = preProject
+		ImplPersonaDatos.cs = ImplPersonaDatos.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Parametros", "Parametros", "{7A35B235-9401-4AFC-A5A2-85FD0168FB33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,13 +38,22 @@ Global
 		{3B8BB1D6-835F-46C9-A866-F0CBF7E63E3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B8BB1D6-835F-46C9-A866-F0CBF7E63E3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B8BB1D6-835F-46C9-A866-F0CBF7E63E3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2088900D-1D1D-44D3-9160-AEC15F1AFEB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2088900D-1D1D-44D3-9160-AEC15F1AFEB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2088900D-1D1D-44D3-9160-AEC15F1AFEB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2088900D-1D1D-44D3-9160-AEC15F1AFEB6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{F28CE73C-9EB2-4943-90CE-C8295F520502} = {9935747F-8EF9-46A6-B45F-D2A92D886C58}
+		{F28CE73C-9EB2-4943-90CE-C8295F520502} = {D29BF166-A464-4440-854F-E4419F40168D}
 		{3B8BB1D6-835F-46C9-A866-F0CBF7E63E3C} = {65ED164C-978F-4FA9-A7E7-C03F3FAD426E}
+		{D29BF166-A464-4440-854F-E4419F40168D} = {9935747F-8EF9-46A6-B45F-D2A92D886C58}
+		{38E5D9E9-2916-4E21-BD11-9E00D8CE369A} = {9935747F-8EF9-46A6-B45F-D2A92D886C58}
+		{2088900D-1D1D-44D3-9160-AEC15F1AFEB6} = {38E5D9E9-2916-4E21-BD11-9E00D8CE369A}
+		{087E69C8-6CA7-4709-A47E-70F8F7141E7A} = {38E5D9E9-2916-4E21-BD11-9E00D8CE369A}
+		{7A35B235-9401-4AFC-A5A2-85FD0168FB33} = {087E69C8-6CA7-4709-A47E-70F8F7141E7A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7296DF39-E124-4F53-A9B5-EEAEC328A3EA}
