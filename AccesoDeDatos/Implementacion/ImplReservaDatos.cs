@@ -38,12 +38,12 @@ namespace AccesoDeDatos.Implementacion
             {
                 using (SoftwareBDEntities bd = new SoftwareBDEntities())
                 {
-                    var filtradoPorAula = bd.tb_reserva.Where(x => x.id_aula.Equals(registro.id_aula));
+                    var filtradoPorAula = bd.tb_reserva.Where(x => x.id_aula.Equals(registro.IdAula));
 
                     if (filtradoPorAula.Count() != 0)
                     {
 
-                        var filtradoPorHora = filtradoPorAula.Where(x => x.fecha_hora_inicio.Equals(registro.fecha_hora_inicio));
+                        var filtradoPorHora = filtradoPorAula.Where(x => x.fecha_hora_inicio.Equals(registro.FechaHoraInicio));
 
                         if (filtradoPorHora.Count() > 0)
                         {

@@ -2,7 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\AccesoDeDatos",
-    "\\GestionAulasFacultad"
+    "\\AccesoDeDatos\\Mapeadores",
+    "\\GestionAulasFacultad",
+    "\\Logica",
+    "\\Logica\\Implementacion",
+    "\\Logica\\Mapeadores"
   ],
   "SelectedNode": "\\GestionAulasFacultad.sln",
   "PreviewInSolutionExplorer": false

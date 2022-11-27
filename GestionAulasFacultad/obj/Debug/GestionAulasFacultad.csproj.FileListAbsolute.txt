@@ -140,3 +140,5 @@ C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacult
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\bin\es\Microsoft.AspNet.SignalR.Core.resources.dll
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\bin\es\Microsoft.AspNet.SignalR.SystemWeb.resources.dll
+E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\obj\Debug\GestionAulasFacultad.csproj.AssemblyReference.cache
+E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\obj\Debug\GestionAulasFacultad.csproj.CoreCompileInputs.cache

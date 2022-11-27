@@ -81,3 +81,5 @@ C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacult
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\obj\Debug\GestionAulasFacultad.Tests.csproj.CopyComplete
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\obj\Debug\GestionAulasFacultad.Tests.dll
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\obj\Debug\GestionAulasFacultad.Tests.pdb
+E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\obj\Debug\GestionAulasFacultad.Tests.csproj.AssemblyReference.cache
+E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\obj\Debug\GestionAulasFacultad.Tests.csproj.CoreCompileInputs.cache
