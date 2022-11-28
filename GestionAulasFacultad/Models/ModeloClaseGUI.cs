@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -57,7 +58,7 @@ namespace GestionAulasFacultad.Models
         }
 
         private string nombreAula;
-
+        [DisplayName("Aula")]
         public string NombreAula
         {
             get { return nombreAula; }
@@ -65,7 +66,7 @@ namespace GestionAulasFacultad.Models
         }
 
         private string nombreProfesor;
-
+        [DisplayName("Profesor")]
         public string NombreProfesor
         {
             get { return nombreProfesor; }
@@ -73,11 +74,35 @@ namespace GestionAulasFacultad.Models
         }
 
         private string nombreMateria;
-
+        [DisplayName("Materia")]
         public string NombreMateria
         {
             get { return nombreMateria; }
             set { nombreMateria = value; }
+        }
+
+        private IEnumerable<ModeloAulaGUI> modeloAulaGUIs;
+
+        public IEnumerable<ModeloAulaGUI> ListaAulas
+        {
+            get { return modeloAulaGUIs; }
+            set { modeloAulaGUIs = value; }
+        }
+
+        private IEnumerable<ModeloProfesorGUI> modeloProfesorGUIs;
+
+        public IEnumerable<ModeloProfesorGUI> ListaProfesores
+        {
+            get { return modeloProfesorGUIs; }
+            set { modeloProfesorGUIs = value; }
+        }
+
+        private IEnumerable<ModeloMateriaGUI> modeloMateriaGUIs;
+
+        public IEnumerable<ModeloMateriaGUI> ListaMaterias
+        {
+            get { return modeloMateriaGUIs; }
+            set { modeloMateriaGUIs = value; }
         }
     }
 }

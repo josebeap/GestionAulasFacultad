@@ -25,7 +25,7 @@ namespace GestionProgramasFacultad.Controllers
             IEnumerable<ProgramaDTO> listaDatos = logica.ListarRegistros(filtro, numPagina, registrosPorPagina, out totalRegistros);
             MapeadorProgramaGUI mapper = new MapeadorProgramaGUI();
             IEnumerable<ModeloProgramaGUI> listaGUI = mapper.MapearTipo1Tipo2(listaDatos);
-            var registrosPagina = listaGUI.ToPagedList(numPagina, registrosPorPagina);
+            
             var listaPagina = new StaticPagedList<ModeloProgramaGUI>(listaGUI, numPagina, registrosPorPagina, totalRegistros);
             return View(listaPagina);
         }
@@ -58,7 +58,7 @@ namespace GestionProgramasFacultad.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre,PrimerApellido,SegundoApellido,Documento,Celular,Correo")] ModeloProgramaGUI modelo)
+        public ActionResult Create( ModeloProgramaGUI modelo)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +93,7 @@ namespace GestionProgramasFacultad.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nombre,PrimerApellido,SegundoApellido,Documento,Celular,Correo")] ModeloProgramaGUI modelo)
+        public ActionResult Edit( ModeloProgramaGUI modelo)
         {
             if (ModelState.IsValid)
             {

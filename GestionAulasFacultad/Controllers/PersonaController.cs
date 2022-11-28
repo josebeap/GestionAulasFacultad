@@ -25,7 +25,7 @@ namespace GestionPersonasFacultad.Controllers
             IEnumerable<PersonaDTO> listaDatos = logica.ListarRegistros(filtro, numPagina, registrosPorPagina, out totalRegistros);
             MapeadorPersonaGUI mapper = new MapeadorPersonaGUI();
             IEnumerable<ModeloPersonaGUI> listaGUI = mapper.MapearTipo1Tipo2(listaDatos);
-            var registrosPagina = listaGUI.ToPagedList(numPagina, registrosPorPagina);
+            
             var listaPagina = new StaticPagedList<ModeloPersonaGUI>(listaGUI, numPagina, registrosPorPagina, totalRegistros);
             return View(listaPagina);
         }
@@ -58,7 +58,7 @@ namespace GestionPersonasFacultad.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre,PrimerApellido,SegundoApellido,Documento,Celular,Correo")] ModeloPersonaGUI modelo)
+        public ActionResult Create(ModeloPersonaGUI modelo)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +93,7 @@ namespace GestionPersonasFacultad.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nombre,PrimerApellido,SegundoApellido,Documento,Celular,Correo")] ModeloPersonaGUI modelo)
+        public ActionResult Edit(ModeloPersonaGUI modelo)
         {
             if (ModelState.IsValid)
             {

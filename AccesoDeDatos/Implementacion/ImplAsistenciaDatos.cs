@@ -53,6 +53,7 @@ namespace AccesoDeDatos.Implementacion
             return lista;
         }
 
+        
         /// <summary>
         /// Método para almacenar un registro
         /// </summary>

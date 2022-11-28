@@ -4,7 +4,10 @@ using System.Net;
 using System.Web.Mvc;
 using GestionAulasFacultad.Helpers;
 using GestionAulasFacultad.Models;
+using GestionMateriasFacultad.Mapeadores;
 using GestionMonitorsFacultad.Mapeadores;
+using GestionPersonasFacultad.Mapeadores;
+using GestionProgramasFacultad.Mapeadores;
 using Logica.DTO;
 using Logica.Implementacion;
 using PagedList;
@@ -25,7 +28,7 @@ namespace GestionMonitorsFacultad.Controllers
             IEnumerable<MonitorDTO> listaDatos = logica.ListarRegistros(filtro, numPagina, registrosPorPagina, out totalRegistros);
             MapeadorMonitorGUI mapper = new MapeadorMonitorGUI();
             IEnumerable<ModeloMonitorGUI> listaGUI = mapper.MapearTipo1Tipo2(listaDatos);
-            var registrosPagina = listaGUI.ToPagedList(numPagina, registrosPorPagina);
+            
             var listaPagina = new StaticPagedList<ModeloMonitorGUI>(listaGUI, numPagina, registrosPorPagina, totalRegistros);
             return View(listaPagina);
         }
@@ -50,15 +53,42 @@ namespace GestionMonitorsFacultad.Controllers
         // GET: Monitor/Create
         public ActionResult Create()
         {
-            return View();
+            ModeloMonitorGUI modelo = new ModeloMonitorGUI();
+            ObtenerListadoProgramas(modelo);
+            ObtenerListadoPersonas(modelo);
+            ObtenerListadoMaterias(modelo);
+            return View(modelo);
         }
 
+        private void ObtenerListadoMaterias(ModeloMonitorGUI modelo)
+        {
+            ImplMateriaLogica logicaMateria = new ImplMateriaLogica();
+            IEnumerable<MateriaDTO> listaDTO = logicaMateria.ListarRegistros();
+            MapeadorMateriaGUI mapeador = new MapeadorMateriaGUI();
+            modelo.ListaMaterias = mapeador.MapearTipo1Tipo2(listaDTO);
+        }
+
+        private void ObtenerListadoProgramas(ModeloMonitorGUI modelo)
+        {
+            ImplProgramaLogica logicaPrograma = new ImplProgramaLogica();
+            IEnumerable<ProgramaDTO> listaDTO = logicaPrograma.ListarRegistros();
+            MapeadorProgramaGUI mapeador = new MapeadorProgramaGUI();
+            modelo.ListaProgramas = mapeador.MapearTipo1Tipo2(listaDTO);
+        }
+
+        private void ObtenerListadoPersonas(ModeloMonitorGUI modelo)
+        {
+            ImplPersonaLogica logicaPersona = new ImplPersonaLogica();
+            IEnumerable<PersonaDTO> listaDTO = logicaPersona.ListarRegistros();
+            MapeadorPersonaGUI mapeador = new MapeadorPersonaGUI();
+            modelo.ListaPersonas = mapeador.MapearTipo1Tipo2(listaDTO);
+        }
         // POST: Monitor/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre,PrimerApellido,SegundoApellido,Documento,Celular,Correo")] ModeloMonitorGUI modelo)
+        public ActionResult Create( ModeloMonitorGUI modelo)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +123,7 @@ namespace GestionMonitorsFacultad.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nombre,PrimerApellido,SegundoApellido,Documento,Celular,Correo")] ModeloMonitorGUI modelo)
+        public ActionResult Edit( ModeloMonitorGUI modelo)
         {
             if (ModelState.IsValid)
             {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace GestionAulasFacultad.Models
         }
 
         private string nombrePersona;
-
+        [DisplayName("Persona")]
         public string NombrePersona
         {
             get { return nombrePersona; }
@@ -41,6 +42,13 @@ namespace GestionAulasFacultad.Models
             set { funcion = value; }
         }
 
+        private IEnumerable<ModeloPersonaGUI> modeloPersonaGUIs;
+
+        public IEnumerable<ModeloPersonaGUI> ListaPersonas
+        {
+            get { return modeloPersonaGUIs; }
+            set { modeloPersonaGUIs = value; }
+        }
 
     }
 }

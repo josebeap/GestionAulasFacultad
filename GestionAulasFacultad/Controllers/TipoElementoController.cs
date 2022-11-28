@@ -25,7 +25,7 @@ namespace GestionTipoElementosFacultad.Controllers
             IEnumerable<TipoElementoDTO> listaDatos = logica.ListarRegistros(filtro, numPagina, registrosPorPagina, out totalRegistros);
             MapeadorTipoElementoGUI mapper = new MapeadorTipoElementoGUI();
             IEnumerable<ModeloTipoElementoGUI> listaGUI = mapper.MapearTipo1Tipo2(listaDatos);
-            var registrosPagina = listaGUI.ToPagedList(numPagina, registrosPorPagina);
+            
             var listaPagina = new StaticPagedList<ModeloTipoElementoGUI>(listaGUI, numPagina, registrosPorPagina, totalRegistros);
             return View(listaPagina);
         }
@@ -58,7 +58,7 @@ namespace GestionTipoElementosFacultad.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre,PrimerApellido,SegundoApellido,Documento,Celular,Correo")] ModeloTipoElementoGUI modelo)
+        public ActionResult Create( ModeloTipoElementoGUI modelo)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +93,7 @@ namespace GestionTipoElementosFacultad.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nombre,PrimerApellido,SegundoApellido,Documento,Celular,Correo")] ModeloTipoElementoGUI modelo)
+        public ActionResult Edit( ModeloTipoElementoGUI modelo)
         {
             if (ModelState.IsValid)
             {

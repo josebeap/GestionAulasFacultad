@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using GestionAulasFacultad.Helpers;
 using GestionAulasFacultad.Models;
 using GestionAuxiliarsFacultad.Mapeadores;
+using GestionPersonasFacultad.Mapeadores;
 using Logica.DTO;
 using Logica.Implementacion;
 using PagedList;
@@ -25,7 +26,7 @@ namespace GestionAuxiliarsFacultad.Controllers
             IEnumerable<AuxiliarDTO> listaDatos = logica.ListarRegistros(filtro, numPagina, registrosPorPagina, out totalRegistros);
             MapeadorAuxiliarGUI mapper = new MapeadorAuxiliarGUI();
             IEnumerable<ModeloAuxiliarGUI> listaGUI = mapper.MapearTipo1Tipo2(listaDatos);
-            var registrosPagina = listaGUI.ToPagedList(numPagina, registrosPorPagina);
+            
             var listaPagina = new StaticPagedList<ModeloAuxiliarGUI>(listaGUI, numPagina, registrosPorPagina, totalRegistros);
             return View(listaPagina);
         }
@@ -50,7 +51,17 @@ namespace GestionAuxiliarsFacultad.Controllers
         // GET: Auxiliar/Create
         public ActionResult Create()
         {
-            return View();
+            ModeloAuxiliarGUI modelo = new ModeloAuxiliarGUI();
+            ObtenerListadoPersonas(modelo);
+            return View(modelo);
+        }
+
+        private void ObtenerListadoPersonas(ModeloAuxiliarGUI modelo)
+        {
+            ImplPersonaLogica logicaPersona = new ImplPersonaLogica();
+            IEnumerable<PersonaDTO> listaDTO = logicaPersona.ListarRegistros();
+            MapeadorPersonaGUI mapeador = new MapeadorPersonaGUI();
+            modelo.ListaPersonas = mapeador.MapearTipo1Tipo2(listaDTO);
         }
 
         // POST: Auxiliar/Create
@@ -58,7 +69,7 @@ namespace GestionAuxiliarsFacultad.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre,PrimerApellido,SegundoApellido,Documento,Celular,Correo")] ModeloAuxiliarGUI modelo)
+        public ActionResult Create( ModeloAuxiliarGUI modelo)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +104,7 @@ namespace GestionAuxiliarsFacultad.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nombre,PrimerApellido,SegundoApellido,Documento,Celular,Correo")] ModeloAuxiliarGUI modelo)
+        public ActionResult Edit( ModeloAuxiliarGUI modelo)
         {
             if (ModelState.IsValid)
             {

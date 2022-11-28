@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Net;
 using System.Web.Mvc;
 using GestionAulasFacultad.Helpers;
+using GestionAulasFacultad.Mapeadores;
 using GestionAulasFacultad.Models;
+using GestionMonitorsFacultad.Mapeadores;
+using GestionProfesorsFacultad.Mapeadores;
 using GestionReservasFacultad.Mapeadores;
 using Logica.DTO;
 using Logica.Implementacion;
@@ -25,7 +28,7 @@ namespace GestionReservasFacultad.Controllers
             IEnumerable<ReservaDTO> listaDatos = logica.ListarRegistros(filtro, numPagina, registrosPorPagina, out totalRegistros);
             MapeadorReservaGUI mapper = new MapeadorReservaGUI();
             IEnumerable<ModeloReservaGUI> listaGUI = mapper.MapearTipo1Tipo2(listaDatos);
-            var registrosPagina = listaGUI.ToPagedList(numPagina, registrosPorPagina);
+            
             var listaPagina = new StaticPagedList<ModeloReservaGUI>(listaGUI, numPagina, registrosPorPagina, totalRegistros);
             return View(listaPagina);
         }
@@ -50,7 +53,35 @@ namespace GestionReservasFacultad.Controllers
         // GET: Reserva/Create
         public ActionResult Create()
         {
-            return View();
+            ModeloReservaGUI modelo = new ModeloReservaGUI();
+            ObtenerListadoAulas(modelo);
+            ObtenerListadoMonitores(modelo);
+            ObtenerListadoProfesores(modelo);
+            return View(modelo);
+        }
+
+        private void ObtenerListadoProfesores(ModeloReservaGUI modelo)
+        {
+            ImplProfesorLogica logicaProfesor = new ImplProfesorLogica();
+            IEnumerable<ProfesorDTO> listaDTO = logicaProfesor.ListarRegistros();
+            MapeadorProfesorGUI mapeador = new MapeadorProfesorGUI();
+            modelo.ListaProfesores = mapeador.MapearTipo1Tipo2(listaDTO);
+        }
+
+        private void ObtenerListadoMonitores(ModeloReservaGUI modelo)
+        {
+            ImplMonitorLogica logicaMonitor = new ImplMonitorLogica();
+            IEnumerable<MonitorDTO> listaDTO = logicaMonitor.ListarRegistros();
+            MapeadorMonitorGUI mapeador = new MapeadorMonitorGUI();
+            modelo.ListaMonitores = mapeador.MapearTipo1Tipo2(listaDTO);
+        }
+
+        private void ObtenerListadoAulas(ModeloReservaGUI modelo)
+        {
+            ImplAulaLogica logicaAula = new ImplAulaLogica();
+            IEnumerable<AulaDTO> listaDTO = logicaAula.ListarRegistros();
+            MapeadorAulaGUI mapeador = new MapeadorAulaGUI();
+            modelo.ListaAulas = mapeador.MapearTipo1Tipo2(listaDTO);
         }
 
         // POST: Reserva/Create
@@ -58,7 +89,7 @@ namespace GestionReservasFacultad.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre,PrimerApellido,SegundoApellido,Documento,Celular,Correo")] ModeloReservaGUI modelo)
+        public ActionResult Create( ModeloReservaGUI modelo)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +124,7 @@ namespace GestionReservasFacultad.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nombre,PrimerApellido,SegundoApellido,Documento,Celular,Correo")] ModeloReservaGUI modelo)
+        public ActionResult Edit( ModeloReservaGUI modelo)
         {
             if (ModelState.IsValid)
             {

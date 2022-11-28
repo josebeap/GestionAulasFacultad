@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,14 +39,20 @@ namespace GestionAulasFacultad.Models
             set { estado = value; }
         }
         private string nombreTipoElemento;
-
+        [DisplayName("Tipo Elemento")]
         public string NombreTipoElemento
         {
             get { return nombreTipoElemento; }
             set { nombreTipoElemento = value; }
         }
 
+        private IEnumerable<ModeloTipoElementoGUI> modeloTipoElementoGUIs;
 
+        public IEnumerable<ModeloTipoElementoGUI> ListaTipoElementos
+        {
+            get { return modeloTipoElementoGUIs; }
+            set { modeloTipoElementoGUIs = value; }
+        }
 
     }
 }

@@ -4,7 +4,9 @@ using System.Net;
 using System.Web.Mvc;
 using GestionAulasFacultad.Helpers;
 using GestionAulasFacultad.Models;
+using GestionPersonasFacultad.Mapeadores;
 using GestionProfesorsFacultad.Mapeadores;
+using GestionProgramasFacultad.Mapeadores;
 using Logica.DTO;
 using Logica.Implementacion;
 using PagedList;
@@ -25,7 +27,7 @@ namespace GestionProfesorsFacultad.Controllers
             IEnumerable<ProfesorDTO> listaDatos = logica.ListarRegistros(filtro, numPagina, registrosPorPagina, out totalRegistros);
             MapeadorProfesorGUI mapper = new MapeadorProfesorGUI();
             IEnumerable<ModeloProfesorGUI> listaGUI = mapper.MapearTipo1Tipo2(listaDatos);
-            var registrosPagina = listaGUI.ToPagedList(numPagina, registrosPorPagina);
+            
             var listaPagina = new StaticPagedList<ModeloProfesorGUI>(listaGUI, numPagina, registrosPorPagina, totalRegistros);
             return View(listaPagina);
         }
@@ -53,12 +55,27 @@ namespace GestionProfesorsFacultad.Controllers
             return View();
         }
 
+        private void ObtenerListadoProgramas(ModeloProfesorGUI modelo)
+        {
+            ImplProgramaLogica logicaPrograma = new ImplProgramaLogica();
+            IEnumerable<ProgramaDTO> listaDTO = logicaPrograma.ListarRegistros();
+            MapeadorProgramaGUI mapeador = new MapeadorProgramaGUI();
+            modelo.ListaProgramas = mapeador.MapearTipo1Tipo2(listaDTO);
+        }
+
+        private void ObtenerListadoPersonas(ModeloProfesorGUI modelo)
+        {
+            ImplPersonaLogica logicaPersona = new ImplPersonaLogica();
+            IEnumerable<PersonaDTO> listaDTO = logicaPersona.ListarRegistros();
+            MapeadorPersonaGUI mapeador = new MapeadorPersonaGUI();
+            modelo.ListaPersonas = mapeador.MapearTipo1Tipo2(listaDTO);
+        }
         // POST: Profesor/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre,PrimerApellido,SegundoApellido,Documento,Celular,Correo")] ModeloProfesorGUI modelo)
+        public ActionResult Create( ModeloProfesorGUI modelo)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +110,7 @@ namespace GestionProfesorsFacultad.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nombre,PrimerApellido,SegundoApellido,Documento,Celular,Correo")] ModeloProfesorGUI modelo)
+        public ActionResult Edit( ModeloProfesorGUI modelo)
         {
             if (ModelState.IsValid)
             {

@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using GestionAulasFacultad.Helpers;
 using GestionAulasFacultad.Models;
 using GestionInventariosFacultad.Mapeadores;
+using GestionTipoElementosFacultad.Mapeadores;
 using Logica.DTO;
 using Logica.Implementacion;
 using PagedList;
@@ -25,7 +26,7 @@ namespace GestionInventariosFacultad.Controllers
             IEnumerable<InventarioDTO> listaDatos = logica.ListarRegistros(filtro, numPagina, registrosPorPagina, out totalRegistros);
             MapeadorInventarioGUI mapper = new MapeadorInventarioGUI();
             IEnumerable<ModeloInventarioGUI> listaGUI = mapper.MapearTipo1Tipo2(listaDatos);
-            var registrosPagina = listaGUI.ToPagedList(numPagina, registrosPorPagina);
+            
             var listaPagina = new StaticPagedList<ModeloInventarioGUI>(listaGUI, numPagina, registrosPorPagina, totalRegistros);
             return View(listaPagina);
         }
@@ -50,15 +51,24 @@ namespace GestionInventariosFacultad.Controllers
         // GET: Inventario/Create
         public ActionResult Create()
         {
-            return View();
+            ModeloInventarioGUI modelo = new ModeloInventarioGUI();
+            ObtenerListadoTipoElementos(modelo);
+            return View(modelo);
         }
 
+        private void ObtenerListadoTipoElementos(ModeloInventarioGUI modelo)
+        {
+            ImplTipoElementoLogica logicaTipoElemento = new ImplTipoElementoLogica();
+            IEnumerable<TipoElementoDTO> listaDTO = logicaTipoElemento.ListarRegistros();
+            MapeadorTipoElementoGUI mapeador = new MapeadorTipoElementoGUI();
+            modelo.ListaTipoElementos = mapeador.MapearTipo1Tipo2(listaDTO);
+        }
         // POST: Inventario/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre,PrimerApellido,SegundoApellido,Documento,Celular,Correo")] ModeloInventarioGUI modelo)
+        public ActionResult Create( ModeloInventarioGUI modelo)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +103,7 @@ namespace GestionInventariosFacultad.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nombre,PrimerApellido,SegundoApellido,Documento,Celular,Correo")] ModeloInventarioGUI modelo)
+        public ActionResult Edit( ModeloInventarioGUI modelo)
         {
             if (ModelState.IsValid)
             {

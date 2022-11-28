@@ -4,7 +4,10 @@ using System.Net;
 using System.Web.Mvc;
 using GestionAsistenciasFacultad.Mapeadores;
 using GestionAulasFacultad.Helpers;
+using GestionAulasFacultad.Mapeadores;
 using GestionAulasFacultad.Models;
+using GestionMonitorsFacultad.Mapeadores;
+using GestionProfesorsFacultad.Mapeadores;
 using Logica.DTO;
 using Logica.Implementacion;
 using PagedList;
@@ -25,7 +28,7 @@ namespace GestionAsistenciasFacultad.Controllers
             IEnumerable<AsistenciaDTO> listaDatos = logica.ListarRegistros(filtro, numPagina, registrosPorPagina, out totalRegistros);
             MapeadorAsistenciaGUI mapper = new MapeadorAsistenciaGUI();
             IEnumerable<ModeloAsistenciaGUI> listaGUI = mapper.MapearTipo1Tipo2(listaDatos);
-            var registrosPagina = listaGUI.ToPagedList(numPagina, registrosPorPagina);
+            
             var listaPagina = new StaticPagedList<ModeloAsistenciaGUI>(listaGUI, numPagina, registrosPorPagina, totalRegistros);
             return View(listaPagina);
         }
@@ -49,8 +52,36 @@ namespace GestionAsistenciasFacultad.Controllers
 
         // GET: Asistencia/Create
         public ActionResult Create()
+        { 
+            ModeloAsistenciaGUI modelo = new ModeloAsistenciaGUI();
+            ObtenerListadoAulas(modelo);
+            ObtenerListadoMonitores(modelo);
+            ObtenerListadoProfesores(modelo);
+            return View(modelo);
+        }
+
+        private void ObtenerListadoProfesores(ModeloAsistenciaGUI modelo)
         {
-            return View();
+            ImplProfesorLogica logicaProfesor = new ImplProfesorLogica();
+            IEnumerable<ProfesorDTO> listaDTO = logicaProfesor.ListarRegistros();
+            MapeadorProfesorGUI mapeador = new MapeadorProfesorGUI();
+            modelo.ListaProfesores = mapeador.MapearTipo1Tipo2(listaDTO);
+        }
+
+        private void ObtenerListadoMonitores(ModeloAsistenciaGUI modelo)
+        {
+            ImplMonitorLogica logicaMonitor = new ImplMonitorLogica();
+            IEnumerable<MonitorDTO> listaDTO = logicaMonitor.ListarRegistros();
+            MapeadorMonitorGUI mapeador = new MapeadorMonitorGUI();
+            modelo.ListaMonitores = mapeador.MapearTipo1Tipo2(listaDTO);
+        }
+
+        private void ObtenerListadoAulas(ModeloAsistenciaGUI modelo)
+        {
+            ImplAulaLogica logicaAula = new ImplAulaLogica();
+            IEnumerable<AulaDTO> listaDTO = logicaAula.ListarRegistros();
+            MapeadorAulaGUI mapeador = new MapeadorAulaGUI();
+            modelo.ListaAulas = mapeador.MapearTipo1Tipo2(listaDTO);
         }
 
         // POST: Asistencia/Create
@@ -58,7 +89,7 @@ namespace GestionAsistenciasFacultad.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre,PrimerApellido,SegundoApellido,Documento,Celular,Correo")] ModeloAsistenciaGUI modelo)
+        public ActionResult Create( ModeloAsistenciaGUI modelo)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +124,7 @@ namespace GestionAsistenciasFacultad.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nombre,PrimerApellido,SegundoApellido,Documento,Celular,Correo")] ModeloAsistenciaGUI modelo)
+        public ActionResult Edit( ModeloAsistenciaGUI modelo)
         {
             if (ModelState.IsValid)
             {

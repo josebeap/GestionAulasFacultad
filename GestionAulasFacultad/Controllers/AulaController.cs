@@ -25,7 +25,7 @@ namespace GestionAulasFacultad.Controllers
             IEnumerable<AulaDTO> listaDatos = logica.ListarRegistros(filtro, numPagina, registrosPorPagina, out totalRegistros);
             MapeadorAulaGUI mapper = new MapeadorAulaGUI();
             IEnumerable<ModeloAulaGUI> listaGUI = mapper.MapearTipo1Tipo2(listaDatos);
-            var registrosPagina = listaGUI.ToPagedList(numPagina, registrosPorPagina);
+            
             var listaPagina = new StaticPagedList<ModeloAulaGUI>(listaGUI, numPagina, registrosPorPagina, totalRegistros);
             return View(listaPagina);
         }
@@ -58,7 +58,7 @@ namespace GestionAulasFacultad.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre,PrimerApellido,SegundoApellido,Documento,Celular,Correo")] ModeloAulaGUI modelo)
+        public ActionResult Create( ModeloAulaGUI modelo)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +93,7 @@ namespace GestionAulasFacultad.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nombre,PrimerApellido,SegundoApellido,Documento,Celular,Correo")] ModeloAulaGUI modelo)
+        public ActionResult Edit( ModeloAulaGUI modelo)
         {
             if (ModelState.IsValid)
             {

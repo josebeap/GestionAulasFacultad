@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +33,7 @@ namespace GestionAulasFacultad.Models
         }
         private int idMateria;
 
-        public int IdMateria
+        public int IdMateriaa
         {
             get { return idMateria; }
             set { idMateria = value; }
@@ -45,28 +46,52 @@ namespace GestionAulasFacultad.Models
             get { return codigoEstudiante; }
             set { codigoEstudiante = value; }
         }
-        private string nombreMateria;
-
-        public string NombreMateria
+        private string nombrePersona;
+        [DisplayName("Persona")]
+        public string NombrePersona
         {
-            get { return nombreMateria; }
-            set { nombreMateria = value; }
+            get { return nombrePersona; }
+            set { nombrePersona = value; }
         }
 
         private string nombrePrograma;
-
+        [DisplayName("Programa")]
         public string NombrePrograma
         {
             get { return nombrePrograma; }
             set { nombrePrograma = value; }
         }
 
-        private string nombrePersona;
-
-        public string NombrePersona
+        private string nombreMateria;
+        [DisplayName("Materia")]
+        public string NombreMateria
         {
-            get { return nombrePersona; }
-            set { nombrePersona = value; }
+            get { return nombreMateria; }
+            set { nombreMateria = value; }
+        }
+
+        private IEnumerable<ModeloProgramaGUI> modeloProgramaGUIs;
+
+        public IEnumerable<ModeloProgramaGUI> ListaProgramas
+        {
+            get { return modeloProgramaGUIs; }
+            set { modeloProgramaGUIs = value; }
+        }
+
+        private IEnumerable<ModeloMateriaGUI> modeloMateriaGUIs;
+
+        public IEnumerable<ModeloMateriaGUI> ListaMaterias
+        {
+            get { return modeloMateriaGUIs; }
+            set { modeloMateriaGUIs = value; }
+        }
+
+        private IEnumerable<ModeloPersonaGUI> modeloPersonaGUIs;
+
+        public IEnumerable<ModeloPersonaGUI> ListaPersonas
+        {
+            get { return modeloPersonaGUIs; }
+            set { modeloPersonaGUIs = value; }
         }
     }
 }

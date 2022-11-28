@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Net;
 using System.Web.Mvc;
 using GestionAulasFacultad.Helpers;
+using GestionAulasFacultad.Mapeadores;
 using GestionAulasFacultad.Models;
 using GestionClasesFacultad.Mapeadores;
+using GestionMateriasFacultad.Mapeadores;
+using GestionProfesorsFacultad.Mapeadores;
 using Logica.DTO;
 using Logica.Implementacion;
 using PagedList;
@@ -25,7 +28,7 @@ namespace GestionClasesFacultad.Controllers
             IEnumerable<ClaseDTO> listaDatos = logica.ListarRegistros(filtro, numPagina, registrosPorPagina, out totalRegistros);
             MapeadorClaseGUI mapper = new MapeadorClaseGUI();
             IEnumerable<ModeloClaseGUI> listaGUI = mapper.MapearTipo1Tipo2(listaDatos);
-            var registrosPagina = listaGUI.ToPagedList(numPagina, registrosPorPagina);
+            
             var listaPagina = new StaticPagedList<ModeloClaseGUI>(listaGUI, numPagina, registrosPorPagina, totalRegistros);
             return View(listaPagina);
         }
@@ -50,15 +53,45 @@ namespace GestionClasesFacultad.Controllers
         // GET: Clase/Create
         public ActionResult Create()
         {
-            return View();
+            ModeloClaseGUI modelo = new ModeloClaseGUI();
+            ObtenerListadoProfesores(modelo);
+            ObtenerListadoMaterias(modelo);
+            ObtenerListadoAulas(modelo);
+            return View(modelo);
         }
+
+
+        private void ObtenerListadoProfesores(ModeloClaseGUI modelo)
+        {
+            ImplProfesorLogica logicaProfesor = new ImplProfesorLogica();
+            IEnumerable<ProfesorDTO> listaDTO = logicaProfesor.ListarRegistros();
+            MapeadorProfesorGUI mapeador = new MapeadorProfesorGUI();
+            modelo.ListaProfesores = mapeador.MapearTipo1Tipo2(listaDTO);
+        }
+
+        private void ObtenerListadoAulas(ModeloClaseGUI modelo)
+        {
+            ImplAulaLogica logicaAula = new ImplAulaLogica();
+            IEnumerable<AulaDTO> listaDTO = logicaAula.ListarRegistros();
+            MapeadorAulaGUI mapeador = new MapeadorAulaGUI();
+            modelo.ListaAulas = mapeador.MapearTipo1Tipo2(listaDTO);
+        }
+
+        private void ObtenerListadoMaterias(ModeloClaseGUI modelo)
+        {
+            ImplMateriaLogica logicaMateria = new ImplMateriaLogica();
+            IEnumerable<MateriaDTO> listaDTO = logicaMateria.ListarRegistros();
+            MapeadorMateriaGUI mapeador = new MapeadorMateriaGUI();
+            modelo.ListaMaterias = mapeador.MapearTipo1Tipo2(listaDTO);
+        }
+
 
         // POST: Clase/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre,PrimerApellido,SegundoApellido,Documento,Celular,Correo")] ModeloClaseGUI modelo)
+        public ActionResult Create( ModeloClaseGUI modelo)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +126,7 @@ namespace GestionClasesFacultad.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nombre,PrimerApellido,SegundoApellido,Documento,Celular,Correo")] ModeloClaseGUI modelo)
+        public ActionResult Edit( ModeloClaseGUI modelo)
         {
             if (ModelState.IsValid)
             {
