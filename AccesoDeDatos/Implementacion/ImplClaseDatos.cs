@@ -59,7 +59,7 @@ namespace AccesoDeDatos.Implementacion
             try
             {
                 using (SoftwareBDEntities bd = new SoftwareBDEntities())
-                {
+                {/*
                     var filtradoPorMateria = bd.tb_clase.Where(x => x.id_materia.Equals(registro.IdMateria));
 
                     if (filtradoPorMateria.Count() != 0)
@@ -75,6 +75,7 @@ namespace AccesoDeDatos.Implementacion
                             }
                         }
                     }
+                    */
                     var reg = new MapeadorClaseDatos().MapearTipo2Tipo1(registro);
                     bd.tb_clase.Add(reg);
                     bd.SaveChanges();

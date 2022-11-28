@@ -60,7 +60,7 @@ namespace AccesoDeDatos.Implementacion
             try
             {
                 using (SoftwareBDEntities bd = new SoftwareBDEntities())
-                {
+                {/*
                     var filtradoPorAula = bd.tb_reserva.Where(x => x.id_aula.Equals(registro.IdAula));
 
                     if (filtradoPorAula.Count() != 0)
@@ -74,6 +74,7 @@ namespace AccesoDeDatos.Implementacion
                         }
 
                     }
+                    */
                     var reg = new MapeadorReservaDatos().MapearTipo2Tipo1(registro);
                     bd.tb_reserva.Add(reg);
                     bd.SaveChanges();

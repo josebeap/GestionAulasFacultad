@@ -22,9 +22,9 @@ namespace AccesoDeDatos.Mapeadores
                 CantidadHoras = entrada.cantidad_horas,
                 FechaHoraInicio=(DateTime)entrada.fecha_hora_inicio,
                 Estado=entrada.estado,
-                NombreMonitor = entrada.tb_monitor.tb_persona.primer_nombre + entrada.tb_monitor.tb_persona.primer_apellido,
-                NombreProfesor = entrada.tb_monitor.tb_persona.primer_nombre + entrada.tb_monitor.tb_persona.primer_apellido,
-                NombreAula=entrada.tb_aula.nombre
+                NombreMonitor = entrada.tb_monitor.tb_persona.primer_nombre + " " + entrada.tb_monitor.tb_persona.otros_nombres + " " + entrada.tb_monitor.tb_persona.primer_apellido,
+                NombreProfesor = entrada.tb_profesor.tb_persona.primer_nombre + " " + entrada.tb_profesor.tb_persona.otros_nombres + " " + entrada.tb_profesor.tb_persona.primer_apellido,
+                NombreAula =entrada.tb_aula.nombre
 
             };
         }
