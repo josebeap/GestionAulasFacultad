@@ -6,10 +6,10 @@
     "\\AccesoDeDatos\\Mapeadores",
     "\\GestionAulasFacultad",
     "\\GestionAulasFacultad\\Views",
-    "\\GestionAulasFacultad\\Views\\Auxiliar",
+    "\\GestionAulasFacultad\\Views\\Persona",
     "\\Logica",
     "\\Logica\\Implementacion"
   ],
-  "SelectedNode": "\\GestionAulasFacultad\\Views\\Auxiliar\\Index.cshtml",
+  "SelectedNode": "\\GestionAulasFacultad.sln",
   "PreviewInSolutionExplorer": false
 }

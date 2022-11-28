@@ -17,7 +17,7 @@ namespace AccesoDeDatos.Mapeadores
             {
                 Id = entrada.id,
                 IdPersona=entrada.id_persona,
-                NombrePersona=entrada.tb_persona.primer_nombre+ entrada.tb_persona.primer_apellido,
+                NombrePersona = entrada.tb_persona.primer_nombre + " " + entrada.tb_persona.otros_nombres + " " + entrada.tb_persona.primer_apellido,
                 Funcion =entrada.funcion
             };
         }

@@ -77,6 +77,11 @@
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>
+
+
 }
 
 </table>
+<div>
+    @Html.ActionLink("Crear persona", "Create", new { }, new { @class = "btn btn-primary" })
+</div>

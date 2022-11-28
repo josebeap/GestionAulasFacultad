@@ -22,7 +22,7 @@ namespace AccesoDeDatos.Mapeadores
                 CodigoEstudiante = entrada.codigo_estudiante,
                 NombreMateria=entrada.tb_materia.nombre,
                 NombrePrograma=entrada.tb_programa.nombre,
-                NombrePersona=entrada.tb_persona.primer_nombre+entrada.tb_persona.primer_apellido
+                NombrePersona=entrada.tb_persona.primer_nombre+" "+ entrada.tb_persona.otros_nombres+" "+entrada.tb_persona.primer_apellido
 
             };
         }

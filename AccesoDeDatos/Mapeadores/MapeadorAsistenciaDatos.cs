@@ -46,7 +46,7 @@ namespace AccesoDeDatos.Mapeadores
                 id_profesor = entrada.IdProfesor,
                 fecha_hora_inicio = entrada.FechaHoraInicio,
                 fecha_hora_fin = entrada.FechaHoraFin,
-                estado = entrada.Estado,
+                estado = entrada.Estado
                
             };
         }

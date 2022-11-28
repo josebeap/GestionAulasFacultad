@@ -18,14 +18,15 @@ namespace AccesoDeDatos.Mapeadores
             {
                 Id = entrada.id,
                 PrimerNombre = entrada.primer_nombre,
-                OtrosNombres=entrada.otros_nombres,
-                PrimerApellido=entrada.primer_apellido,
-                SegundoApellido=entrada.segundo_apellido,
-                DocumentoIdentidad=entrada.documentoIdentidad,
-                Celular=entrada.celular,
-                Email=entrada.email,
-                Foto=entrada.foto,
-                Huella=entrada.huella
+                OtrosNombres = entrada.otros_nombres,
+                PrimerApellido = entrada.primer_apellido,
+                SegundoApellido = entrada.segundo_apellido,
+                DocumentoIdentidad = entrada.documentoIdentidad,
+                Celular = entrada.celular,
+                Email = entrada.email,
+                Foto = entrada.foto,
+                Huella = entrada.huella,
+                NombreCompleto = entrada.primer_nombre +" " +entrada.otros_nombres + " " + entrada.primer_apellido
             };
         }
 

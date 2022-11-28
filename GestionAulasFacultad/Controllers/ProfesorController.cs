@@ -52,7 +52,10 @@ namespace GestionProfesorsFacultad.Controllers
         // GET: Profesor/Create
         public ActionResult Create()
         {
-            return View();
+            ModeloProfesorGUI model = new ModeloProfesorGUI();
+            ObtenerListadoPersonas(model);
+            ObtenerListadoProgramas(model);
+            return View(model);
         }
 
         private void ObtenerListadoProgramas(ModeloProfesorGUI modelo)

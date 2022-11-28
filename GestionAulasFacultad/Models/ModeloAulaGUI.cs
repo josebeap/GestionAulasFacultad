@@ -65,6 +65,9 @@ namespace GestionAulasFacultad.Models
             set { disponibilidad = value; }
         }
 
-
+        public override string ToString()
+        {
+            return Nombre;
+        }
     }
 }

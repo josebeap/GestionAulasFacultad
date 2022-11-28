@@ -12,22 +12,22 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.nombre)
+            @Html.DisplayNameFor(model => model.Nombre)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.tipo_aula)
+            @Html.DisplayNameFor(model => model.TipoAula)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.capacidad)
+            @Html.DisplayNameFor(model => model.Capacidad)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.cantidad_computadores)
+            @Html.DisplayNameFor(model => model.CantidadComputadores)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.multimedia)
+            @Html.DisplayNameFor(model => model.Multimedia)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.disponibilidad)
+            @Html.DisplayNameFor(model => model.Disponibilidad)
         </th>
         <th></th>
     </tr>
@@ -35,29 +35,32 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.nombre)
+            @Html.DisplayFor(modelItem => item.Nombre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.tipo_aula)
+            @Html.DisplayFor(modelItem => item.TipoAula)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.capacidad)
+            @Html.DisplayFor(modelItem => item.Capacidad)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.cantidad_computadores)
+            @Html.DisplayFor(modelItem => item.CantidadComputadores)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.multimedia)
+            @Html.DisplayFor(modelItem => item.Multimedia)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.disponibilidad)
+            @Html.DisplayFor(modelItem => item.Disponibilidad)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>
 }
 
 </table>
+<div>
+    @Html.ActionLink("Crear aula", "Create", new { }, new { @class = "btn btn-primary" })
+</div>

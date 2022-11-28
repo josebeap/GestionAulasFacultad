@@ -80,6 +80,13 @@ namespace Logica.DTO
             set { huella = value; }
         }
 
+        private string nombreCompleto;
+
+        public string NombreCompleto
+        {
+            get { return nombreCompleto; }
+            set { nombreCompleto = value; }
+        }
 
     }
 }

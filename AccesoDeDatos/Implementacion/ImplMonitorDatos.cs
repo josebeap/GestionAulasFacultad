@@ -23,9 +23,10 @@ namespace AccesoDeDatos.Implementacion
             using (SoftwareBDEntities bd = new SoftwareBDEntities())
             {
                 int regDescartados = (paginaActual - 1) * numRegistrosPorPagina;
-                var listaDatos = (from m in bd.tb_monitor
-                                  where m.id_persona.Equals(from x in bd.tb_persona where x.primer_nombre.Contains(filtro) select x.id)
-                                  select m).ToList();
+               // var listaDatos = (from m in bd.tb_monitor
+                 //                 where m.id_persona.Equals(from x in bd.tb_persona where x.primer_nombre.Contains(filtro) select x.id)
+                   //               select m).ToList();
+                var listaDatos = (from m in bd.tb_monitor select m).ToList();
                 totalRegistros = listaDatos.Count();
                 listaDatos = listaDatos.OrderBy(m => m.id).Skip(regDescartados).Take(numRegistrosPorPagina).ToList();
                 lista = new MapeadorMonitorDatos().MapearTipo1Tipo2(listaDatos).ToList();

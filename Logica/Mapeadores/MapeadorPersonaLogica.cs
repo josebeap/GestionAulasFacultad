@@ -23,7 +23,8 @@ namespace Logica.Mapeadores
                 Celular = entrada.Celular,
                 Email = entrada.Email,
                 Foto = entrada.Foto,
-                Huella = entrada.Huella
+                Huella = entrada.Huella,
+                NombreCompleto=entrada.NombreCompleto
 
             };
         }

@@ -12,19 +12,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.id_materia)
+            @Html.DisplayNameFor(model => model.NombreMateria)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.cantidad_horas)
+            @Html.DisplayNameFor(model => model.CantidadHoras)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.fecha_hora_inicio)
+            @Html.DisplayNameFor(model => model.FechaHoraInicio)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.tb_aula.nombre)
+            @Html.DisplayNameFor(model => model.NombreAula)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.tb_profesor.id)
+            @Html.DisplayNameFor(model => model.NombreProfesor)
         </th>
         <th></th>
     </tr>
@@ -32,26 +32,29 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.id_materia)
+            @Html.DisplayFor(modelItem => item.IdMateria)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.cantidad_horas)
+            @Html.DisplayFor(modelItem => item.CantidadHoras)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.fecha_hora_inicio)
+            @Html.DisplayFor(modelItem => item.FechaHoraInicio)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.tb_aula.nombre)
+            @Html.DisplayFor(modelItem => item.NombreAula)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.tb_profesor.id)
+            @Html.DisplayFor(modelItem => item.NombreProfesor)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>
 }
 
 </table>
+<div>
+    @Html.ActionLink("Crear clase", "Create", new { }, new { @class = "btn btn-primary" })
+</div>

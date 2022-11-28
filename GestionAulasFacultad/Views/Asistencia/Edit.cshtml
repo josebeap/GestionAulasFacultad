@@ -18,26 +18,26 @@
         @Html.HiddenFor(model => model.Id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NombreMonitor, "NombreMonitor", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.NombreMonitor, "Nombre Monitor", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("NombreMonitor", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.NombreMonitor, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.IdMonitor, new SelectList(Model.ListaMonitores, "Id","NombrePersona"), htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IdMonitor, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NombreProfesor, "NombreProfesor", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.NombreProfesor, "Nombre Profesor", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("NombreProfesor", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.NombreProfesor, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.IdProfesor, new SelectList(Model.ListaProfesores, "Id","NombrePersona"), htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IdProfesor, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NombreAula, "NombreAula", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.NombreAula, "Nombre Aula", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("NombreAula", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.NombreAula, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.IdAula, new SelectList(Model.ListaAulas, "Id","Nombre"), htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IdAula, "", new { @class = "text-danger" })
             </div>
         </div>
 

@@ -80,6 +80,15 @@ namespace AccesoDeDatos.DbModel
             set { huella = value; }
         }
 
+        private string nombreCompleto;
+
+        public string NombreCompleto
+        {
+            get { return nombreCompleto; }
+            set { nombreCompleto = value; }
+        }
+
+
 
     }
 }

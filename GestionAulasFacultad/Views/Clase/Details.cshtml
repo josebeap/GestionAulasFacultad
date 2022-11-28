@@ -11,48 +11,48 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.id_materia)
+            @Html.DisplayNameFor(model => model.NombreMateria)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.id_materia)
+            @Html.DisplayFor(model => model.NombreMateria)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.cantidad_horas)
+            @Html.DisplayNameFor(model => model.CantidadHoras)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.cantidad_horas)
+            @Html.DisplayFor(model => model.CantidadHoras)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.fecha_hora_inicio)
+            @Html.DisplayNameFor(model => model.FechaHoraInicio)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.fecha_hora_inicio)
+            @Html.DisplayFor(model => model.FechaHoraInicio)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.tb_aula.nombre)
+            @Html.DisplayNameFor(model => model.NombreAula)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.tb_aula.nombre)
+            @Html.DisplayFor(model => model.NombreAula)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.tb_profesor.id)
+            @Html.DisplayNameFor(model => model.NombreProfesor)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.tb_profesor.id)
+            @Html.DisplayFor(model => model.NombreProfesor)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

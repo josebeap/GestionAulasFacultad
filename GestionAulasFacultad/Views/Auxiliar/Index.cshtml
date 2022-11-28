@@ -15,7 +15,7 @@
             @Html.DisplayNameFor(model => model.Funcion)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NombrePersona)
+            @Html.DisplayNameFor(model => model.IdPersona)
         </th>
         <th></th>
     </tr>
@@ -26,7 +26,7 @@
             @Html.DisplayFor(modelItem => item.Funcion)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.NombrePersona)
+            @Html.DisplayFor(modelItem => item.IdPersona)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
@@ -37,3 +37,6 @@
 }
 
 </table>
+<div>
+    @Html.ActionLink("Crear auxiliar", "Create", new { }, new { @class = "btn btn-primary" })
+</div>

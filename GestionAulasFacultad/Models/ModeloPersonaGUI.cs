@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace GestionAulasFacultad.Models
         }
 
         private string primerNombre;
-
+        [DisplayName("Primer nombre")]
         public string PrimerNombre
         {
             get { return primerNombre; }
@@ -79,7 +80,13 @@ namespace GestionAulasFacultad.Models
             get { return huella; }
             set { huella = value; }
         }
+        private string nombreCompleto;
 
+        public string NombreCompleto
+        {
+            get { return nombreCompleto; }
+            set { nombreCompleto = value; }
+        }
 
     }
 }

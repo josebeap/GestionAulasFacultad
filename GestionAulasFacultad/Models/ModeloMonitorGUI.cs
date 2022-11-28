@@ -33,7 +33,7 @@ namespace GestionAulasFacultad.Models
         }
         private int idMateria;
 
-        public int IdMateriaa
+        public int IdMateria
         {
             get { return idMateria; }
             set { idMateria = value; }
