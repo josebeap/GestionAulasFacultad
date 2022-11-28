@@ -17,14 +17,36 @@ namespace AccesoDeDatos.Implementacion
         /// </summary>
         /// <param name="filtro">Filtro a aplicar</param>
         /// <returns>Lista de registros con el filtro aplicado</returns>
-        public IEnumerable<ReservaDbModel> ListarRegistros(String filtro)
+        public IEnumerable<ReservaDbModel> ListarRegistros(String filtro, int paginaActual, int numRegistrosPorPagina, out int totalRegistros)
         {
-            var lista = new List<tb_reserva>();
+            var lista = new List<ReservaDbModel>();
             using (SoftwareBDEntities bd = new SoftwareBDEntities())
             {
-                lista= bd.tb_reserva.ToList();
+                int regDescartados = (paginaActual - 1) * numRegistrosPorPagina;
+                var listaDatos = (from m in bd.tb_reserva
+                                  where m.tb_aula.Equals(from x in bd.tb_aula where x.nombre.Contains(filtro) select x.id)
+                                  select m).ToList();
+                totalRegistros = listaDatos.Count();
+                listaDatos = listaDatos.OrderBy(m => m.id).Skip(regDescartados).Take(numRegistrosPorPagina).ToList();
+                lista = new MapeadorReservaDatos().MapearTipo1Tipo2(listaDatos).ToList();
+
             }
-            return new MapeadorReservaDatos().MapearTipo1Tipo2(lista);
+            return lista;
+        }
+
+        public IEnumerable<ReservaDbModel> ListarRegistros()
+        {
+            var lista = new List<ReservaDbModel>();
+            using (SoftwareBDEntities bd = new SoftwareBDEntities())
+            {
+                var listaDatos = (from m in bd.tb_reserva
+
+                                  select m).ToList();
+
+                lista = new MapeadorReservaDatos().MapearTipo1Tipo2(listaDatos).ToList();
+
+            }
+            return lista;
         }
 
         /// <summary>

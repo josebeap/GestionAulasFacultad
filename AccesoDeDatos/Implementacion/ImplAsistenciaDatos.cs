@@ -17,14 +17,40 @@ namespace AccesoDeDatos.Implementacion
         /// </summary>
         /// <param name="filtro">Filtro a aplicar</param>
         /// <returns>Lista de registros con el filtro aplicado</returns>
-        public IEnumerable<AsistenciaDbModel> ListarRegistros(String filtro)
+        public IEnumerable<AsistenciaDbModel> ListarRegistros(String filtro, int paginaActual, int numRegistrosPorPagina, out int totalRegistros)
         {
-            var lista = new List<tb_asistencia>();
+            var lista = new List<AsistenciaDbModel>();
             using (SoftwareBDEntities bd = new SoftwareBDEntities())
             {
-                lista = bd.tb_asistencia.ToList();
+                int regDescartados = (paginaActual - 1) * numRegistrosPorPagina;
+                var listaDatos = (from m in bd.tb_asistencia
+                                  where m.id_profesor.Equals(from x in bd.tb_profesor 
+                                                             where x.id_persona.Equals(from y in bd.tb_persona
+                                                                                       where y.primer_nombre.Contains(filtro)
+                                                                                       select y.id)
+                                                             select x.id)
+                                  select m).ToList();
+                totalRegistros = listaDatos.Count();
+                listaDatos = listaDatos.OrderBy(m => m.id).Skip(regDescartados).Take(numRegistrosPorPagina).ToList();
+                lista = new MapeadorAsistenciaDatos().MapearTipo1Tipo2(listaDatos).ToList();
+
             }
-            return new MapeadorAsistenciaDatos().MapearTipo1Tipo2(lista);
+            return lista;
+        }
+
+        public IEnumerable<AsistenciaDbModel> ListarRegistros()
+        {
+            var lista = new List<AsistenciaDbModel>();
+            using (SoftwareBDEntities bd = new SoftwareBDEntities())
+            {
+                var listaDatos = (from m in bd.tb_asistencia
+
+                                  select m).ToList();
+
+                lista = new MapeadorAsistenciaDatos().MapearTipo1Tipo2(listaDatos).ToList();
+
+            }
+            return lista;
         }
 
         /// <summary>

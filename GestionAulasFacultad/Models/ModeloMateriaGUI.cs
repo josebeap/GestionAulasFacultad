@@ -32,6 +32,12 @@ namespace GestionAulasFacultad.Models
             set { idPrograma = value; }
         }
 
+        private string nombrePrograma;
 
+        public string NombrePrograma
+        {
+            get { return nombrePrograma; }
+            set { nombrePrograma = value; }
+        }
     }
 }

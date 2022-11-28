@@ -13,7 +13,9 @@ namespace GestionMateriasFacultad.Mapeadores
             {
                 Id = entrada.Id,
                 Nombre = entrada.Nombre,
-                IdPrograma = entrada.IdPrograma
+                IdPrograma = entrada.IdPrograma,
+
+                NombrePrograma = entrada.NombrePrograma
             };
         }
 

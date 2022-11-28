@@ -21,7 +21,10 @@ namespace AccesoDeDatos.Mapeadores
                 IdProfesor=(int)entrada.id_profesor,
                 FechaHoraInicio=(DateTime)entrada.fecha_hora_inicio,
                 FechaHoraFin=(DateTime)entrada.fecha_hora_fin,
-                Estado=entrada.estado 
+                Estado=entrada.estado,
+                NombreAula=entrada.tb_aula.nombre,
+                NombreMonitor=entrada.tb_monitor.tb_persona.primer_nombre+ entrada.tb_monitor.tb_persona.primer_apellido,
+                NombreProfesor = entrada.tb_monitor.tb_persona.primer_nombre + entrada.tb_monitor.tb_persona.primer_apellido
             };
         }
 
@@ -43,7 +46,8 @@ namespace AccesoDeDatos.Mapeadores
                 id_profesor = entrada.IdProfesor,
                 fecha_hora_inicio = entrada.FechaHoraInicio,
                 fecha_hora_fin = entrada.FechaHoraFin,
-                estado = entrada.Estado
+                estado = entrada.Estado,
+               
             };
         }
 

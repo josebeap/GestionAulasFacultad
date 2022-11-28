@@ -24,6 +24,14 @@ namespace AccesoDeDatos.DbModel
             set { idMonitor = value; }
         }
 
+        private string nombreMonitor;
+
+        public string NombreMonitor
+        {
+            get { return nombreMonitor; }
+            set { nombreMonitor = value; }
+        }
+
         private int idProfesor;
 
         public int IdProfesor
@@ -32,12 +40,28 @@ namespace AccesoDeDatos.DbModel
             set { idProfesor = value; }
         }
 
+        private string nombreProfesor;
+
+        public string NombreProfesor
+        {
+            get { return nombreProfesor; }
+            set { nombreProfesor = value; }
+        }
+
         private int idAula;
 
         public int IdAula
         {
             get { return idAula; }
             set { idAula = value; }
+        }
+
+        private string nombreAula;
+
+        public string NombreAula
+        {
+            get { return nombreAula; }
+            set { nombreAula = value; }
         }
 
         private DateTime fechaHoraInicio;

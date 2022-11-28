@@ -17,19 +17,36 @@ namespace AccesoDeDatos.Implementacion
         /// </summary>
         /// <param name="filtro">Filtro a aplicar</param>
         /// <returns>Lista de registros con el filtro aplicado</returns>
-        public IEnumerable<TipoElementoDbModel> ListarRegistros(String filtro)
+        public IEnumerable<TipoElementoDbModel> ListarRegistros(String filtro, int paginaActual, int numRegistrosPorPagina, out int totalRegistros)
         {
-            var lista = new List<tb_tipoelemento>();
+            var lista = new List<TipoElementoDbModel>();
             using (SoftwareBDEntities bd = new SoftwareBDEntities())
             {
-                // lista = bd.tb_tipoelemento.Where(x => x.nombre.ToUpper().Contains(filtro.ToUpper())).ToList();
-                lista = (
-                    from c in bd.tb_tipoelemento
-                    where c.nombre.Contains(filtro)
-                    select c
-                    ).ToList();
+                int regDescartados = (paginaActual - 1) * numRegistrosPorPagina;
+                var listaDatos = (from m in bd.tb_tipoelemento
+                                  where m.nombre.Contains(filtro)
+                                  select m).ToList();
+                totalRegistros = listaDatos.Count();
+                listaDatos = listaDatos.OrderBy(m => m.id).Skip(regDescartados).Take(numRegistrosPorPagina).ToList();
+                lista = new MapeadorTipoElementoDatos().MapearTipo1Tipo2(listaDatos).ToList();
+
             }
-            return new MapeadorTipoElementoDatos().MapearTipo1Tipo2(lista);
+            return lista;
+        }
+
+        public IEnumerable<TipoElementoDbModel> ListarRegistros()
+        {
+            var lista = new List<TipoElementoDbModel>();
+            using (SoftwareBDEntities bd = new SoftwareBDEntities())
+            {
+                var listaDatos = (from m in bd.tb_tipoelemento
+
+                                  select m).ToList();
+
+                lista = new MapeadorTipoElementoDatos().MapearTipo1Tipo2(listaDatos).ToList();
+
+            }
+            return lista;
         }
 
         /// <summary>

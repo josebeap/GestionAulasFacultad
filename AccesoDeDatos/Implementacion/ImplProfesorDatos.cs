@@ -17,27 +17,38 @@ namespace AccesoDeDatos.Implementacion
         /// </summary>
         /// <param name="filtro">Filtro a aplicar</param>
         /// <returns>Lista de registros con el filtro aplicado</returns>
-        public IEnumerable<ProfesorDbModel> ListarRegistros(String filtro)
+        public IEnumerable<ProfesorDbModel> ListarRegistros(String filtro, int paginaActual, int numRegistrosPorPagina, out int totalRegistros)
         {
-            var lista = new List<tb_profesor>();
-            var listaPersonas = new List<tb_persona>();
+            var lista = new List<ProfesorDbModel>();
             using (SoftwareBDEntities bd = new SoftwareBDEntities())
             {
-                // lista = bd.tb_profesor.Where(x => x.nombre.ToUpper().Contains(filtro.ToUpper())).ToList();
-                listaPersonas = (
-                    from c in bd.tb_persona
-                    where c.primer_nombre.Contains(filtro)
-                    select c
-                    ).ToList();
+                int regDescartados = (paginaActual - 1) * numRegistrosPorPagina;
+                var listaDatos = (from m in bd.tb_profesor
+                                  where m.id_persona.Equals(from x in bd.tb_persona where x.primer_nombre.Contains(filtro) select x.id)
+                                  select m).ToList();
+                totalRegistros = listaDatos.Count();
+                listaDatos = listaDatos.OrderBy(m => m.id).Skip(regDescartados).Take(numRegistrosPorPagina).ToList();
+                lista = new MapeadorProfesorDatos().MapearTipo1Tipo2(listaDatos).ToList();
 
-                foreach (var i in listaPersonas)
-                {
-                    lista.Add((tb_profesor)bd.tb_profesor.Where(x => x.id_persona.Equals(i.id)));
-                }
             }
-            return new MapeadorProfesorDatos().MapearTipo1Tipo2(lista);
+            return lista;
         }
 
+
+        public IEnumerable<ProfesorDbModel> ListarRegistros()
+        {
+            var lista = new List<ProfesorDbModel>();
+            using (SoftwareBDEntities bd = new SoftwareBDEntities())
+            {
+                var listaDatos = (from m in bd.tb_profesor
+
+                                  select m).ToList();
+
+                lista = new MapeadorProfesorDatos().MapearTipo1Tipo2(listaDatos).ToList();
+
+            }
+            return lista;
+        }
         /// <summary>
         /// Método para almacenar un registro
         /// </summary>

@@ -20,7 +20,10 @@ namespace Logica.Mapeadores
                 IdProfesor = entrada.IdProfesor,
                 FechaHoraInicio = entrada.FechaHoraInicio,
                 FechaHoraFin = entrada.FechaHoraFin,
-                Estado = entrada.Estado
+                Estado = entrada.Estado,
+                NombreAula= entrada.NombreAula,
+                NombreMonitor=entrada.NombreMonitor,
+                NombreProfesor=entrada.NombreProfesor
 
             };
         }

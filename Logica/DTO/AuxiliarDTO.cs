@@ -32,6 +32,14 @@ namespace Logica.DTO
             set { funcion = value; }
         }
 
+        private string nombrePersona;
+
+        public string NombrePersona
+        {
+            get { return nombrePersona; }
+            set { nombrePersona = value; }
+        }
+
 
     }
 }

@@ -13,7 +13,9 @@ namespace GestionProfesorsFacultad.Mapeadores
             {
                 Id = entrada.Id,
                 IdPersona = entrada.IdPersona,
-                IdPrograma = entrada.IdPrograma
+                IdPrograma = entrada.IdPrograma,
+                NombrePrograma = entrada.NombrePrograma,
+                NombrePersona = entrada.NombrePersona
             };
         }
 

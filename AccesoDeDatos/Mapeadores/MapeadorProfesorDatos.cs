@@ -17,7 +17,10 @@ namespace AccesoDeDatos.Mapeadores
             {
                 Id = entrada.id,
                 IdPersona=entrada.id_persona,
-                IdPrograma=entrada.id_programa
+                IdPrograma=entrada.id_programa,
+                NombrePersona = entrada.tb_persona.primer_nombre + entrada.tb_persona.primer_apellido,
+                NombrePrograma=entrada.tb_programa.nombre
+                
             };
         }
 

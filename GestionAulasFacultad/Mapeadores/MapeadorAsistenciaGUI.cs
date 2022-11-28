@@ -18,7 +18,10 @@ namespace GestionAsistenciasFacultad.Mapeadores
                 IdProfesor = entrada.IdProfesor,
                 FechaHoraInicio = entrada.FechaHoraInicio,
                 FechaHoraFin = entrada.FechaHoraFin,
-                Estado = entrada.Estado
+                Estado = entrada.Estado,
+                NombreProfesor = entrada.NombreProfesor,
+                NombreMonitor = entrada.NombreMonitor, 
+                NombreAula = entrada.NombreAula
             };
         }
 

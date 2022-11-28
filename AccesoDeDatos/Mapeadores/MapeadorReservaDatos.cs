@@ -21,7 +21,11 @@ namespace AccesoDeDatos.Mapeadores
                 IdAula = (int)entrada.id_aula,
                 CantidadHoras = entrada.cantidad_horas,
                 FechaHoraInicio=(DateTime)entrada.fecha_hora_inicio,
-                Estado=entrada.estado
+                Estado=entrada.estado,
+                NombreMonitor = entrada.tb_monitor.tb_persona.primer_nombre + entrada.tb_monitor.tb_persona.primer_apellido,
+                NombreProfesor = entrada.tb_monitor.tb_persona.primer_nombre + entrada.tb_monitor.tb_persona.primer_apellido,
+                NombreAula=entrada.tb_aula.nombre
+
             };
         }
 

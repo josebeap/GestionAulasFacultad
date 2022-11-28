@@ -20,7 +20,11 @@ namespace AccesoDeDatos.Mapeadores
                 IdMateria = entrada.id_materia,
                 IdAula = (int)entrada.id_aula, 
                 CantidadHoras = entrada.cantidad_horas,
-                FechaHoraInicio=entrada.fecha_hora_inicio
+                FechaHoraInicio=entrada.fecha_hora_inicio,
+                NombreAula=entrada.tb_aula.nombre,
+                NombreProfesor=entrada.tb_profesor.tb_persona.primer_nombre+ entrada.tb_profesor.tb_persona.primer_apellido,
+                
+                
             };
         }
 

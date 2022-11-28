@@ -19,7 +19,10 @@ namespace Logica.Mapeadores
                 IdMateria = entrada.IdMateria,
                 IdAula = entrada.IdAula,
                 CantidadHoras = entrada.CantidadHoras,
-                FechaHoraInicio = entrada.FechaHoraInicio
+                FechaHoraInicio = entrada.FechaHoraInicio,
+                NombreAula=entrada.NombreAula,
+                NombreMateria=entrada.NombreMateria,
+                NombreProfesor=entrada.NombreProfesor
 
             };
         }

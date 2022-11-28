@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DTO\ModeloAsistenciaDTO.cs" />
+    <Compile Include="DTO\AsistenciaDTO.cs" />
     <Compile Include="DTO\AulaDTO.cs" />
     <Compile Include="DTO\AuxiliarDTO.cs" />
     <Compile Include="DTO\ClaseDTO.cs" />

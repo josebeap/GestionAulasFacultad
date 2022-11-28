@@ -16,6 +16,7 @@ namespace Logica.Mapeadores
             {
                 Id = entrada.Id,
                 IdPersona = entrada.IdPersona,
+                NombrePersona = entrada.NombrePersona,
                 Funcion = entrada.Funcion
 
             };

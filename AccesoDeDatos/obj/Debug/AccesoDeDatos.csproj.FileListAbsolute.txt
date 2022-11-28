@@ -1,2 +1,12 @@
+E:\SoftwareII\GestionAulasFacultad\AccesoDeDatos\bin\Debug\AccesoDeDatos.dll.config
+E:\SoftwareII\GestionAulasFacultad\AccesoDeDatos\bin\Debug\AccesoDeDatos.dll
+E:\SoftwareII\GestionAulasFacultad\AccesoDeDatos\bin\Debug\AccesoDeDatos.pdb
+E:\SoftwareII\GestionAulasFacultad\AccesoDeDatos\bin\Debug\EntityFramework.dll
+E:\SoftwareII\GestionAulasFacultad\AccesoDeDatos\bin\Debug\EntityFramework.SqlServer.dll
+E:\SoftwareII\GestionAulasFacultad\AccesoDeDatos\bin\Debug\EntityFramework.xml
+E:\SoftwareII\GestionAulasFacultad\AccesoDeDatos\bin\Debug\EntityFramework.SqlServer.xml
 E:\SoftwareII\GestionAulasFacultad\AccesoDeDatos\obj\Debug\AccesoDeDatos.csproj.AssemblyReference.cache
 E:\SoftwareII\GestionAulasFacultad\AccesoDeDatos\obj\Debug\AccesoDeDatos.csproj.CoreCompileInputs.cache
+E:\SoftwareII\GestionAulasFacultad\AccesoDeDatos\obj\Debug\AccesoDeDatos.csproj.CopyComplete
+E:\SoftwareII\GestionAulasFacultad\AccesoDeDatos\obj\Debug\AccesoDeDatos.dll
+E:\SoftwareII\GestionAulasFacultad\AccesoDeDatos\obj\Debug\AccesoDeDatos.pdb

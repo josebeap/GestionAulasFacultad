@@ -11,56 +11,56 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.fecha_hora_inicio)
+            @Html.DisplayNameFor(model => model.FechaHoraInicio)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.fecha_hora_inicio)
+            @Html.DisplayFor(model => model.FechaHoraInicio)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.fecha_hora_fin)
+            @Html.DisplayNameFor(model => model.FechaHoraFin)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.fecha_hora_fin)
+            @Html.DisplayFor(model => model.FechaHoraFin)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.estado)
+            @Html.DisplayNameFor(model => model.Estado)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.estado)
+            @Html.DisplayFor(model => model.Estado)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.tb_aula.nombre)
+            @Html.DisplayNameFor(model => model.NombreAula)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.tb_aula.nombre)
+            @Html.DisplayFor(model => model.NombreAula)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.tb_monitor.codigo_estudiante)
+            @Html.DisplayNameFor(model => model.NombreMonitor)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.tb_monitor.codigo_estudiante)
+            @Html.DisplayFor(model => model.NombreMonitor)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.tb_profesor.id)
+            @Html.DisplayNameFor(model => model.NombreProfesor)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.tb_profesor.id)
+            @Html.DisplayFor(model => model.NombreProfesor)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

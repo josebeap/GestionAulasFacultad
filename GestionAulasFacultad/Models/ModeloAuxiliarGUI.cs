@@ -24,6 +24,15 @@ namespace GestionAulasFacultad.Models
             set { idPersona = value; }
         }
 
+        private string nombrePersona;
+
+        public string NombrePersona
+        {
+            get { return nombrePersona; }
+            set { nombrePersona = value; }
+        }
+
+
         private string funcion;
 
         public string Funcion

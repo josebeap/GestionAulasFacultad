@@ -18,7 +18,10 @@ namespace Logica.Mapeadores
                 IdPersona = entrada.IdPersona,
                 IdPrograma = entrada.IdPrograma,
                 IdMateria = entrada.IdMateria,
-                CodigoEstudiante = entrada.CodigoEstudiante
+                CodigoEstudiante = entrada.CodigoEstudiante,
+                NombrePrograma=entrada.NombrePrograma,
+                NombreMateria=entrada.NombreMateria,
+                NombrePersona=entrada.NombrePersona
 
             };
         }

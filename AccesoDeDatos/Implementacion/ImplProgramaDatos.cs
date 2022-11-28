@@ -17,18 +17,36 @@ namespace AccesoDeDatos.Implementacion
         /// </summary>
         /// <param name="filtro">Filtro a aplicar</param>
         /// <returns>Lista de registros con el filtro aplicado</returns>
-        public IEnumerable<ProgramaDbModel> ListarRegistros(String filtro)
+        public IEnumerable<ProgramaDbModel> ListarRegistros(String filtro, int paginaActual, int numRegistrosPorPagina, out int totalRegistros)
         {
-            var lista = new List<tb_programa>();
+            var lista = new List<ProgramaDbModel>();
             using (SoftwareBDEntities bd = new SoftwareBDEntities())
             {
-                lista = (
-                    from c in bd.tb_programa
-                    where c.nombre.Contains(filtro)
-                    select c
-                    ).ToList();
+                int regDescartados = (paginaActual - 1) * numRegistrosPorPagina;
+                var listaDatos = (from m in bd.tb_programa
+                                  where m.nombre.Contains(filtro)
+                                  select m).ToList();
+                totalRegistros = listaDatos.Count();
+                listaDatos = listaDatos.OrderBy(m => m.id).Skip(regDescartados).Take(numRegistrosPorPagina).ToList();
+                lista = new MapeadorProgramaDatos().MapearTipo1Tipo2(listaDatos).ToList();
+
             }
-            return new MapeadorProgramaDatos().MapearTipo1Tipo2(lista);
+            return lista;
+        }
+
+        public IEnumerable<ProgramaDbModel> ListarRegistros()
+        {
+            var lista = new List<ProgramaDbModel>();
+            using (SoftwareBDEntities bd = new SoftwareBDEntities())
+            {
+                var listaDatos = (from m in bd.tb_programa
+
+                                  select m).ToList();
+
+                lista = new MapeadorProgramaDatos().MapearTipo1Tipo2(listaDatos).ToList();
+
+            }
+            return lista;
         }
 
         /// <summary>

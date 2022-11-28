@@ -56,6 +56,30 @@ namespace AccesoDeDatos.DbModel
             set { fechaHoraInicio = value; }
         }
 
+        private string nombreAula;
+
+        public string NombreAula
+        {
+            get { return nombreAula; }
+            set { nombreAula = value; }
+        }
+
+        private string nombreProfesor;
+
+        public string NombreProfesor
+        {
+            get { return nombreProfesor; }
+            set { nombreProfesor = value; }
+        }
+
+        private string nombreMateria;
+
+        public string NombreMateria
+        {
+            get { return nombreMateria; }
+            set { nombreMateria = value; }
+        }
+
 
     }
 }

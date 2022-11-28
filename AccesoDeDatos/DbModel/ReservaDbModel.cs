@@ -61,6 +61,29 @@ namespace AccesoDeDatos.DbModel
             get { return estado; }
             set { estado = value; }
         }
+        private string nombreMonitor;
+
+        public string NombreMonitor
+        {
+            get { return nombreMonitor; }
+            set { nombreMonitor = value; }
+        }
+
+        private string nombreProfesor;
+
+        public string NombreProfesor
+        {
+            get { return nombreProfesor; }
+            set { nombreProfesor = value; }
+        }
+        private string nombreAula;
+
+        public string NombreAula
+        {
+            get { return nombreAula; }
+            set { nombreAula = value; }
+        }
+
 
 
     }

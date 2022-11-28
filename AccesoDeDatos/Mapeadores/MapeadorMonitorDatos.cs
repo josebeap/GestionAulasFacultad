@@ -19,7 +19,10 @@ namespace AccesoDeDatos.Mapeadores
                 IdPersona = entrada.id_persona,
                 IdPrograma = entrada.id_programa,
                 IdMateria = entrada.id_materia,
-                CodigoEstudiante = entrada.codigo_estudiante 
+                CodigoEstudiante = entrada.codigo_estudiante,
+                NombreMateria=entrada.tb_materia.nombre,
+                NombrePrograma=entrada.tb_programa.nombre,
+                NombrePersona=entrada.tb_persona.primer_nombre+entrada.tb_persona.primer_apellido
 
             };
         }

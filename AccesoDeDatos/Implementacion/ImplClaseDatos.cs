@@ -17,25 +17,35 @@ namespace AccesoDeDatos.Implementacion
         /// </summary>
         /// <param name="filtro">Filtro a aplicar</param>
         /// <returns>Lista de registros con el filtro aplicado</returns>
-        public IEnumerable<ClaseDbModel> ListarRegistros(String filtro)
+        public IEnumerable<ClaseDbModel> ListarRegistros(String filtro, int paginaActual, int numRegistrosPorPagina, out int totalRegistros)
         {
-            var lista = new List<tb_clase>();
-            var listaMaterias = new List<tb_materia>();
+            var lista = new List<ClaseDbModel>();
             using (SoftwareBDEntities bd = new SoftwareBDEntities())
             {
-                listaMaterias = (
-                    from c in bd.tb_materia
-                    where c.nombre.Contains(filtro)
-                    select c
-                    ).ToList();
+                int regDescartados = (paginaActual - 1) * numRegistrosPorPagina;
+                var listaDatos = (from m in bd.tb_clase
+                                  where m.id_materia.Equals(from x in bd.tb_materia where x.nombre.Contains(filtro) select x.id)
+                                  select m).ToList();
+                totalRegistros = listaDatos.Count();
+                listaDatos = listaDatos.OrderBy(m => m.id).Skip(regDescartados).Take(numRegistrosPorPagina).ToList();
+                lista = new MapeadorClaseDatos().MapearTipo1Tipo2(listaDatos).ToList();
 
-                foreach (var i in listaMaterias)
-                {
-                    lista.Add((tb_clase)bd.tb_clase.Where(x => x.id_materia.Equals(i.id)));
-                }
             }
+            return lista;
+        }
+        public IEnumerable<ClaseDbModel> ListarRegistros()
+        {
+            var lista = new List<ClaseDbModel>();
+            using (SoftwareBDEntities bd = new SoftwareBDEntities())
+            {
+                var listaDatos = (from m in bd.tb_clase
 
-            return new MapeadorClaseDatos().MapearTipo1Tipo2(lista);
+                                  select m).ToList();
+
+                lista = new MapeadorClaseDatos().MapearTipo1Tipo2(listaDatos).ToList();
+
+            }
+            return lista;
         }
 
         /// <summary>

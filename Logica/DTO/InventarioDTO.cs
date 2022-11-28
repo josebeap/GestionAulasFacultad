@@ -37,7 +37,13 @@ namespace Logica.DTO
             get { return estado; }
             set { estado = value; }
         }
+        private string nombreTipoElemento;
 
+        public string NombreTipoElemento
+        {
+            get { return nombreTipoElemento; }
+            set { nombreTipoElemento = value; }
+        }
 
     }
 }

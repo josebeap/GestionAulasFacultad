@@ -27,9 +27,16 @@ namespace Logica.Implementacion
         /// <param name="registrosPorPagina">Cantidad de registros a mostrar por página</param>
         /// <param name="totalRegistros">Total de registros en base de datos</param>
         /// <returns>Listado de registros para mostrar en la página actual que coincida con el filtro</returns>
-        public IEnumerable<AsistenciaDTO> ListarRegistros(String filtro)
+        public IEnumerable<AsistenciaDTO> ListarRegistros(String filtro, int numPagina, int registrosPorPagina, out int totalRegistros)
         {
-            var listado = this.accesoDatos.ListarRegistros(filtro);
+            var listado = this.accesoDatos.ListarRegistros(filtro, numPagina, registrosPorPagina, out totalRegistros);
+            MapeadorAsistenciaLogica mapeador = new MapeadorAsistenciaLogica();
+            return mapeador.MapearTipo1Tipo2(listado);
+        }
+        // esto va en producto
+        public IEnumerable<AsistenciaDTO> ListarRegistros()
+        {
+            var listado = this.accesoDatos.ListarRegistros();
             MapeadorAsistenciaLogica mapeador = new MapeadorAsistenciaLogica();
             return mapeador.MapearTipo1Tipo2(listado);
         }

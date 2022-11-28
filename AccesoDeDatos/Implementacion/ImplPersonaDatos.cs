@@ -17,19 +17,36 @@ namespace AccesoDeDatos.Implementacion
         /// </summary>
         /// <param name="filtro">Filtro a aplicar</param>
         /// <returns>Lista de registros con el filtro aplicado</returns>
-        public IEnumerable<PersonaDbModel> ListarRegistros(String filtro)
+        public IEnumerable<PersonaDbModel> ListarRegistros(String filtro, int paginaActual, int numRegistrosPorPagina, out int totalRegistros)
         {
-            var lista = new List<tb_persona>();
+            var lista = new List<PersonaDbModel>();
             using (SoftwareBDEntities bd = new SoftwareBDEntities())
             {
-                // lista = bd.tb_persona.Where(x => x.nombre.ToUpper().Contains(filtro.ToUpper())).ToList();
-                lista = (
-                    from c in bd.tb_persona
-                    where c.primer_nombre.Contains(filtro)
-                    select c
-                    ).ToList();
+                int regDescartados = (paginaActual - 1) * numRegistrosPorPagina;
+                var listaDatos = (from m in bd.tb_persona
+                                  where m.primer_nombre.Contains(filtro)
+                                  select m).ToList();
+                totalRegistros = listaDatos.Count();
+                listaDatos = listaDatos.OrderBy(m => m.id).Skip(regDescartados).Take(numRegistrosPorPagina).ToList();
+                lista = new MapeadorPersonaDatos().MapearTipo1Tipo2(listaDatos).ToList();
+
             }
-            return new MapeadorPersonaDatos().MapearTipo1Tipo2(lista);
+            return lista;
+        }
+
+        public IEnumerable<PersonaDbModel> ListarRegistros()
+        {
+            var lista = new List<PersonaDbModel>();
+            using (SoftwareBDEntities bd = new SoftwareBDEntities())
+            {
+                var listaDatos = (from m in bd.tb_persona
+
+                                  select m).ToList();
+
+                lista = new MapeadorPersonaDatos().MapearTipo1Tipo2(listaDatos).ToList();
+
+            }
+            return lista;
         }
 
         /// <summary>

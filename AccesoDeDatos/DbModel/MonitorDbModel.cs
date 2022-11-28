@@ -46,5 +46,29 @@ namespace AccesoDeDatos.DbModel
             set { codigoEstudiante = value; }
         }
 
+        private string nombreMateria;
+
+        public string NombreMateria
+        {
+            get { return nombreMateria; }
+            set { nombreMateria = value; }
+        }
+
+        private string nombrePrograma;
+
+        public string NombrePrograma
+        {
+            get { return nombrePrograma; }
+            set { nombrePrograma = value; }
+        }
+
+        private string nombrePersona;
+
+        public string NombrePersona
+        {
+            get { return nombrePersona; }
+            set { nombrePersona = value; }
+        }
+
     }
 }

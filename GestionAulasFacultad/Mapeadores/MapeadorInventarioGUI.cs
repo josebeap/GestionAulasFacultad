@@ -14,7 +14,8 @@ namespace GestionInventariosFacultad.Mapeadores
                 Id = entrada.Id,
                 CodigoIdentificacion = entrada.CodigoIdentificacion,
                 IdTipoElemento = entrada.IdTipoElemento,
-                Estado = entrada.Estado
+                Estado = entrada.Estado,
+                NombreTipoElemento = entrada.NombreTipoElemento
             };
         }
 

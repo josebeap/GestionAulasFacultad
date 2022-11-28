@@ -23,6 +23,12 @@ namespace GestionAulasFacultad.Models
             get { return nombre; }
             set { nombre = value; }
         }
+        private string nombreTipoElemento;
 
+        public string NombreTipoElemento
+        {
+            get { return nombreTipoElemento; }
+            set { nombreTipoElemento = value; }
+        }
     }
 }

@@ -17,7 +17,8 @@ namespace AccesoDeDatos.Mapeadores
             {
                 Id = entrada.id,
                 Nombre = entrada.nombre,
-                IdPrograma=entrada.id_programa
+                IdPrograma=entrada.id_programa,
+                NombrePrograma=entrada.nombre
             };
         }
 

@@ -18,7 +18,8 @@ namespace AccesoDeDatos.Mapeadores
                 Id = entrada.id,
                 CodigoIdentificacion=entrada.codigo_identificacion,
                 IdTipoElemento=entrada.id_tipoelemento,
-                Estado=entrada.estado
+                Estado=entrada.estado,
+                NombreTipoElemento=entrada.tb_tipoelemento.nombre
             };
         }
 
