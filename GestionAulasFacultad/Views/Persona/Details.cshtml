@@ -1,4 +1,4 @@
-﻿@model GestionAulasFacultad.ModeloBD.tb_persona
+﻿@model GestionAulasFacultad.Models.ModeloPersonaGUI
 
 @{
     ViewBag.Title = "Details";
@@ -10,89 +10,82 @@
     <h4>tb_persona</h4>
     <hr />
     <dl class="dl-horizontal">
+
         <dt>
-            @Html.DisplayNameFor(model => model.id_rol)
+            @Html.DisplayNameFor(model => model.PrimerNombre)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.id_rol)
+            @Html.DisplayFor(model => model.PrimerNombre)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.primer_nombre)
+            @Html.DisplayNameFor(model => model.OtrosNombres)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.primer_nombre)
+            @Html.DisplayFor(model => model.OtrosNombres)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.otros_nombres)
+            @Html.DisplayNameFor(model => model.PrimerApellido)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.otros_nombres)
+            @Html.DisplayFor(model => model.PrimerApellido)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.primer_apellido)
+            @Html.DisplayNameFor(model => model.SegundoApellido)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.primer_apellido)
+            @Html.DisplayFor(model => model.SegundoApellido)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.segundo_apellido)
+            @Html.DisplayNameFor(model => model.DocumentoIdentidad)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.segundo_apellido)
+            @Html.DisplayFor(model => model.DocumentoIdentidad)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.documentoIdentidad)
+            @Html.DisplayNameFor(model => model.Celular)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.documentoIdentidad)
+            @Html.DisplayFor(model => model.Celular)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.celular)
+            @Html.DisplayNameFor(model => model.Email)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.celular)
+            @Html.DisplayFor(model => model.Email)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.email)
+            @Html.DisplayNameFor(model => model.Foto)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.email)
+            @Html.DisplayFor(model => model.Foto)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.foto)
+            @Html.DisplayNameFor(model => model.Huella)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.foto)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.huella)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.huella)
+            @Html.DisplayFor(model => model.Huella)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

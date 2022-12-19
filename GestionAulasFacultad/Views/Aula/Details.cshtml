@@ -1,4 +1,4 @@
-﻿@model GestionAulasFacultad.ModeloBD.tb_aula
+﻿@model GestionAulasFacultad.Models.ModeloAulaGUI
 
 @{
     ViewBag.Title = "Details";
@@ -11,56 +11,56 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.nombre)
+            @Html.DisplayNameFor(model => model.Nombre)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.nombre)
+            @Html.DisplayFor(model => model.Nombre)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.tipo_aula)
+            @Html.DisplayNameFor(model => model.TipoAula)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.tipo_aula)
+            @Html.DisplayFor(model => model.TipoAula)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.capacidad)
+            @Html.DisplayNameFor(model => model.Capacidad)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.capacidad)
+            @Html.DisplayFor(model => model.Capacidad)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.cantidad_computadores)
+            @Html.DisplayNameFor(model => model.CantidadComputadores)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.cantidad_computadores)
+            @Html.DisplayFor(model => model.CantidadComputadores)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.multimedia)
+            @Html.DisplayNameFor(model => model.Multimedia)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.multimedia)
+            @Html.DisplayFor(model => model.Multimedia)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.disponibilidad)
+            @Html.DisplayNameFor(model => model.Disponibilidad)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.disponibilidad)
+            @Html.DisplayFor(model => model.Disponibilidad)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

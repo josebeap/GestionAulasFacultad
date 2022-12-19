@@ -1,4 +1,4 @@
-﻿@model GestionAulasFacultad.ModeloBD.tb_inventario
+﻿@model GestionAulasFacultad.Models.ModeloInventarioGUI
 
 @{
     ViewBag.Title = "Details";
@@ -11,32 +11,32 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.codigo_identificacion)
+            @Html.DisplayNameFor(model => model.CodigoIdentificacion)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.codigo_identificacion)
+            @Html.DisplayFor(model => model.CodigoIdentificacion)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.estado)
+            @Html.DisplayNameFor(model => model.Estado)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.estado)
+            @Html.DisplayFor(model => model.Estado)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.tb_tipoelemento.nombre)
+            @Html.DisplayNameFor(model => model.NombreTipoElemento)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.tb_tipoelemento.nombre)
+            @Html.DisplayFor(model => model.NombreTipoElemento)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

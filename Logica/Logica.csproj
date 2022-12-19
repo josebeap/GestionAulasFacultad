@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3E2257AC-95D4-4A26-B852-4DFCE76BCD52}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Logica</RootNamespace>
+    <AssemblyName>Logica</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DTO\AsistenciaDTO.cs" />
+    <Compile Include="DTO\AulaDTO.cs" />
+    <Compile Include="DTO\AuxiliarDTO.cs" />
+    <Compile Include="DTO\ClaseDTO.cs" />
+    <Compile Include="DTO\InventarioDTO.cs" />
+    <Compile Include="DTO\MateriaDTO.cs" />
+    <Compile Include="DTO\MonitorDTO.cs" />
+    <Compile Include="DTO\PersonaDTO.cs" />
+    <Compile Include="DTO\ProfesorDTO.cs" />
+    <Compile Include="DTO\ProgramaDTO.cs" />
+    <Compile Include="DTO\ReservaDTO.cs" />
+    <Compile Include="DTO\TipoElementoDTO.cs" />
+    <Compile Include="Implementacion\ImplProgramaLogica.cs" />
+    <Compile Include="Implementacion\ImplTipoElementoLogica.cs" />
+    <Compile Include="Implementacion\ImplInventarioLogica.cs" />
+    <Compile Include="Implementacion\ImplAsistenciaLogica.cs" />
+    <Compile Include="Implementacion\ImplReservaLogica.cs" />
+    <Compile Include="Implementacion\ImplProfesorLogica.cs" />
+    <Compile Include="Implementacion\ImplAuxiliarLogica.cs" />
+    <Compile Include="Implementacion\ImplMateriaLogica.cs" />
+    <Compile Include="Implementacion\ImplMonitorLogica.cs" />
+    <Compile Include="Implementacion\ImplPersonaLogica.cs" />
+    <Compile Include="Implementacion\ImplClaseLogica.cs" />
+    <Compile Include="Implementacion\ImplAulaLogica.cs" />
+    <Compile Include="Mapeadores\MapeadorAuxiliarLogica.cs" />
+    <Compile Include="Mapeadores\MapeadorProgramaLogica.cs" />
+    <Compile Include="Mapeadores\MapeadorAsistenciaLogica.cs" />
+    <Compile Include="Mapeadores\MapeadorReservaLogica.cs" />
+    <Compile Include="Mapeadores\MapeadorMateriaLogica.cs" />
+    <Compile Include="Mapeadores\MapeadorTipoElementoLogica.cs" />
+    <Compile Include="Mapeadores\MapeadorInventarioLogica.cs" />
+    <Compile Include="Mapeadores\MapeadorMonitorLogica.cs" />
+    <Compile Include="Mapeadores\MapeadorPersonaLogica.cs" />
+    <Compile Include="Mapeadores\MapeadorProfesorLogica.cs" />
+    <Compile Include="Mapeadores\MapeadorClaseLogica.cs" />
+    <Compile Include="Mapeadores\MapeadorBaseLogica.cs" />
+    <Compile Include="Mapeadores\MapeadorAulaLogica.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AccesoDeDatos\AccesoDeDatos.csproj">
+      <Project>{2088900d-1d1d-44d3-9160-aec15f1afeb6}</Project>
+      <Name>AccesoDeDatos</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,4 +1,4 @@
-﻿@model GestionAulasFacultad.ModeloBD.tb_monitor
+﻿@model GestionAulasFacultad.Models.ModeloMonitorGUI
 
 @{
     ViewBag.Title = "Delete";
@@ -12,35 +12,35 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.codigo_estudiante)
+            @Html.DisplayNameFor(model => model.CodigoEstudiante)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.codigo_estudiante)
+            @Html.DisplayFor(model => model.CodigoEstudiante)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.tb_materia.nombre)
+            @Html.DisplayNameFor(model => model.NombreMateria)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.tb_materia.nombre)
+            @Html.DisplayFor(model => model.NombreMateria)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.tb_persona.primer_nombre)
+            @Html.DisplayNameFor(model => model.NombrePersona)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.tb_persona.primer_nombre)
+            @Html.DisplayFor(model => model.NombrePersona)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.tb_programa.nombre)
+            @Html.DisplayNameFor(model => model.NombrePrograma)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.tb_programa.nombre)
+            @Html.DisplayFor(model => model.NombrePrograma)
         </dd>
 
     </dl>

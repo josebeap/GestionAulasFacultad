@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GestionAulasFacultad.ModeloBD.tb_monitor>
+﻿@model IEnumerable<GestionAulasFacultad.Models.ModeloMonitorGUI>
 
 @{
     ViewBag.Title = "Index";
@@ -12,16 +12,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.codigo_estudiante)
+            @Html.DisplayNameFor(model => model.CodigoEstudiante)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.tb_materia.nombre)
+            @Html.DisplayNameFor(model => model.NombreMateria)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.tb_persona.primer_nombre)
+            @Html.DisplayNameFor(model => model.NombrePersona)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.tb_programa.nombre)
+            @Html.DisplayNameFor(model => model.NombrePrograma)
         </th>
         <th></th>
     </tr>
@@ -29,23 +29,26 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.codigo_estudiante)
+            @Html.DisplayFor(modelItem => item.CodigoEstudiante)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.tb_materia.nombre)
+            @Html.DisplayFor(modelItem => item.NombreMateria)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.tb_persona.primer_nombre)
+            @Html.DisplayFor(modelItem => item.NombrePersona)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.tb_programa.nombre)
+            @Html.DisplayFor(modelItem => item.NombrePrograma)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>
 }
 
 </table>
+<div>
+    @Html.ActionLink("Crear monitor", "Create", new { }, new { @class = "btn btn-primary" })
+</div>
