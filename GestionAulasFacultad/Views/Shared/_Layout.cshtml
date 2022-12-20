@@ -58,13 +58,12 @@
                 <!-- ============================================================== -->
                 <div class="navbar-header">
                     <a class="navbar-brand">
-                        <!-- Logo icon --><b>
+                        <!-- Logo icon -->
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="~/Scripts/assets/images/logo1.jpg" alt="homepage" class="img-fluid dark-logo" href="Home/Index" />
-                            <!-- Light Logo icon -->
-                            <img src="~/Scripts/assets/images/logo1.jpg" alt="homepage" class="img-fluid light-logo" href="Home/Index">
-                        </b>
+                        <a href="/">
+                            <img src="~/Scripts/assets/images/logo1.jpg" alt="homepage" class="img-fluid light-logo" >
+                        </a>
                         
                     </a>
                 </div>
@@ -89,6 +88,9 @@
                             </form>
                         </li>
                     </ul>
+                   
+               
+                    @Html.Partial("_LoginPartial")
                     <ul class="navbar-nav my-lg-0">
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
@@ -111,7 +113,7 @@
         <!-- ============================================================== -->
         <aside class="left-sidebar">
             <div class="d-flex no-block nav-text-box align-items-center">
-                <span><img src="~/Scripts/assets/images/logo_dark.png" alt="Universidad de Caldas"></span>
+                <a href="/"><span><img src="~/Scripts/assets/images/logo_dark.png" alt="Universidad de Caldas" href="Home/Index"></span></a>
                 <a class="waves-effect waves-dark ml-auto hidden-sm-down" href="javascript:void(0);"><i class="ti-menu"></i></a>
                 <a class="nav-toggler waves-effect waves-dark ml-auto hidden-sm-up" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
             </div>
@@ -120,6 +122,7 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
+                        
                         <li>@Html.ActionLink("Persona", "Index", "Persona")</li>
                         <li>@Html.ActionLink("Programa", "Index", "Programa")</li>
                         <li>@Html.ActionLink("Materia", "Index", "Materia")</li>
@@ -132,8 +135,8 @@
                         <li>@Html.ActionLink("Asistencia", "Index", "Asistencia")</li>
                         <li>@Html.ActionLink("Tipo Elemento", "Index", "TipoElemento")</li>
                         <li>@Html.ActionLink("Inventario", "Index", "Inventario")</li>
-                        
-                       
+
+
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
