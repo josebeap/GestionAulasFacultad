@@ -296,6 +296,7 @@
     <Content Include="Scripts\assets\images\users\6.jpg" />
     <Content Include="Scripts\assets\images\users\7.jpg" />
     <Content Include="Scripts\assets\images\users\8.jpg" />
+    <Content Include="Scripts\assets\images\users\user_logo.png" />
     <Content Include="Scripts\assets\node_modules\bootstrap\dist\css\bootstrap-grid.css" />
     <Content Include="Scripts\assets\node_modules\bootstrap\dist\css\bootstrap-grid.min.css" />
     <Content Include="Scripts\assets\node_modules\bootstrap\dist\css\bootstrap-reboot.css" />

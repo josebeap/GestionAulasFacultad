@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,7 @@ namespace GestionAulasFacultad.Models
 
         private string nombreMonitor;
         [DisplayName("Monitor")]
+        [Required]
         public string NombreMonitor
         {
             get { return nombreMonitor; }
@@ -44,6 +46,7 @@ namespace GestionAulasFacultad.Models
         
         private string nombreProfesor;
         [DisplayName("Profesor")]
+        [Required]
         public string NombreProfesor
         {
             get { return nombreProfesor; }
@@ -61,6 +64,7 @@ namespace GestionAulasFacultad.Models
         
         private string nombreAula;
         [DisplayName("Aula")]
+        [Required]
         public string NombreAula
         {
             get { return nombreAula; }
