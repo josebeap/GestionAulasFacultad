@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SoftwareSSOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="SEC_ROLE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="SEC_USER_ROLE" Relationship="Self.FK__SEC_USER___ROLEI__1A14E395" FromRole="SEC_ROLE" ToRole="SEC_USER_ROLE" />
+    <Property Name="REMOVED" Type="Boolean" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SEC_SESSION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERID" Type="Int32" Nullable="false" />
+    <Property Name="LOGIN_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IP_ADDRESS" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TOKEN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TOKEN_STATUS" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="SEC_USER" Relationship="Self.USERID_SEC_SESSION_FK" FromRole="SEC_SESSION" ToRole="SEC_USER" />
+    <Property Name="LOGOUT_DATE" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SEC_USER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LASTNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CELLPHONE" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="USER_PASSWORD" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="SEC_SESSION" Relationship="Self.USERID_SEC_SESSION_FK" FromRole="SEC_USER" ToRole="SEC_SESSION" />
+    <NavigationProperty Name="SEC_USER_ROLE" Relationship="Self.FK__SEC_USER___USERI__1920BF5C" FromRole="SEC_USER" ToRole="SEC_USER_ROLE" />
+    <Property Name="REMOVED" Type="Boolean" Nullable="false" />
+    <Property Name="REMOVE_DATE" Type="DateTime" Precision="3" />
+    <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UPDATE_DATE" Type="DateTime" Precision="3" />
+    <Property Name="REMOVE_USER_ID" Type="Int32" />
+    <Property Name="CREATE_USER_ID" Type="Int32" />
+    <Property Name="UPDATE_USER_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="SEC_USER_ROLE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERID" Type="Int32" Nullable="false" />
+    <Property Name="ROLEID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SEC_ROLE" Relationship="Self.FK__SEC_USER___ROLEI__1A14E395" FromRole="SEC_USER_ROLE" ToRole="SEC_ROLE" />
+    <NavigationProperty Name="SEC_USER" Relationship="Self.FK__SEC_USER___USERI__1920BF5C" FromRole="SEC_USER_ROLE" ToRole="SEC_USER" />
+  </EntityType>
+  <Association Name="FK__SEC_USER___ROLEI__1A14E395">
+    <End Role="SEC_ROLE" Type="Self.SEC_ROLE" Multiplicity="1" />
+    <End Role="SEC_USER_ROLE" Type="Self.SEC_USER_ROLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEC_ROLE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SEC_USER_ROLE">
+        <PropertyRef Name="ROLEID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="USERID_SEC_SESSION_FK">
+    <End Role="SEC_USER" Type="Self.SEC_USER" Multiplicity="1" />
+    <End Role="SEC_SESSION" Type="Self.SEC_SESSION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEC_USER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SEC_SESSION">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SEC_USER___USERI__1920BF5C">
+    <End Role="SEC_USER" Type="Self.SEC_USER" Multiplicity="1" />
+    <End Role="SEC_USER_ROLE" Type="Self.SEC_USER_ROLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEC_USER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SEC_USER_ROLE">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SoftwareSSOEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="SEC_ROLE" EntityType="Self.SEC_ROLE" />
+    <EntitySet Name="SEC_SESSION" EntityType="Self.SEC_SESSION" />
+    <EntitySet Name="SEC_USER" EntityType="Self.SEC_USER" />
+    <EntitySet Name="SEC_USER_ROLE" EntityType="Self.SEC_USER_ROLE" />
+    <AssociationSet Name="FK__SEC_USER___ROLEI__1A14E395" Association="Self.FK__SEC_USER___ROLEI__1A14E395">
+      <End Role="SEC_ROLE" EntitySet="SEC_ROLE" />
+      <End Role="SEC_USER_ROLE" EntitySet="SEC_USER_ROLE" />
+    </AssociationSet>
+    <AssociationSet Name="USERID_SEC_SESSION_FK" Association="Self.USERID_SEC_SESSION_FK">
+      <End Role="SEC_USER" EntitySet="SEC_USER" />
+      <End Role="SEC_SESSION" EntitySet="SEC_SESSION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SEC_USER___USERI__1920BF5C" Association="Self.FK__SEC_USER___USERI__1920BF5C">
+      <End Role="SEC_USER" EntitySet="SEC_USER" />
+      <End Role="SEC_USER_ROLE" EntitySet="SEC_USER_ROLE" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

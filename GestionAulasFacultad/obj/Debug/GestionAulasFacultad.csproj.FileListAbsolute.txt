@@ -117,8 +117,6 @@ C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacult
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\bin\es\System.Net.Http.Formatting.resources.dll
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\bin\es\System.Web.Http.resources.dll
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\bin\es\System.Web.Http.WebHost.resources.dll
-C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\bin\es\EntityFramework.resources.dll
-C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\bin\es\EntityFramework.SqlServer.resources.dll
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\bin\es\Microsoft.AspNet.Identity.Core.resources.dll
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\bin\es\Microsoft.AspNet.Identity.Owin.resources.dll
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\bin\es\Microsoft.AspNet.Identity.EntityFramework.resources.dll
@@ -289,3 +287,12 @@ E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\obj\Debug\GestionAulasFa
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\obj\Debug\GestionAulasFacultad.csproj.CopyComplete
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\obj\Debug\GestionAulasFacultad.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\obj\Debug\GestionAulasFacultad.pdb
+C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\bin\Logica.dll
+C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\bin\PagedList.dll
+C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\bin\PagedList.Mvc.dll
+C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\bin\AccesoDeDatos.dll
+C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\bin\Logica.pdb
+C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\bin\PagedList.xml
+C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\bin\PagedList.Mvc.xml
+C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\bin\AccesoDeDatos.pdb
+C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\bin\AccesoDeDatos.dll.config

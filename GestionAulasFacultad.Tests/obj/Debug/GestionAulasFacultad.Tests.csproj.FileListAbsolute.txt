@@ -72,7 +72,6 @@ C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacult
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\es\Microsoft.Owin.Security.resources.dll
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\es\System.Web.Http.resources.dll
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\es\Microsoft.AspNet.Identity.EntityFramework.resources.dll
-C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\es\EntityFramework.resources.dll
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\es\System.Web.Http.WebHost.resources.dll
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\es\Microsoft.Owin.Host.SystemWeb.resources.dll
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\es\System.Net.Http.Formatting.resources.dll
@@ -172,3 +171,12 @@ E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\obj\Debug\GestionA
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\obj\Debug\GestionAulasFacultad.Tests.csproj.CopyComplete
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\obj\Debug\GestionAulasFacultad.Tests.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\obj\Debug\GestionAulasFacultad.Tests.pdb
+C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\EntityFramework.SqlServer.dll
+C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\Logica.dll
+C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\PagedList.dll
+C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\AccesoDeDatos.dll
+C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\EntityFramework.SqlServer.xml
+C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\Logica.pdb
+C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\PagedList.xml
+C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\AccesoDeDatos.pdb
+C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\AccesoDeDatos.dll.config

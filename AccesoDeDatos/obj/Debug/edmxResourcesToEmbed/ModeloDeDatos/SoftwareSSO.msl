@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SoftwareSSOModelStoreContainer" CdmEntityContainer="SoftwareSSOEntities">
+    <EntitySetMapping Name="SEC_ROLE">
+      <EntityTypeMapping TypeName="SoftwareSSOModel.SEC_ROLE">
+        <MappingFragment StoreEntitySet="SEC_ROLE">
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="REMOVED" ColumnName="REMOVED" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SEC_SESSION">
+      <EntityTypeMapping TypeName="SoftwareSSOModel.SEC_SESSION">
+        <MappingFragment StoreEntitySet="SEC_SESSION">
+          <ScalarProperty Name="LOGOUT_DATE" ColumnName="LOGOUT_DATE" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="LOGIN_DATE" ColumnName="LOGIN_DATE" />
+          <ScalarProperty Name="IP_ADDRESS" ColumnName="IP_ADDRESS" />
+          <ScalarProperty Name="TOKEN" ColumnName="TOKEN" />
+          <ScalarProperty Name="TOKEN_STATUS" ColumnName="TOKEN_STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SEC_USER">
+      <EntityTypeMapping TypeName="SoftwareSSOModel.SEC_USER">
+        <MappingFragment StoreEntitySet="SEC_USER">
+          <ScalarProperty Name="UPDATE_USER_ID" ColumnName="UPDATE_USER_ID" />
+          <ScalarProperty Name="CREATE_USER_ID" ColumnName="CREATE_USER_ID" />
+          <ScalarProperty Name="REMOVE_USER_ID" ColumnName="REMOVE_USER_ID" />
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="REMOVE_DATE" ColumnName="REMOVE_DATE" />
+          <ScalarProperty Name="REMOVED" ColumnName="REMOVED" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+          <ScalarProperty Name="CELLPHONE" ColumnName="CELLPHONE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="USER_PASSWORD" ColumnName="USER_PASSWORD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SEC_USER_ROLE">
+      <EntityTypeMapping TypeName="SoftwareSSOModel.SEC_USER_ROLE">
+        <MappingFragment StoreEntitySet="SEC_USER_ROLE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="ROLEID" ColumnName="ROLEID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
