@@ -4,18 +4,18 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2 class="d-flex justify-content-center">Crear una aula</h2>
 
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>tb_aula</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
+<div class="form-horizontal container">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="row">
+        <div class="form-group col-6">
             @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
@@ -23,15 +23,16 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-6">
             @Html.LabelFor(model => model.TipoAula, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.TipoAula, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.TipoAula, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        <div class="form-group">
+    </div>
+    <div class="row">
+        <div class="form-group col-6">
             @Html.LabelFor(model => model.Capacidad, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Capacidad, new { htmlAttributes = new { @class = "form-control" } })
@@ -39,15 +40,16 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-6">
             @Html.LabelFor(model => model.CantidadComputadores, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.CantidadComputadores, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.CantidadComputadores, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        <div class="form-group">
+    </div>
+    <div class="row"> 
+        <div class="form-group col-2">
             @Html.LabelFor(model => model.Multimedia, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
@@ -57,7 +59,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-2">
             @Html.LabelFor(model => model.Disponibilidad, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
@@ -66,19 +68,25 @@
                 </div>
             </div>
         </div>
-
-        <div class="form-group">
+        <div class="col-8"></div>
+    </div>
+    <div class="row">
+        <div class="col-5"></div>
+        <div class="form-group col-1">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Crear" class="btn btn-success" />
             </div>
         </div>
+        <div class="col-1 ">
+            @Html.ActionLink("Cancelar", "Index", new { }, new { @class = "btn btn-danger" })
+        </div>
+        <div class="col-5"></div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
+    }
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

@@ -33,6 +33,7 @@
         <AssociationConnector Association="SoftwareBDModel.FK__tb_profes__id_pe__182C9B23" ManuallyRouted="false" />
         <AssociationConnector Association="SoftwareBDModel.FK__tb_profes__id_pr__1920BF5C" ManuallyRouted="false" />
         <AssociationConnector Association="SoftwareBDModel.FK__tb_reserv__id_pr__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="SoftwareBDModel.FK__tb_clase__id_mat__47DBAE45" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

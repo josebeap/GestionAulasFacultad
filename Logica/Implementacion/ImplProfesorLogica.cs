@@ -33,7 +33,7 @@ namespace Logica.Implementacion
             MapeadorProfesorLogica mapeador = new MapeadorProfesorLogica();
             return mapeador.MapearTipo1Tipo2(listado);
         }
-        // esto va en producto
+        
         public IEnumerable<ProfesorDTO> ListarRegistros()
         {
             var listado = this.accesoDatos.ListarRegistros();

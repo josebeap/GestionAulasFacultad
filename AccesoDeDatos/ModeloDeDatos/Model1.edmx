@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SoftwareBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SoftwareBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tb_asistencia">
           <Key>
             <PropertyRef Name="id" />
@@ -184,6 +184,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__tb_clase__id_mat__47DBAE45">
+          <End Role="tb_materia" Type="Self.tb_materia" Multiplicity="1" />
+          <End Role="tb_clase" Type="Self.tb_clase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_materia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_clase">
+              <PropertyRef Name="id_materia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__tb_clase__id_pro__25869641">
           <End Role="tb_profesor" Type="Self.tb_profesor" Multiplicity="0..1" />
           <End Role="tb_clase" Type="Self.tb_clase" Multiplicity="*" />
@@ -349,6 +361,10 @@
             <End Role="tb_aula" EntitySet="tb_aula" />
             <End Role="tb_clase" EntitySet="tb_clase" />
           </AssociationSet>
+          <AssociationSet Name="FK__tb_clase__id_mat__47DBAE45" Association="Self.FK__tb_clase__id_mat__47DBAE45">
+            <End Role="tb_materia" EntitySet="tb_materia" />
+            <End Role="tb_clase" EntitySet="tb_clase" />
+          </AssociationSet>
           <AssociationSet Name="FK__tb_clase__id_pro__25869641" Association="Self.FK__tb_clase__id_pro__25869641">
             <End Role="tb_profesor" EntitySet="tb_profesor" />
             <End Role="tb_clase" EntitySet="tb_clase" />
@@ -394,8 +410,7 @@
             <End Role="tb_reserva" EntitySet="tb_reserva" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SoftwareBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -450,6 +465,7 @@
           <Property Name="fecha_hora_inicio" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="tb_aula" Relationship="Self.FK__tb_clase__id_aul__267ABA7A" FromRole="tb_clase" ToRole="tb_aula" />
           <NavigationProperty Name="tb_profesor" Relationship="Self.FK__tb_clase__id_pro__25869641" FromRole="tb_clase" ToRole="tb_profesor" />
+          <NavigationProperty Name="tb_materia" Relationship="SoftwareBDModel.FK__tb_clase__id_mat__47DBAE45" FromRole="tb_clase" ToRole="tb_materia" />
         </EntityType>
         <EntityType Name="tb_inventario">
           <Key>
@@ -470,6 +486,7 @@
           <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="tb_programa" Relationship="Self.FK__tb_materi__id_pr__15502E78" FromRole="tb_materia" ToRole="tb_programa" />
           <NavigationProperty Name="tb_monitor" Relationship="Self.FK__tb_monito__id_ma__1DE57479" FromRole="tb_materia" ToRole="tb_monitor" />
+          <NavigationProperty Name="tb_clase" Relationship="SoftwareBDModel.FK__tb_clase__id_mat__47DBAE45" FromRole="tb_materia" ToRole="tb_clase" />
         </EntityType>
         <EntityType Name="tb_monitor">
           <Key>
@@ -819,7 +836,23 @@
             <End Role="tb_profesor" EntitySet="tb_profesor" />
             <End Role="tb_reserva" EntitySet="tb_reserva" />
           </AssociationSet>
+          <AssociationSet Name="FK__tb_clase__id_mat__47DBAE45" Association="SoftwareBDModel.FK__tb_clase__id_mat__47DBAE45">
+            <End Role="tb_materia" EntitySet="tb_materia" />
+            <End Role="tb_clase" EntitySet="tb_clase" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK__tb_clase__id_mat__47DBAE45">
+          <End Type="SoftwareBDModel.tb_materia" Role="tb_materia" Multiplicity="1" />
+          <End Type="SoftwareBDModel.tb_clase" Role="tb_clase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_materia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_clase">
+              <PropertyRef Name="id_materia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

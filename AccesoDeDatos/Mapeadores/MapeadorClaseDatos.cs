@@ -22,8 +22,8 @@ namespace AccesoDeDatos.Mapeadores
                 CantidadHoras = entrada.cantidad_horas,
                 FechaHoraInicio=entrada.fecha_hora_inicio,
                 NombreAula=entrada.tb_aula.nombre,
-                NombreProfesor=entrada.tb_profesor.tb_persona.primer_nombre+ " "+ entrada.tb_profesor.tb_persona.otros_nombres+" "+entrada.tb_profesor.tb_persona.primer_apellido
-                
+                NombreProfesor=entrada.tb_profesor.tb_persona.primer_nombre+ " "+ entrada.tb_profesor.tb_persona.otros_nombres+" "+entrada.tb_profesor.tb_persona.primer_apellido,
+                NombreMateria=entrada.tb_materia.nombre
                 
             };
         }

@@ -47,9 +47,12 @@ namespace GestionAulasFacultad.Controllers
             return View(modelo);
         }
 
+
+
         // GET: Aula/Create
         public ActionResult Create()
         {
+            
             return View();
         }
 

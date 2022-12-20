@@ -23,5 +23,6 @@ namespace AccesoDeDatos.ModeloDeDatos
     
         public virtual tb_aula tb_aula { get; set; }
         public virtual tb_profesor tb_profesor { get; set; }
+        public virtual tb_materia tb_materia { get; set; }
     }
 }

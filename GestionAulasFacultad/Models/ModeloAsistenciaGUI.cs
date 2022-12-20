@@ -69,7 +69,7 @@ namespace GestionAulasFacultad.Models
 
 
         private DateTime fechaHoraInicio;
-
+        
         public DateTime FechaHoraInicio
         {
             get { return fechaHoraInicio; }

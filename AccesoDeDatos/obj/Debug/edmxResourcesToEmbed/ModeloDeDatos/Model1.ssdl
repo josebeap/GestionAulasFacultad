@@ -179,6 +179,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__tb_clase__id_mat__47DBAE45">
+    <End Role="tb_materia" Type="Self.tb_materia" Multiplicity="1" />
+    <End Role="tb_clase" Type="Self.tb_clase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_materia">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tb_clase">
+        <PropertyRef Name="id_materia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__tb_clase__id_pro__25869641">
     <End Role="tb_profesor" Type="Self.tb_profesor" Multiplicity="0..1" />
     <End Role="tb_clase" Type="Self.tb_clase" Multiplicity="*" />
@@ -342,6 +354,10 @@
     </AssociationSet>
     <AssociationSet Name="FK__tb_clase__id_aul__267ABA7A" Association="Self.FK__tb_clase__id_aul__267ABA7A">
       <End Role="tb_aula" EntitySet="tb_aula" />
+      <End Role="tb_clase" EntitySet="tb_clase" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tb_clase__id_mat__47DBAE45" Association="Self.FK__tb_clase__id_mat__47DBAE45">
+      <End Role="tb_materia" EntitySet="tb_materia" />
       <End Role="tb_clase" EntitySet="tb_clase" />
     </AssociationSet>
     <AssociationSet Name="FK__tb_clase__id_pro__25869641" Association="Self.FK__tb_clase__id_pro__25869641">

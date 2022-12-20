@@ -4,39 +4,63 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 class="d-flex justify-content-center">Lista de Auxiliares</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Funcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdPersona)
-        </th>
-        <th></th>
-    </tr>
+<br />
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Funcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdPersona)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+<div class="row d-flex justify-content-center">
+    <div class="col-3.7">
+
+        <table class="table table-responsive table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Funcion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdPersona)
+                    </th>
+                    <th>
+                        Opcion
+                    </th>
+                </tr>
+                </thead>
+                @foreach (var item in Model)
+                {<tbody>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Funcion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdPersona)
+                        </td>
+                        <td>
+
+                            <div class="row">
+                                <div class="col-4">
+
+                                    @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "btn btn-primary fa fa-pencil" })
+
+                                </div>
+                                <div class="col-4">
+
+                                    @Html.ActionLink(" ", "Details", new { id = item.Id }, new { @class = "btn-lg btn-warning fa fa-info" })
+
+                                </div>
+                                <div class="col-4">
+
+                                    @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "btn btn-danger fa fa-trash" })
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                }
 
 </table>
-<div>
-    @Html.ActionLink("Crear auxiliar", "Create", new { }, new { @class = "btn btn-primary" })
+        @Html.Partial("_FooterPagedList")
+
+        @Html.ActionLink("Crear auxiliar", "Create", new { }, new { @class = "btn btn-success btn-lg d-flex justify-content-center" })
+    </div>
 </div>

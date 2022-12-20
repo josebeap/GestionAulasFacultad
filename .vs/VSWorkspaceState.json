@@ -2,14 +2,13 @@
   "ExpandedNodes": [
     "",
     "\\AccesoDeDatos",
-    "\\AccesoDeDatos\\Implementacion",
     "\\AccesoDeDatos\\Mapeadores",
     "\\GestionAulasFacultad",
     "\\GestionAulasFacultad\\Views",
+    "\\GestionAulasFacultad\\Views\\Inventario",
     "\\GestionAulasFacultad\\Views\\Persona",
-    "\\Logica",
-    "\\Logica\\Implementacion"
+    "\\GestionAulasFacultad\\Views\\Shared"
   ],
-  "SelectedNode": "\\GestionAulasFacultad.sln",
+  "SelectedNode": "\\GestionAulasFacultad\\Views\\Shared\\_Layout.cshtml",
   "PreviewInSolutionExplorer": false
 }

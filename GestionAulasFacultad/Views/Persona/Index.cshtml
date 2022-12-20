@@ -1,87 +1,164 @@
 ﻿@model IEnumerable<GestionAulasFacultad.Models.ModeloPersonaGUI>
-
+<link href="~/Scripts/assets/icons/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+<link href="~/Scripts/assets/icons/themify-icons/themify-icons.css" rel="stylesheet" />
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 class="d-flex justify-content-center">Lista de personas</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.PrimerNombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OtrosNombres)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PrimerApellido)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SegundoApellido)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DocumentoIdentidad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Celular)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Foto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Huella)
-        </th>
-        <th></th>
-    </tr>
+<br />
 
-@foreach (var item in Model) {
-    <tr>
+<div class="row d-flex justify-content-center">
+    <div class="col-lg-12">
+        <table class="table table-responsive table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PrimerNombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.OtrosNombres)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PrimerApellido)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SegundoApellido)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DocumentoIdentidad)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Celular)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Foto)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Huella)
+                    </th>
+                    <th>
+                        Opcion
+                    </th>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.PrimerNombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OtrosNombres)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PrimerApellido)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SegundoApellido)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DocumentoIdentidad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Celular)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Foto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Huella)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+                </tr>
+            </thead>
+
+            @foreach (var item in Model)
+            {
+                <tbody>
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PrimerNombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OtrosNombres)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PrimerApellido)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SegundoApellido)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DocumentoIdentidad)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Celular)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Foto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Huella)
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-4">
+
+                                    @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "btn btn-primary fa fa-pencil" })
+
+                                </div>
+                                <div class="col-4">
+
+                                    @Html.ActionLink(" ", "Details", new { id = item.Id }, new { @class = "btn-lg btn-warning fa fa-info" })
+
+                                </div>
+                                <div class="col-4">
+
+                                    <button type="button" class="btn btn-danger fa fa-trash" data-toggle="modal" data-target="#myModal"></button>
+
+                                </div>
+                            </div>
+                        </td>
+
+                    </tr>
 
 
-}
+                </tbody>
+                <div id="deleteModal" class="modal fade" tabindex="-1" role="dialog"
+                     aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myModalLabel">Modal Heading</h4>
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-hidden="true">
+                                    ×
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <h3>¿Estás seguro de que quieres eliminar el registro?</h3>
 
-</table>
-<div>
-    @Html.ActionLink("Crear persona", "Create", new { }, new { @class = "btn btn-primary" })
+
+
+                            </div>
+                            <div class="modal-footer">
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    <div class="form-actions no-color">
+                                        <input type="submit" value="Eliminar" class="btn btn-danger" onclick="DeleteConfirmed"/>
+                                        @Html.ActionLink("Cancelar", "Index", new { }, new { @class = "btn btn-secondary" })
+                                    </div>
+
+
+                                }
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+            }
+
+        </table>
+        @Html.Partial("_FooterPagedList")
+        @Html.ActionLink("Crear persona", "Create", new { }, new { @class = "btn btn-success btn-lg d-flex justify-content-center" })
+    </div>
 </div>
+<script>
+    $("#btnDelete").click(function () {
+        var _id = $("#personaId").val();
+
+        $.ajax({
+            type: "POST"
+            url: "/Persona/Delete",
+            data: { id: _id },
+            success: function (respuesta) {
+                $("#deleteModal").modal('hide');
+                $("#personaId").val(null);
+            } else {
+
+            });
+    });
+</script>
+
+

@@ -18,6 +18,7 @@ namespace AccesoDeDatos.ModeloDeDatos
         public tb_materia()
         {
             this.tb_monitor = new HashSet<tb_monitor>();
+            this.tb_clase = new HashSet<tb_clase>();
         }
     
         public int id { get; set; }
@@ -27,5 +28,7 @@ namespace AccesoDeDatos.ModeloDeDatos
         public virtual tb_programa tb_programa { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tb_monitor> tb_monitor { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tb_clase> tb_clase { get; set; }
     }
 }

@@ -47,7 +47,7 @@ namespace AccesoDeDatos.Mapeadores
                 id_aula = entrada.IdAula,
                 cantidad_horas = entrada.CantidadHoras,
                 fecha_hora_inicio = entrada.FechaHoraInicio,
-                estado = entrada.Estado
+                estado = "Agendada"
             };
         }
 

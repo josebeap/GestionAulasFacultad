@@ -69,5 +69,14 @@ namespace GestionAulasFacultad.Models
         {
             return Nombre;
         }
+
+        private List<string> modeloTipoAulaGUIs;
+
+        public List<string> ListaTiposAulas
+        {
+
+            get { return modeloTipoAulaGUIs; }
+            set { modeloTipoAulaGUIs = value; }
+        }
     }
 }

@@ -63,7 +63,7 @@ namespace AccesoDeDatos.DbModel
             get { return nombreAula; }
             set { nombreAula = value; }
         }
-
+        
         private DateTime fechaHoraInicio;
 
         public DateTime FechaHoraInicio
