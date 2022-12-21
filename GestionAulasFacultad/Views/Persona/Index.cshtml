@@ -82,19 +82,15 @@
                         </td>
                         <td>
                             <div class="row">
-                                <div class="col-4">
+                                <div class="col-6">
 
                                     @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "btn btn-primary fa fa-pencil" })
 
                                 </div>
-                                <div class="col-4">
 
-                                    @Html.ActionLink(" ", "Details", new { id = item.Id }, new { @class = "btn-lg btn-warning fa fa-info" })
+                                <div class="col-6">
 
-                                </div>
-                                <div class="col-4">
-
-                                    <button type="button" class="btn btn-danger fa fa-trash" data-toggle="modal" data-target="#myModal"></button>
+                                    @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "btn btn-danger fa fa-trash" })
 
                                 </div>
                             </div>
