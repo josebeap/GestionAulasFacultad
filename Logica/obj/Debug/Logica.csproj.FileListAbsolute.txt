@@ -10,8 +10,6 @@ E:\SoftwareII\GestionAulasFacultad\Logica\obj\Debug\Logica.csproj.CoreCompileInp
 E:\SoftwareII\GestionAulasFacultad\Logica\obj\Debug\Logica.csproj.CopyComplete
 E:\SoftwareII\GestionAulasFacultad\Logica\obj\Debug\Logica.dll
 E:\SoftwareII\GestionAulasFacultad\Logica\obj\Debug\Logica.pdb
-C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\Logica\obj\Debug\Logica.csproj.AssemblyReference.cache
-C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\Logica\bin\Debug\Logica.dll
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\Logica\bin\Debug\Logica.pdb
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\Logica\bin\Debug\AccesoDeDatos.dll
@@ -25,6 +23,8 @@ C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\Logica\bin\Debug\N
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\Logica\bin\Debug\SendGrid.pdb
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\Logica\bin\Debug\SendGrid.xml
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\Logica\bin\Debug\EntityFramework.xml
+C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\Logica\obj\Debug\Logica.csproj.AssemblyReference.cache
+C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\Logica\obj\Debug\Logica.csproj.CopyComplete
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\Logica\obj\Debug\Logica.dll
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\Logica\obj\Debug\Logica.pdb

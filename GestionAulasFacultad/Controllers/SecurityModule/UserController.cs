@@ -37,10 +37,10 @@ namespace GestionAulasFacultad.Controllers.SecurityModule
         // GET: User/Create
         public ActionResult Create()
         {
-            if (!this.VerifySession() || !this.VerifyUserInForm())
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            //if (!this.VerifySession() || !this.VerifyUserInForm())
+            //{
+                //return RedirectToAction("Index", "Home");
+            //}
             return View();
         }
 

@@ -89,8 +89,6 @@ E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\obj\Debug\GestionA
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\obj\Debug\GestionAulasFacultad.Tests.csproj.CopyComplete
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\obj\Debug\GestionAulasFacultad.Tests.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad.Tests\obj\Debug\GestionAulasFacultad.Tests.pdb
-C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\obj\Debug\GestionAulasFacultad.Tests.csproj.AssemblyReference.cache
-C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\obj\Debug\GestionAulasFacultad.Tests.csproj.CoreCompileInputs.cache
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
@@ -181,6 +179,8 @@ C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacult
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\es\System.Web.Http.WebHost.resources.dll
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\es\Microsoft.Owin.Host.SystemWeb.resources.dll
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\bin\Debug\es\System.Net.Http.Formatting.resources.dll
+C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\obj\Debug\GestionAulasFacultad.Tests.csproj.AssemblyReference.cache
+C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\obj\Debug\GestionAulasFacultad.Tests.csproj.CoreCompileInputs.cache
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\obj\Debug\GestionAulasFacultad.Tests.csproj.CopyComplete
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\obj\Debug\GestionAulasFacultad.Tests.dll
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad.Tests\obj\Debug\GestionAulasFacultad.Tests.pdb

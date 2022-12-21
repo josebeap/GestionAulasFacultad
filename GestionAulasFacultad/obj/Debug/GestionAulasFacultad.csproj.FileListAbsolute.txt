@@ -147,8 +147,6 @@ E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\obj\Debug\GestionAulasFa
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\obj\Debug\GestionAulasFacultad.csproj.CopyComplete
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\obj\Debug\GestionAulasFacultad.dll
 E:\SoftwareII\GestionAulasFacultad\GestionAulasFacultad\obj\Debug\GestionAulasFacultad.pdb
-C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\obj\Debug\GestionAulasFacultad.csproj.AssemblyReference.cache
-C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\obj\Debug\GestionAulasFacultad.csproj.CoreCompileInputs.cache
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\bin\GestionAulasFacultad.dll.config
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\bin\GestionAulasFacultad.dll
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\bin\GestionAulasFacultad.pdb
@@ -297,6 +295,8 @@ C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacult
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\bin\es\Microsoft.Owin.Security.Google.resources.dll
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\bin\es\Microsoft.Owin.Security.Twitter.resources.dll
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\bin\es\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
+C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\obj\Debug\GestionAulasFacultad.csproj.AssemblyReference.cache
+C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\obj\Debug\GestionAulasFacultad.csproj.CoreCompileInputs.cache
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\obj\Debug\GestionAulasFacultad.csproj.CopyComplete
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\obj\Debug\GestionAulasFacultad.dll
 C:\VisualStudio2019Projects\Software_Dos\GestionAulasFacultad\GestionAulasFacultad\obj\Debug\GestionAulasFacultad.pdb
