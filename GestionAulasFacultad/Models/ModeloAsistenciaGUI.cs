@@ -28,7 +28,6 @@ namespace GestionAulasFacultad.Models
 
         private string nombreMonitor;
         [DisplayName("Monitor")]
-        [Required]
         public string NombreMonitor
         {
             get { return nombreMonitor; }
@@ -46,7 +45,6 @@ namespace GestionAulasFacultad.Models
         
         private string nombreProfesor;
         [DisplayName("Profesor")]
-        [Required]
         public string NombreProfesor
         {
             get { return nombreProfesor; }
@@ -64,7 +62,6 @@ namespace GestionAulasFacultad.Models
         
         private string nombreAula;
         [DisplayName("Aula")]
-        [Required]
         public string NombreAula
         {
             get { return nombreAula; }

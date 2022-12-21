@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using GestionAsistenciasFacultad.Mapeadores;
@@ -121,6 +122,12 @@ namespace GestionAsistenciasFacultad.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create( ModeloAsistenciaGUI modelo)
         {
+            /*
+            var errors = ModelState
+                .Where(x => x.Value.Errors.Count > 0)
+                .Select(x => new { x.Key, x.Value.Errors })
+                .ToArray();*/
+
             if (ModelState.IsValid)
             {
                 MapeadorAsistenciaGUI mapper = new MapeadorAsistenciaGUI();
