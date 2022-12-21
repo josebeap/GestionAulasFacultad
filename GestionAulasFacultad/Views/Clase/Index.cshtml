@@ -1,57 +1,82 @@
-﻿@model IEnumerable<GestionAulasFacultad.ModeloBD.tb_clase>
+﻿@model IEnumerable<GestionAulasFacultad.Models.ModeloClaseGUI>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 class="d-flex justify-content-center">Lista de clases</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<br />
+
+<div class="row d-flex justify-content-center">
+    <div class="col-8.5">
+
+        <table class="table table-responsive table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NombreMateria)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CantidadHoras)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FechaHoraInicio)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NombreAula)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NombreProfesor)
+                    </th>
+                    <th class="align-content-center">
+                        Opcion
+                    </th>
+                </tr>
+                </thead>
+                @foreach (var item in Model)
+                {<tbody>
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.id_materia)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cantidad_horas)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fecha_hora_inicio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tb_aula.nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tb_profesor.id)
-        </th>
-        <th></th>
-    </tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreMateria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CantidadHoras)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaHoraInicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreAula)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreProfesor)
+        </td>
+        <td>
+            <div class="row">
+                <div class="col-6">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.id_materia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cantidad_horas)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fecha_hora_inicio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tb_aula.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tb_profesor.id)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+                    @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "btn btn-primary fa fa-pencil" })
+
+                </div>
+
+                <div class="col-6">
+
+                    @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "btn btn-danger fa fa-trash" })
+
+                </div>
+            </div>
+
         </td>
     </tr>
-}
+</tbody>
+    }
 
-</table>
+                </table>
+                @Html.Partial("_FooterPagedList")
+
+                @Html.ActionLink("Crear clase", "Create", new { }, new { @class = "btn btn-success btn-lg d-flex justify-content-center" })
+            </div>
+            </div>
+
+

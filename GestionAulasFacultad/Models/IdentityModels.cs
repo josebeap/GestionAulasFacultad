@@ -29,5 +29,7 @@ namespace GestionAulasFacultad.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<GestionAulasFacultad.Models.ModeloAsistenciaGUI> ModeloAsistenciaGUIs { get; set; }
     }
 }

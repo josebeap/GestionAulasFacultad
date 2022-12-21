@@ -1,72 +1,87 @@
-﻿@model GestionAulasFacultad.ModeloBD.tb_clase
+﻿@model GestionAulasFacultad.Models.ModeloClaseGUI
 
 @{
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2 class="d-flex justify-content-center">Crear una clase</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>tb_clase</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.id_profesor, "id_profesor", htmlAttributes: new { @class = "control-label col-md-2" })
+
+<div class="form-horizontal container">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="row">
+        <div class="form-group col-6">
+            @Html.LabelFor(model => model.NombreProfesor, "Profesor", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("id_profesor", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.id_profesor, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.IdProfesor, new SelectList(Model.ListaProfesores, "Id", "NombrePersona"), htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IdProfesor, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.id_aula, "id_aula", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group col-6">
+            @Html.LabelFor(model => model.NombreAula, "Aula", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("id_aula", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.id_aula, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.id_materia, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.id_materia, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.id_materia, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.cantidad_horas, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.cantidad_horas, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.cantidad_horas, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.fecha_hora_inicio, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.fecha_hora_inicio, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.fecha_hora_inicio, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                @Html.DropDownListFor(model => model.IdAula, new SelectList(Model.ListaAulas, "Id", "Nombre"), htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IdAula, "", new { @class = "text-danger" })
             </div>
         </div>
     </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    <div class="row">
+        <div class="form-group col-6">
+            @Html.LabelFor(model => model.NombreMateria, "Materia", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.IdMateria, new SelectList(Model.ListaMaterias, "Id", "Nombre"), htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IdMateria, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-6">
+            @Html.LabelFor(model => model.CantidadHoras, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CantidadHoras, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CantidadHoras, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="form-group col-4">
+            @Html.LabelFor(model => model.FechaHoraInicio, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FechaHoraInicio, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FechaHoraInicio, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-5"></div>
+        <div class="form-group col-1">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Crear" class="btn btn-success" />
+            </div>
+        </div>
+        <div class="col-1 ">
+            @Html.ActionLink("Cancelar", "Index", new { }, new { @class = "btn btn-danger" })
+        </div>
+        <div class="col-5"></div>
+    </div>
+
+
 </div>
+    }
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+ 
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

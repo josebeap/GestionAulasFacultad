@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="db7d2589b1bf41e3ac5dad48ceed9d53" Name="Diagram1">
+        <EntityTypeShape EntityType="SoftwareBDModel.tb_asistencia" Width="1.5" PointX="8.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SoftwareBDModel.tb_aula" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SoftwareBDModel.tb_auxiliar" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SoftwareBDModel.tb_clase" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="SoftwareBDModel.tb_inventario" Width="1.5" PointX="10" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SoftwareBDModel.tb_materia" Width="1.5" PointX="3.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SoftwareBDModel.tb_monitor" Width="1.5" PointX="6" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SoftwareBDModel.tb_persona" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SoftwareBDModel.tb_profesor" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SoftwareBDModel.tb_programa" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SoftwareBDModel.tb_reserva" Width="1.5" PointX="11.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SoftwareBDModel.tb_tipoelemento" Width="1.5" PointX="7.75" PointY="2.625" IsExpanded="true" />
+        <AssociationConnector Association="SoftwareBDModel.FK__tb_asiste__id_au__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="SoftwareBDModel.FK__tb_asiste__id_mo__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="SoftwareBDModel.FK__tb_asiste__id_pr__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="SoftwareBDModel.FK__tb_clase__id_aul__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="SoftwareBDModel.FK__tb_reserv__id_au__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="SoftwareBDModel.FK__tb_auxili__id_pe__20C1E124" ManuallyRouted="false" />
+        <AssociationConnector Association="SoftwareBDModel.FK__tb_clase__id_pro__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="SoftwareBDModel.FK__tb_invent__id_ti__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="SoftwareBDModel.FK__tb_materi__id_pr__15502E78" ManuallyRouted="false" />
+        <AssociationConnector Association="SoftwareBDModel.FK__tb_monito__id_ma__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="SoftwareBDModel.FK__tb_monito__id_pe__1BFD2C07" ManuallyRouted="false" />
+        <AssociationConnector Association="SoftwareBDModel.FK__tb_monito__id_pr__1CF15040" ManuallyRouted="false" />
+        <AssociationConnector Association="SoftwareBDModel.FK__tb_reserv__id_mo__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="SoftwareBDModel.FK__tb_profes__id_pe__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="SoftwareBDModel.FK__tb_profes__id_pr__1920BF5C" ManuallyRouted="false" />
+        <AssociationConnector Association="SoftwareBDModel.FK__tb_reserv__id_pr__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="SoftwareBDModel.FK__tb_clase__id_mat__47DBAE45" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

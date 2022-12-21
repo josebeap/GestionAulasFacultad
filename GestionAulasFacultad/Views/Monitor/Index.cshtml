@@ -1,51 +1,73 @@
-﻿@model IEnumerable<GestionAulasFacultad.ModeloBD.tb_monitor>
+﻿@model IEnumerable<GestionAulasFacultad.Models.ModeloMonitorGUI>
 
 @{
     ViewBag.Title = "Index";
 }
+<h2 class="d-flex justify-content-center">Lista de monitores</h2>
 
-<h2>Index</h2>
+<br />
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.codigo_estudiante)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tb_materia.nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tb_persona.primer_nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tb_programa.nombre)
-        </th>
-        <th></th>
-    </tr>
+<div class="row d-flex justify-content-center">
+    <div class="col-8.7">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.codigo_estudiante)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tb_materia.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tb_persona.primer_nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tb_programa.nombre)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
+        <table class="table table-responsive table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CodigoEstudiante)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NombreMateria)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NombrePersona)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NombrePrograma)
+                    </th>
+                    <th>Opcion</th>
 
-</table>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodigoEstudiante)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombreMateria)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombrePersona)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombrePrograma)
+                    </td>
+                    <td>
+
+                        <div class="row">
+                            <div class="col-6">
+
+                                @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "btn btn-primary fa fa-pencil" })
+
+                            </div>
+
+                            <div class="col-6">
+
+                                @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "btn btn-danger fa fa-trash" })
+
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+
+        </table>
+        @Html.Partial("_FooterPagedList")
+
+        @Html.ActionLink("Crear monitor", "Create", new { }, new { @class = "btn btn-success btn-lg d-flex justify-content-center" })
+    </div>
+</div>
+
+

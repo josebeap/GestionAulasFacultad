@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SoftwareBDModelStoreContainer" CdmEntityContainer="SoftwareBDEntities">
+    <EntitySetMapping Name="tb_asistencia">
+      <EntityTypeMapping TypeName="SoftwareBDModel.tb_asistencia">
+        <MappingFragment StoreEntitySet="tb_asistencia">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_monitor" ColumnName="id_monitor" />
+          <ScalarProperty Name="id_profesor" ColumnName="id_profesor" />
+          <ScalarProperty Name="id_aula" ColumnName="id_aula" />
+          <ScalarProperty Name="fecha_hora_inicio" ColumnName="fecha_hora_inicio" />
+          <ScalarProperty Name="fecha_hora_fin" ColumnName="fecha_hora_fin" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_aula">
+      <EntityTypeMapping TypeName="SoftwareBDModel.tb_aula">
+        <MappingFragment StoreEntitySet="tb_aula">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="tipo_aula" ColumnName="tipo_aula" />
+          <ScalarProperty Name="capacidad" ColumnName="capacidad" />
+          <ScalarProperty Name="cantidad_computadores" ColumnName="cantidad_computadores" />
+          <ScalarProperty Name="multimedia" ColumnName="multimedia" />
+          <ScalarProperty Name="disponibilidad" ColumnName="disponibilidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_auxiliar">
+      <EntityTypeMapping TypeName="SoftwareBDModel.tb_auxiliar">
+        <MappingFragment StoreEntitySet="tb_auxiliar">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_persona" ColumnName="id_persona" />
+          <ScalarProperty Name="funcion" ColumnName="funcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_clase">
+      <EntityTypeMapping TypeName="SoftwareBDModel.tb_clase">
+        <MappingFragment StoreEntitySet="tb_clase">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_profesor" ColumnName="id_profesor" />
+          <ScalarProperty Name="id_aula" ColumnName="id_aula" />
+          <ScalarProperty Name="id_materia" ColumnName="id_materia" />
+          <ScalarProperty Name="cantidad_horas" ColumnName="cantidad_horas" />
+          <ScalarProperty Name="fecha_hora_inicio" ColumnName="fecha_hora_inicio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_inventario">
+      <EntityTypeMapping TypeName="SoftwareBDModel.tb_inventario">
+        <MappingFragment StoreEntitySet="tb_inventario">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="codigo_identificacion" ColumnName="codigo_identificacion" />
+          <ScalarProperty Name="id_tipoelemento" ColumnName="id_tipoelemento" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_materia">
+      <EntityTypeMapping TypeName="SoftwareBDModel.tb_materia">
+        <MappingFragment StoreEntitySet="tb_materia">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_programa" ColumnName="id_programa" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_monitor">
+      <EntityTypeMapping TypeName="SoftwareBDModel.tb_monitor">
+        <MappingFragment StoreEntitySet="tb_monitor">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_persona" ColumnName="id_persona" />
+          <ScalarProperty Name="id_programa" ColumnName="id_programa" />
+          <ScalarProperty Name="id_materia" ColumnName="id_materia" />
+          <ScalarProperty Name="codigo_estudiante" ColumnName="codigo_estudiante" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_persona">
+      <EntityTypeMapping TypeName="SoftwareBDModel.tb_persona">
+        <MappingFragment StoreEntitySet="tb_persona">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="primer_nombre" ColumnName="primer_nombre" />
+          <ScalarProperty Name="otros_nombres" ColumnName="otros_nombres" />
+          <ScalarProperty Name="primer_apellido" ColumnName="primer_apellido" />
+          <ScalarProperty Name="segundo_apellido" ColumnName="segundo_apellido" />
+          <ScalarProperty Name="documentoIdentidad" ColumnName="documentoIdentidad" />
+          <ScalarProperty Name="celular" ColumnName="celular" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="huella" ColumnName="huella" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_profesor">
+      <EntityTypeMapping TypeName="SoftwareBDModel.tb_profesor">
+        <MappingFragment StoreEntitySet="tb_profesor">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_persona" ColumnName="id_persona" />
+          <ScalarProperty Name="id_programa" ColumnName="id_programa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_programa">
+      <EntityTypeMapping TypeName="SoftwareBDModel.tb_programa">
+        <MappingFragment StoreEntitySet="tb_programa">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_reserva">
+      <EntityTypeMapping TypeName="SoftwareBDModel.tb_reserva">
+        <MappingFragment StoreEntitySet="tb_reserva">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_monitor" ColumnName="id_monitor" />
+          <ScalarProperty Name="id_profesor" ColumnName="id_profesor" />
+          <ScalarProperty Name="id_aula" ColumnName="id_aula" />
+          <ScalarProperty Name="cantidad_horas" ColumnName="cantidad_horas" />
+          <ScalarProperty Name="fecha_hora_inicio" ColumnName="fecha_hora_inicio" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_tipoelemento">
+      <EntityTypeMapping TypeName="SoftwareBDModel.tb_tipoelemento">
+        <MappingFragment StoreEntitySet="tb_tipoelemento">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,63 +1,86 @@
-﻿@model IEnumerable<GestionAulasFacultad.ModeloBD.tb_aula>
+﻿@model IEnumerable<GestionAulasFacultad.Models.ModeloAulaGUI>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 class="d-flex justify-content-center">Lista de Aulas</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tipo_aula)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.capacidad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cantidad_computadores)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.multimedia)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.disponibilidad)
-        </th>
-        <th></th>
-    </tr>
+<br />
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tipo_aula)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.capacidad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cantidad_computadores)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.multimedia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.disponibilidad)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
 
-</table>
+<div class="row d-flex justify-content-center">
+    <div class="col-8.5">
+
+        <table class="table table-responsive table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TipoAula)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Capacidad)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CantidadComputadores)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Multimedia)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Disponibilidad)
+                    </th>
+                    <th>Opcion</th>
+                </tr>
+                </thead>
+
+                @foreach (var item in Model)
+                {
+                <tbody>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TipoAula)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Capacidad)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CantidadComputadores)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Multimedia)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Disponibilidad)
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-6">
+
+                                    @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "btn btn-primary fa fa-pencil" })
+
+                                </div>
+
+                                <div class="col-6">
+
+                                    @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "btn btn-danger fa fa-trash" })
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            }
+
+            </table>
+            @Html.Partial("_FooterPagedList")
+
+            @Html.ActionLink("Crear aula", "Create", new { }, new { @class = "btn btn-success btn-lg d-flex justify-content-center" })
+        </div>
+    </div>

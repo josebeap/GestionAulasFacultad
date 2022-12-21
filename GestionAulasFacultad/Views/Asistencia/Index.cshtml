@@ -1,63 +1,95 @@
-﻿@model IEnumerable<GestionAulasFacultad.ModeloBD.tb_asistencia>
-
+﻿@model IEnumerable<GestionAulasFacultad.Models.ModeloAsistenciaGUI>
+<link href="~/Scripts/assets/icons/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+<link href="~/Scripts/assets/icons/themify-icons/themify-icons.css" rel="stylesheet" />
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 class="d-flex justify-content-center">Lista de asistencias</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.fecha_hora_inicio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fecha_hora_fin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.estado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tb_aula.nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tb_monitor.codigo_estudiante)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tb_profesor.id)
-        </th>
-        <th></th>
-    </tr>
+<br />
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.fecha_hora_inicio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fecha_hora_fin)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.estado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tb_aula.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tb_monitor.codigo_estudiante)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tb_profesor.id)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
+<div class="row d-flex justify-content-center">
+    <div class="col-10.5">
 
-</table>
+        <table class="table table-responsive table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FechaHoraInicio)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FechaHoraFin)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Estado)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NombreAula)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NombreMonitor)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NombreProfesor)
+                    </th>
+                    <td>
+                        
+                            Opcion
+                        
+                    </td>
+
+                </tr>
+            </thead>
+
+            @foreach (var item in Model)
+            {
+                <tbody>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FechaHoraInicio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FechaHoraFin)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Estado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NombreAula)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NombreMonitor)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NombreProfesor)
+                        </td>
+
+                        <td>
+
+                            <div class="row">
+                                <div class="col-6">
+
+                                    @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "btn btn-primary fa fa-pencil" })
+
+                                </div>
+                               
+                                <div class="col-6">
+
+                                    @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "btn btn-danger fa fa-trash" })
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            }
+
+        </table>
+        @Html.Partial("_FooterPagedList")
+
+        @Html.ActionLink("Crear asistencia", "Create", new { }, new { @class = "btn btn-success btn-lg d-flex justify-content-center" })
+    </div>
+</div>
+
+
