@@ -52,5 +52,23 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="SEC_FORM">
+      <EntityTypeMapping TypeName="SoftwareSSOModel.SEC_FORM">
+        <MappingFragment StoreEntitySet="SEC_FORM">
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SEC_FORMS_ROLE">
+      <EntityTypeMapping TypeName="SoftwareSSOModel.SEC_FORMS_ROLE">
+        <MappingFragment StoreEntitySet="SEC_FORMS_ROLE">
+          <ScalarProperty Name="FORM_ID" ColumnName="FORM_ID" />
+          <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

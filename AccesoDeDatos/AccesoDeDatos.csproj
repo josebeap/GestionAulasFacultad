@@ -114,6 +114,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ModeloDeDatos\SEC_FORM.cs">
+      <DependentUpon>SoftwareSSO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloDeDatos\SEC_FORMS_ROLE.cs">
+      <DependentUpon>SoftwareSSO.tt</DependentUpon>
+    </Compile>
     <Compile Include="ModeloDeDatos\SEC_ROLE.cs">
       <DependentUpon>SoftwareSSO.tt</DependentUpon>
     </Compile>

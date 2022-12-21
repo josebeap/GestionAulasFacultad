@@ -12,6 +12,10 @@
         <AssociationConnector Association="SoftwareSSOModel.FK__SEC_USER___ROLEI__1A14E395" ManuallyRouted="false" />
         <AssociationConnector Association="SoftwareSSOModel.USERID_SEC_SESSION_FK" ManuallyRouted="false" />
         <AssociationConnector Association="SoftwareSSOModel.FK__SEC_USER___USERI__1920BF5C" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SoftwareSSOModel.SEC_FORM" Width="1.5" PointX="0.75" PointY="10.25" />
+        <EntityTypeShape EntityType="SoftwareSSOModel.SEC_FORMS_ROLE" Width="1.5" PointX="3" PointY="0.75" />
+        <AssociationConnector Association="SoftwareSSOModel.FK__SEC_FORMS__FORM___267ABA7A" />
+        <AssociationConnector Association="SoftwareSSOModel.FK__SEC_FORMS__ROLE___25869641" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
