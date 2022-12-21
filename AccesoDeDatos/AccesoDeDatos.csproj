@@ -65,6 +65,7 @@
     <Compile Include="DbModel\ProfesorDbModel.cs" />
     <Compile Include="DbModel\ProgramaDbModel.cs" />
     <Compile Include="DbModel\ReservaDbModel.cs" />
+    <Compile Include="DbModel\SecurityModule\FormDbModel.cs" />
     <Compile Include="DbModel\SecurityModule\RoleDbModel.cs" />
     <Compile Include="DbModel\SecurityModule\UserDbModel.cs" />
     <Compile Include="DbModel\TipoElementoDbModel.cs" />
@@ -95,9 +96,9 @@
     <Compile Include="Mapeadores\MapeadorBaseDatos.cs" />
     <Compile Include="Mapeadores\MapeadorAulaDatos.cs" />
     <Compile Include="Mapeadores\MapeadorPersonaDatos.cs" />
-    <Compile Include="Mapeadores\MapperBase.cs" />
-    <Compile Include="Mapeadores\SecurityModule\RoleModelMapper.cs" />
-    <Compile Include="Mapeadores\SecurityModule\UserModelMapper.cs" />
+    <Compile Include="Mapeadores\SecurityModule\FormDbModelMapper.cs" />
+    <Compile Include="Mapeadores\SecurityModule\RoleDbModelMapper.cs" />
+    <Compile Include="Mapeadores\SecurityModule\UserDbModelMapper.cs" />
     <Compile Include="ModeloDeDatos\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

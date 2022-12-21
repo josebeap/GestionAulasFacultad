@@ -32,7 +32,13 @@ namespace AccesoDeDatos.DbModel.SecurityModule
             set { description = value; }
         }
 
+        private bool isSelectedByUser;
 
+        public bool IsSelectedByUser
+        {
+            get { return isSelectedByUser; }
+            set { isSelectedByUser = value; }
+        }
 
         private bool removed;
 

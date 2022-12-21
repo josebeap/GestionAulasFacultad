@@ -23,8 +23,8 @@ namespace AccesoDeDatos.Implementacion.SecurityModule
             {
                 try
                 {
-                    UserModelMapper mapper = new UserModelMapper();
-                    SEC_USER record = mapper.MapperT2T1(dbModel);
+                    UserDbModelMapper mapper = new UserDbModelMapper();
+                    SEC_USER record = mapper.MapearTipo2Tipo1(dbModel);
                     record.CREATE_DATE = dbModel.CurrentDate;
                     record.CREATE_USER_ID = dbModel.UserInSessionId;
 
@@ -36,6 +36,20 @@ namespace AccesoDeDatos.Implementacion.SecurityModule
                 {
                     return 2;
                 }
+            }
+        }
+
+        public UserDbModel RecordSearch(int id)
+        {
+            using (SoftwareSSOEntities db = new SoftwareSSOEntities())
+            {
+                var record = db.SEC_USER.Where(x => !x.REMOVED && x.ID == id).FirstOrDefault();
+                if (record != null)
+                {
+                    UserDbModelMapper mapper = new UserDbModelMapper();
+                    return mapper.MapearTipo1Tipo2(record);
+                }
+                return null;
             }
         }
 
@@ -119,12 +133,67 @@ namespace AccesoDeDatos.Implementacion.SecurityModule
                             where !role.REMOVED && role.NAME.ToUpper().Contains(filter.ToUpper())
                             select role;
 
-                UserModelMapper mapper = new UserModelMapper();
-                var listaFinal = mapper.MapperT1T2(lista);
+                UserDbModelMapper mapper = new UserDbModelMapper();
+                var listaFinal = mapper.MapearTipo1Tipo2(lista);
 
                 return listaFinal;
             }
         }
+
+        public int ChangePassword(string currentPassword, string newPassword, int userId, out string email)
+        {
+            email = String.Empty;
+            using (SoftwareSSOEntities db = new SoftwareSSOEntities())
+            {
+                try
+                {
+                    var user = db.SEC_USER.Where(x => x.ID == userId && x.USER_PASSWORD.Equals(currentPassword)).FirstOrDefault();
+                    if (user == null)
+                    {
+                        return 3;
+                    }
+                    user.USER_PASSWORD = newPassword;
+                    db.SaveChanges();
+                    email = user.EMAIL;
+                    return 1;
+                }
+                catch
+                {
+                    return 2;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="newPassword"></param>
+        /// <returns></returns>
+        public int PasswordReset(string email, string newPassword)
+        {
+            using (SoftwareSSOEntities db = new SoftwareSSOEntities())
+            {
+                try
+                {
+                    var user = db.SEC_USER.Where(x => x.EMAIL.Equals(email)).FirstOrDefault();
+                    if (user == null)
+                    {
+                        return 3;
+                    }
+                    user.USER_PASSWORD = newPassword;
+                    db.SaveChanges();
+                    email = user.EMAIL;
+                    return 1;
+                }
+                catch
+                {
+                    return 2;
+                }
+            }
+        }
+
+
 
         public UserDbModel Login(UserDbModel dbModel)
         {
@@ -151,10 +220,11 @@ namespace AccesoDeDatos.Implementacion.SecurityModule
 
                 db.SEC_SESSION.Add(session);
                 db.SaveChanges();
-                UserModelMapper mapper = new UserModelMapper();
-                return mapper.MapperT1T2(login);
+                UserDbModelMapper mapper = new UserDbModelMapper();
+                return mapper.MapearTipo1Tipo2(login);
             }
         }
+
 
 
         private string GetToken(string key)
@@ -171,5 +241,84 @@ namespace AccesoDeDatos.Implementacion.SecurityModule
             string myIP = Dns.GetHostEntry(hostName).AddressList[0].ToString();
             return myIP;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="roles"></param>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public bool AssignRoles(List<int> roles, int userId)
+        {
+            using (SoftwareSSOEntities db = new SoftwareSSOEntities())
+            {
+                try
+                {
+                    IList<SEC_USER_ROLE> userRoleList = db.SEC_USER_ROLE.Where(x => x.USERID == userId).ToList();
+                    foreach (var userRole in userRoleList)
+                    {
+                        db.SEC_USER_ROLE.Remove(userRole);
+                    }
+
+                    foreach (int roleId in roles)
+                    {
+                        db.SEC_USER_ROLE.Add(new SEC_USER_ROLE()
+                        {
+                            USERID = userId,
+                            ROLEID = roleId
+                        });
+                    }
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public IEnumerable<FormDbModel> GetRoleFormsByUser(int userId)
+        {
+            using (SoftwareSSOEntities db = new SoftwareSSOEntities())
+            {
+                // query to get role forms by user
+                IEnumerable<SEC_FORM> list = (from u in db.SEC_USER
+                                              join ur in db.SEC_USER_ROLE on u.ID equals ur.USERID
+                                              join r in db.SEC_ROLE on ur.ROLEID equals r.ID
+                                              join fr in db.SEC_FORMS_ROLE on r.ID equals fr.ROLE_ID
+                                              join f in db.SEC_FORM on fr.FORM_ID equals f.ID
+                                              where u.ID == userId
+                                              select f).Distinct().ToList();
+
+                IList<FormDbModel> formsList = new FormDbModelMapper().MapearTipo1Tipo2(list).ToList();
+
+                return formsList;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="formId"></param>
+        /// <returns></returns>
+        public bool ValidateUserInForm(int userId, int formId)
+        {
+
+            using (SoftwareSSOEntities db = new SoftwareSSOEntities())
+            {
+                // query to get role forms by user
+                var amountForms = (from u in db.SEC_USER
+                                   join ur in db.SEC_USER_ROLE on u.ID equals ur.USERID
+                                   join r in db.SEC_ROLE on ur.ROLEID equals r.ID
+                                   join fr in db.SEC_FORMS_ROLE on r.ID equals fr.ROLE_ID
+                                   where u.ID == userId && fr.FORM_ID == formId
+                                   select fr).Count();
+
+                return amountForms > 0;
+            }
+        }
+
     }
 }

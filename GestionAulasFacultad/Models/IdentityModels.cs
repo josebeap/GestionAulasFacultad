@@ -31,5 +31,7 @@ namespace GestionAulasFacultad.Models
         }
 
         public System.Data.Entity.DbSet<GestionAulasFacultad.Models.ModeloAsistenciaGUI> ModeloAsistenciaGUIs { get; set; }
+
+        public System.Data.Entity.DbSet<AccesoDeDatos.ModeloDeDatos.SEC_ROLE> SEC_ROLE { get; set; }
     }
 }

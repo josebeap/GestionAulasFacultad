@@ -13,6 +13,7 @@ namespace AccesoDeDatos.DbModel
         public DateTime CurrentDate
         {
             get { return DateTime.Now; }
+            set { currentDate = value; }
         }
 
         private int userInSessionId;
