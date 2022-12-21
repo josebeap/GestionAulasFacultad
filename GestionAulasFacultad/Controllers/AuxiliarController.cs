@@ -64,6 +64,16 @@ namespace GestionAuxiliarsFacultad.Controllers
             modelo.ListaPersonas = mapeador.MapearTipo1Tipo2(listaDTO);
         }
 
+        private IEnumerable<ModeloPersonaGUI> ObtenerListadoPersonas()
+        {
+            ImplPersonaLogica logicaPersona = new ImplPersonaLogica();
+            var listaPersona = logicaPersona.ListarRegistros();
+            MapeadorPersonaGUI mapeador = new MapeadorPersonaGUI();
+
+            var listado = mapeador.MapearTipo1Tipo2(listaPersona);
+            return listado;
+        }
+
         // POST: Auxiliar/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -94,8 +104,10 @@ namespace GestionAuxiliarsFacultad.Controllers
             {
                 return HttpNotFound();
             }
+            IEnumerable<ModeloPersonaGUI> listadoPersonas = ObtenerListadoPersonas();
             MapeadorAuxiliarGUI mapper = new MapeadorAuxiliarGUI();
             ModeloAuxiliarGUI modelo = mapper.MapearTipo1Tipo2(AuxiliarDTO);
+            modelo.ListaPersonas = listadoPersonas;
             return View(modelo);
         }
 

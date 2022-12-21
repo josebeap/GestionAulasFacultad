@@ -18,7 +18,7 @@ namespace AccesoDeDatos.Mapeadores
                 Id = entrada.id,
                 Nombre = entrada.nombre,
                 IdPrograma=entrada.id_programa,
-                NombrePrograma=entrada.nombre
+                NombrePrograma=entrada.tb_programa.nombre
             };
         }
 

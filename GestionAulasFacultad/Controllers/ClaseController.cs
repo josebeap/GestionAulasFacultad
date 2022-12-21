@@ -69,6 +69,17 @@ namespace GestionClasesFacultad.Controllers
             modelo.ListaProfesores = mapeador.MapearTipo1Tipo2(listaDTO);
         }
 
+        private IEnumerable<ModeloProfesorGUI> ObtenerListadoProfesores()
+        {
+            ImplProfesorLogica logicaProfesor = new ImplProfesorLogica();
+            var listaProfesor = logicaProfesor.ListarRegistros();
+            MapeadorProfesorGUI mapeador = new MapeadorProfesorGUI();
+
+            var listado = mapeador.MapearTipo1Tipo2(listaProfesor);
+            return listado;
+        }
+
+
         private void ObtenerListadoAulas(ModeloClaseGUI modelo)
         {
             ImplAulaLogica logicaAula = new ImplAulaLogica();
@@ -77,12 +88,31 @@ namespace GestionClasesFacultad.Controllers
             modelo.ListaAulas = mapeador.MapearTipo1Tipo2(listaDTO);
         }
 
+        private IEnumerable<ModeloAulaGUI> ObtenerListadoAulas()
+        {
+            ImplAulaLogica logicaAula = new ImplAulaLogica();
+            var listaAula = logicaAula.ListarRegistros();
+            MapeadorAulaGUI mapeador = new MapeadorAulaGUI();
+
+            var listado = mapeador.MapearTipo1Tipo2(listaAula);
+            return listado;
+        }
         private void ObtenerListadoMaterias(ModeloClaseGUI modelo)
         {
             ImplMateriaLogica logicaMateria = new ImplMateriaLogica();
             IEnumerable<MateriaDTO> listaDTO = logicaMateria.ListarRegistros();
             MapeadorMateriaGUI mapeador = new MapeadorMateriaGUI();
             modelo.ListaMaterias = mapeador.MapearTipo1Tipo2(listaDTO);
+        }
+
+        private IEnumerable<ModeloMateriaGUI> ObtenerListadoMaterias()
+        {
+            ImplMateriaLogica logicaMateria = new ImplMateriaLogica();
+            var listaMateria = logicaMateria.ListarRegistros();
+            MapeadorMateriaGUI mapeador = new MapeadorMateriaGUI();
+
+            var listado = mapeador.MapearTipo1Tipo2(listaMateria);
+            return listado;
         }
 
 
@@ -116,8 +146,16 @@ namespace GestionClasesFacultad.Controllers
             {
                 return HttpNotFound();
             }
+            IEnumerable<ModeloProfesorGUI> listadoProfesores = ObtenerListadoProfesores();
+            IEnumerable<ModeloMateriaGUI> listadoMaterias = ObtenerListadoMaterias();
+            IEnumerable<ModeloAulaGUI> listadoAulas = ObtenerListadoAulas();
+
             MapeadorClaseGUI mapper = new MapeadorClaseGUI();
             ModeloClaseGUI modelo = mapper.MapearTipo1Tipo2(ClaseDTO);
+
+            modelo.ListaAulas = listadoAulas;
+            modelo.ListaMaterias = listadoMaterias;
+            modelo.ListaProfesores = listadoProfesores;
             return View(modelo);
         }
 
@@ -150,8 +188,11 @@ namespace GestionClasesFacultad.Controllers
             {
                 return HttpNotFound();
             }
+           
             MapeadorClaseGUI mapper = new MapeadorClaseGUI();
             ModeloClaseGUI modelo = mapper.MapearTipo1Tipo2(ClaseDTO);
+
+           
             return View(modelo);
         }
 

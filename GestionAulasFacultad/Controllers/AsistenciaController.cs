@@ -68,6 +68,16 @@ namespace GestionAsistenciasFacultad.Controllers
             modelo.ListaProfesores = mapeador.MapearTipo1Tipo2(listaDTO);
         }
 
+        private IEnumerable<ModeloProfesorGUI> ObtenerListadoProfesores()
+        {
+            ImplProfesorLogica logicaProfesor = new ImplProfesorLogica();
+            var listaProfesor = logicaProfesor.ListarRegistros();
+            MapeadorProfesorGUI mapeador = new MapeadorProfesorGUI();
+
+            var listado = mapeador.MapearTipo1Tipo2(listaProfesor);
+            return listado;
+        }
+
         private void ObtenerListadoMonitores(ModeloAsistenciaGUI modelo)
         {
             ImplMonitorLogica logicaMonitor = new ImplMonitorLogica();
@@ -76,12 +86,32 @@ namespace GestionAsistenciasFacultad.Controllers
             modelo.ListaMonitores = mapeador.MapearTipo1Tipo2(listaDTO);
         }
 
+        private IEnumerable<ModeloMonitorGUI> ObtenerListadoMonitores()
+        {
+            ImplMonitorLogica logicaMonitor = new ImplMonitorLogica();
+            var listaMonitor = logicaMonitor.ListarRegistros();
+            MapeadorMonitorGUI mapeador = new MapeadorMonitorGUI();
+
+            var listado = mapeador.MapearTipo1Tipo2(listaMonitor);
+            return listado;
+        }
+
         private void ObtenerListadoAulas(ModeloAsistenciaGUI modelo)
         {
             ImplAulaLogica logicaAula = new ImplAulaLogica();
             IEnumerable<AulaDTO> listaDTO = logicaAula.ListarRegistros();
             MapeadorAulaGUI mapeador = new MapeadorAulaGUI();
             modelo.ListaAulas = mapeador.MapearTipo1Tipo2(listaDTO);
+        }
+
+        private IEnumerable<ModeloAulaGUI> ObtenerListadoAulas()
+        {
+            ImplAulaLogica logicaAula = new ImplAulaLogica();
+            var listaAula = logicaAula.ListarRegistros();
+            MapeadorAulaGUI mapeador = new MapeadorAulaGUI();
+
+            var listado = mapeador.MapearTipo1Tipo2(listaAula);
+            return listado;
         }
 
         // POST: Asistencia/Create
@@ -114,8 +144,14 @@ namespace GestionAsistenciasFacultad.Controllers
             {
                 return HttpNotFound();
             }
+            IEnumerable<ModeloProfesorGUI> listadoProfesores = ObtenerListadoProfesores();
+            IEnumerable<ModeloMonitorGUI> listadoMonitores= ObtenerListadoMonitores();
+            IEnumerable<ModeloAulaGUI> listadoAulas = ObtenerListadoAulas();
             MapeadorAsistenciaGUI mapper = new MapeadorAsistenciaGUI();
             ModeloAsistenciaGUI modelo = mapper.MapearTipo1Tipo2(AsistenciaDTO);
+            modelo.ListaAulas = listadoAulas;
+            modelo.ListaMonitores = listadoMonitores;
+            modelo.ListaProfesores = listadoProfesores;
             return View(modelo);
         }
 

@@ -67,6 +67,15 @@ namespace GestionReservasFacultad.Controllers
             MapeadorProfesorGUI mapeador = new MapeadorProfesorGUI();
             modelo.ListaProfesores = mapeador.MapearTipo1Tipo2(listaDTO);
         }
+        private IEnumerable<ModeloProfesorGUI> ObtenerListadoProfesores()
+        {
+            ImplProfesorLogica logicaProfesor = new ImplProfesorLogica();
+            var listaProfesor = logicaProfesor.ListarRegistros();
+            MapeadorProfesorGUI mapeador = new MapeadorProfesorGUI();
+
+            var listado = mapeador.MapearTipo1Tipo2(listaProfesor);
+            return listado;
+        }
 
         private void ObtenerListadoMonitores(ModeloReservaGUI modelo)
         {
@@ -75,7 +84,15 @@ namespace GestionReservasFacultad.Controllers
             MapeadorMonitorGUI mapeador = new MapeadorMonitorGUI();
             modelo.ListaMonitores = mapeador.MapearTipo1Tipo2(listaDTO);
         }
+        private IEnumerable<ModeloMonitorGUI> ObtenerListadoMonitores()
+        {
+            ImplMonitorLogica logicaMonitor = new ImplMonitorLogica();
+            var listaMonitor = logicaMonitor.ListarRegistros();
+            MapeadorMonitorGUI mapeador = new MapeadorMonitorGUI();
 
+            var listado = mapeador.MapearTipo1Tipo2(listaMonitor);
+            return listado;
+        }
         private void ObtenerListadoAulas(ModeloReservaGUI modelo)
         {
             ImplAulaLogica logicaAula = new ImplAulaLogica();
@@ -83,7 +100,15 @@ namespace GestionReservasFacultad.Controllers
             MapeadorAulaGUI mapeador = new MapeadorAulaGUI();
             modelo.ListaAulas = mapeador.MapearTipo1Tipo2(listaDTO);
         }
+        private IEnumerable<ModeloAulaGUI> ObtenerListadoAulas()
+        {
+            ImplAulaLogica logicaAula = new ImplAulaLogica();
+            var listaAula = logicaAula.ListarRegistros();
+            MapeadorAulaGUI mapeador = new MapeadorAulaGUI();
 
+            var listado = mapeador.MapearTipo1Tipo2(listaAula);
+            return listado;
+        }
         // POST: Reserva/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -114,8 +139,14 @@ namespace GestionReservasFacultad.Controllers
             {
                 return HttpNotFound();
             }
+            IEnumerable<ModeloProfesorGUI> listadoProfesores = ObtenerListadoProfesores();
+            IEnumerable<ModeloMonitorGUI> listadoMonitores = ObtenerListadoMonitores();
+            IEnumerable<ModeloAulaGUI> listadoAulas = ObtenerListadoAulas();
             MapeadorReservaGUI mapper = new MapeadorReservaGUI();
             ModeloReservaGUI modelo = mapper.MapearTipo1Tipo2(ReservaDTO);
+            modelo.ListaAulas = listadoAulas;
+            modelo.ListaMonitores = listadoMonitores;
+            modelo.ListaProfesores = listadoProfesores;
             return View(modelo);
         }
 

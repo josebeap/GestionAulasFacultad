@@ -63,6 +63,16 @@ namespace GestionInventariosFacultad.Controllers
             MapeadorTipoElementoGUI mapeador = new MapeadorTipoElementoGUI();
             modelo.ListaTipoElementos = mapeador.MapearTipo1Tipo2(listaDTO);
         }
+        private IEnumerable<ModeloTipoElementoGUI> ObtenerListadoTipoElementos()
+        {
+            ImplTipoElementoLogica logicaTipoElemento = new ImplTipoElementoLogica();
+            var listaTipoElemento = logicaTipoElemento.ListarRegistros();
+            MapeadorTipoElementoGUI mapeador = new MapeadorTipoElementoGUI();
+
+            var listado = mapeador.MapearTipo1Tipo2(listaTipoElemento);
+            return listado;
+        }
+
         // POST: Inventario/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -93,8 +103,10 @@ namespace GestionInventariosFacultad.Controllers
             {
                 return HttpNotFound();
             }
+            IEnumerable<ModeloTipoElementoGUI> listadoTipoElementos = ObtenerListadoTipoElementos();
             MapeadorInventarioGUI mapper = new MapeadorInventarioGUI();
             ModeloInventarioGUI modelo = mapper.MapearTipo1Tipo2(InventarioDTO);
+            modelo.ListaTipoElementos = listadoTipoElementos;
             return View(modelo);
         }
 

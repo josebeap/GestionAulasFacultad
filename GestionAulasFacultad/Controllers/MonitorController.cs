@@ -68,6 +68,16 @@ namespace GestionMonitorsFacultad.Controllers
             modelo.ListaMaterias = mapeador.MapearTipo1Tipo2(listaDTO);
         }
 
+        private IEnumerable<ModeloMateriaGUI> ObtenerListadoMaterias()
+        {
+            ImplMateriaLogica logicaMateria = new ImplMateriaLogica();
+            var listaMateria = logicaMateria.ListarRegistros();
+            MapeadorMateriaGUI mapeador = new MapeadorMateriaGUI();
+
+            var listado = mapeador.MapearTipo1Tipo2(listaMateria);
+            return listado;
+        }
+
         private void ObtenerListadoProgramas(ModeloMonitorGUI modelo)
         {
             ImplProgramaLogica logicaPrograma = new ImplProgramaLogica();
@@ -76,12 +86,32 @@ namespace GestionMonitorsFacultad.Controllers
             modelo.ListaProgramas = mapeador.MapearTipo1Tipo2(listaDTO);
         }
 
+        private IEnumerable<ModeloProgramaGUI> ObtenerListadoProgramas()
+        {
+            ImplProgramaLogica logicaPrograma = new ImplProgramaLogica();
+            var listaProgramas = logicaPrograma.ListarRegistros();
+            MapeadorProgramaGUI mapeador = new MapeadorProgramaGUI();
+
+            var listado = mapeador.MapearTipo1Tipo2(listaProgramas);
+            return listado;
+        }
+
         private void ObtenerListadoPersonas(ModeloMonitorGUI modelo)
         {
             ImplPersonaLogica logicaPersona = new ImplPersonaLogica();
             IEnumerable<PersonaDTO> listaDTO = logicaPersona.ListarRegistros();
             MapeadorPersonaGUI mapeador = new MapeadorPersonaGUI();
             modelo.ListaPersonas = mapeador.MapearTipo1Tipo2(listaDTO);
+        }
+
+        private IEnumerable<ModeloPersonaGUI> ObtenerListadoPersonas()
+        {
+            ImplPersonaLogica logicaPersona = new ImplPersonaLogica();
+            var listaPersona = logicaPersona.ListarRegistros();
+            MapeadorPersonaGUI mapeador = new MapeadorPersonaGUI();
+
+            var listado = mapeador.MapearTipo1Tipo2(listaPersona);
+            return listado;
         }
         // POST: Monitor/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
@@ -113,8 +143,14 @@ namespace GestionMonitorsFacultad.Controllers
             {
                 return HttpNotFound();
             }
+            IEnumerable<ModeloMateriaGUI> listadoMaterias = ObtenerListadoMaterias();
+            IEnumerable<ModeloPersonaGUI> listaPersonas = ObtenerListadoPersonas();
+            IEnumerable<ModeloProgramaGUI> listaProgramas = ObtenerListadoProgramas();
             MapeadorMonitorGUI mapper = new MapeadorMonitorGUI();
             ModeloMonitorGUI modelo = mapper.MapearTipo1Tipo2(MonitorDTO);
+            modelo.ListaMaterias = listadoMaterias;
+            modelo.ListaPersonas = listaPersonas;
+            modelo.ListaProgramas = listaProgramas;
             return View(modelo);
         }
 

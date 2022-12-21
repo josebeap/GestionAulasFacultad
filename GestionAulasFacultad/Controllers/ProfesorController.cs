@@ -65,6 +65,15 @@ namespace GestionProfesorsFacultad.Controllers
             MapeadorProgramaGUI mapeador = new MapeadorProgramaGUI();
             modelo.ListaProgramas = mapeador.MapearTipo1Tipo2(listaDTO);
         }
+        private IEnumerable<ModeloProgramaGUI> ObtenerListadoProgramas()
+        {
+            ImplProgramaLogica logicaPrograma = new ImplProgramaLogica();
+            var listaProgramas = logicaPrograma.ListarRegistros();
+            MapeadorProgramaGUI mapeador = new MapeadorProgramaGUI();
+
+            var listado = mapeador.MapearTipo1Tipo2(listaProgramas);
+            return listado;
+        }
 
         private void ObtenerListadoPersonas(ModeloProfesorGUI modelo)
         {
@@ -72,6 +81,16 @@ namespace GestionProfesorsFacultad.Controllers
             IEnumerable<PersonaDTO> listaDTO = logicaPersona.ListarRegistros();
             MapeadorPersonaGUI mapeador = new MapeadorPersonaGUI();
             modelo.ListaPersonas = mapeador.MapearTipo1Tipo2(listaDTO);
+        }
+
+        private IEnumerable<ModeloPersonaGUI> ObtenerListadoPersonas()
+        {
+            ImplPersonaLogica logicaPersona = new ImplPersonaLogica();
+            var listaPersona = logicaPersona.ListarRegistros();
+            MapeadorPersonaGUI mapeador = new MapeadorPersonaGUI();
+
+            var listado = mapeador.MapearTipo1Tipo2(listaPersona);
+            return listado;
         }
         // POST: Profesor/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
@@ -103,8 +122,12 @@ namespace GestionProfesorsFacultad.Controllers
             {
                 return HttpNotFound();
             }
+            IEnumerable<ModeloPersonaGUI> listadoPersonas = ObtenerListadoPersonas();
+            IEnumerable<ModeloProgramaGUI> listadoProgramas = ObtenerListadoProgramas();
             MapeadorProfesorGUI mapper = new MapeadorProfesorGUI();
             ModeloProfesorGUI modelo = mapper.MapearTipo1Tipo2(ProfesorDTO);
+            modelo.ListaProgramas = listadoProgramas;
+            modelo.ListaPersonas = listadoPersonas;
             return View(modelo);
         }
 

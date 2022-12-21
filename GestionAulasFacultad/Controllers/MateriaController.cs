@@ -65,6 +65,17 @@ namespace GestionMateriasFacultad.Controllers
             modelo.ListaProgramas = mapeador.MapearTipo1Tipo2(listaDTO);
         }
 
+        private IEnumerable<ModeloProgramaGUI> ObtenerListadoProgramas()
+        {
+            ImplProgramaLogica logicaPrograma = new ImplProgramaLogica();
+            var listaProgramas = logicaPrograma.ListarRegistros();
+            MapeadorProgramaGUI mapeador = new MapeadorProgramaGUI();
+
+            var listado = mapeador.MapearTipo1Tipo2(listaProgramas);
+            return listado;
+        }
+
+
         // POST: Materia/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -95,8 +106,10 @@ namespace GestionMateriasFacultad.Controllers
             {
                 return HttpNotFound();
             }
+            IEnumerable<ModeloProgramaGUI> listadoProgramas = ObtenerListadoProgramas();
             MapeadorMateriaGUI mapper = new MapeadorMateriaGUI();
             ModeloMateriaGUI modelo = mapper.MapearTipo1Tipo2(MateriaDTO);
+            modelo.ListaProgramas = listadoProgramas;
             return View(modelo);
         }
 
