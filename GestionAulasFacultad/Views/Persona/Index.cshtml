@@ -100,39 +100,7 @@
 
 
                 </tbody>
-                <div id="deleteModal" class="modal fade" tabindex="-1" role="dialog"
-                     aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="myModalLabel">Modal Heading</h4>
-                                <button type="button" class="close" data-dismiss="modal"
-                                        aria-hidden="true">
-                                    ×
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <h3>¿Estás seguro de que quieres eliminar el registro?</h3>
-
-
-
-                            </div>
-                            <div class="modal-footer">
-                                @using (Html.BeginForm())
-                                {
-                                    @Html.AntiForgeryToken()
-
-                                    <div class="form-actions no-color">
-                                        <input type="submit" value="Eliminar" class="btn btn-danger" onclick="DeleteConfirmed"/>
-                                        @Html.ActionLink("Cancelar", "Index", new { }, new { @class = "btn btn-secondary" })
-                                    </div>
-
-
-                                }
-                            </div>
-                        </div><!-- /.modal-content -->
-                    </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
+                
             }
 
         </table>

@@ -13,7 +13,8 @@ namespace GestionAuxiliarsFacultad.Mapeadores
             {
                 Id = entrada.Id,
                 IdPersona = entrada.IdPersona,
-                Funcion = entrada.Funcion
+                Funcion = entrada.Funcion,
+                NombrePersona=entrada.NombrePersona
             };
         }
 
